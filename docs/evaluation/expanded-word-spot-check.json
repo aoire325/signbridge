@@ -1,0 +1,100 @@
+{
+  "corpus": "12 deterministic original-test-split examples among first 1,000 public batch_001 poses; common labels preferred",
+  "captureMode": "80 ms minimum frame interval and mobile WordSegmenter",
+  "datasetRevision": "06068a7ce431c3d1482aea838e8d918ba1eb5853",
+  "liveCameraBenchmark": false,
+  "examples": 12,
+  "reviewRequired": true,
+  "automaticTranscriptWrites": 0,
+  "heuristicProposals": 3,
+  "correctHeuristicProposals": 1,
+  "incorrectHeuristicProposals": 2,
+  "noHeuristicProposal": 9,
+  "details": [
+    {
+      "expected": "FATHER",
+      "prediction": "SHARK",
+      "correct": false,
+      "citizenTop": "SHARK2",
+      "wlaslTop": "cloud"
+    },
+    {
+      "expected": "WATER",
+      "prediction": null,
+      "correct": false,
+      "citizenTop": "FINE2",
+      "wlaslTop": "demonstrate"
+    },
+    {
+      "expected": "FRIEND",
+      "prediction": null,
+      "correct": false,
+      "citizenTop": "HURT",
+      "wlaslTop": "shovel"
+    },
+    {
+      "expected": "GOOD",
+      "prediction": null,
+      "correct": false,
+      "citizenTop": "THANKYOU",
+      "wlaslTop": "wait"
+    },
+    {
+      "expected": "SORRY",
+      "prediction": null,
+      "correct": false,
+      "citizenTop": "LAZY",
+      "wlaslTop": "compete"
+    },
+    {
+      "expected": "APPLE",
+      "prediction": null,
+      "correct": false,
+      "citizenTop": "MICROPHONE",
+      "wlaslTop": "butterfly"
+    },
+    {
+      "expected": "LIBRARY",
+      "prediction": null,
+      "correct": false,
+      "citizenTop": "LEFT",
+      "wlaslTop": "hair"
+    },
+    {
+      "expected": "CELERY",
+      "prediction": null,
+      "correct": false,
+      "citizenTop": "LOCK1",
+      "wlaslTop": "situation"
+    },
+    {
+      "expected": "CANDY1",
+      "prediction": "SHAMEONYOU",
+      "correct": false,
+      "citizenTop": "SHAMEONYOU",
+      "wlaslTop": "opinion"
+    },
+    {
+      "expected": "CASTLE2",
+      "prediction": "CASTLE",
+      "correct": true,
+      "citizenTop": "CASTLE2",
+      "wlaslTop": "hanukkah"
+    },
+    {
+      "expected": "GOVERNMENT",
+      "prediction": null,
+      "correct": false,
+      "citizenTop": "RABBIT2",
+      "wlaslTop": "hair"
+    },
+    {
+      "expected": "OPINION1",
+      "prediction": null,
+      "correct": false,
+      "citizenTop": "DINOSAUR1",
+      "wlaslTop": "cabbage"
+    }
+  ]
+}
+

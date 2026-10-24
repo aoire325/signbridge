@@ -1,0 +1,1643 @@
+{
+  "datasetRevision": "06068a7ce431c3d1482aea838e8d918ba1eb5853",
+  "selection": {
+    "count": 48,
+    "offset": 12,
+    "commonLabelsPreferred": true
+  },
+  "liveCameraBenchmark": false,
+  "weightsRetrained": false,
+  "reviewRequired": true,
+  "automaticTranscriptWrites": 0,
+  "protocol": "48 distinct original-test-split glosses, disjoint from the 12 diagnostic glosses. Replay actual TypeScript preprocessing; first automatic boundary or manual finish at source clip end. Frame interval is a replay limit, not measured device throughput. Landscape extracted poses do not validate portrait-camera extraction.",
+  "modelSha256": "a20d55f5960c7f33a46f1390aded133783f7daa315b0f3edad1b49ec97aa2371",
+  "variants": [
+    {
+      "name": "before",
+      "captureMode": "80 ms minimum frame interval and legacy trimmed capture",
+      "citizenTop1": {
+        "examples": 48,
+        "correct": 19
+      },
+      "wlaslTop1WithinVocabulary": {
+        "examples": 31,
+        "correct": 2
+      },
+      "standardTop1WithinVocabulary": {
+        "examples": 14,
+        "correct": 2
+      },
+      "suggestionRecall": {
+        "examples": 48,
+        "correctInFirstThree": 25
+      },
+      "captureRejected": 2
+    },
+    {
+      "name": "context-slow",
+      "captureMode": "80 ms minimum frame interval and context-preserving capture",
+      "citizenTop1": {
+        "examples": 48,
+        "correct": 31
+      },
+      "wlaslTop1WithinVocabulary": {
+        "examples": 31,
+        "correct": 2
+      },
+      "standardTop1WithinVocabulary": {
+        "examples": 14,
+        "correct": 1
+      },
+      "suggestionRecall": {
+        "examples": 48,
+        "correctInFirstThree": 37
+      },
+      "captureRejected": 2
+    },
+    {
+      "name": "context-fast",
+      "captureMode": "33 ms minimum frame interval and context-preserving capture",
+      "citizenTop1": {
+        "examples": 48,
+        "correct": 33
+      },
+      "wlaslTop1WithinVocabulary": {
+        "examples": 31,
+        "correct": 2
+      },
+      "standardTop1WithinVocabulary": {
+        "examples": 14,
+        "correct": 1
+      },
+      "suggestionRecall": {
+        "examples": 48,
+        "correctInFirstThree": 40
+      },
+      "captureRejected": 0
+    }
+  ],
+  "details": [
+    {
+      "expected": "PJS",
+      "sourceSha256": "edfce9a1a78322ca80ac6e0f2169e0d3662fc2437c8f44d3aeebb3f891dbd266",
+      "variants": {
+        "before": {
+          "citizenTop": "PJS",
+          "suggestions": [
+            "PJS"
+          ],
+          "sampleCount": 13,
+          "durationMs": 1155.0308279636115
+        },
+        "context-slow": {
+          "citizenTop": "PJS",
+          "suggestions": [
+            "PJS"
+          ],
+          "sampleCount": 25,
+          "durationMs": 2310.061655927223
+        },
+        "context-fast": {
+          "citizenTop": "PJS",
+          "suggestions": [
+            "PJS"
+          ],
+          "sampleCount": 36,
+          "durationMs": 2245.893276595911
+        }
+      }
+    },
+    {
+      "expected": "LIVE2",
+      "sourceSha256": "146bc815269c37389cfc6c774dd72adcf408036f6453119f7d612db21a4bfd51",
+      "variants": {
+        "before": {
+          "citizenTop": "LIVE1",
+          "suggestions": [
+            "LIVE",
+            "CONCERNED",
+            "WRENCH"
+          ],
+          "sampleCount": 10,
+          "durationMs": 900.1216099053097
+        },
+        "context-slow": {
+          "citizenTop": "LIVE2",
+          "suggestions": [
+            "LIVE"
+          ],
+          "sampleCount": 22,
+          "durationMs": 2100.2837564457222
+        },
+        "context-fast": {
+          "citizenTop": "LIVE2",
+          "suggestions": [
+            "LIVE"
+          ],
+          "sampleCount": 64,
+          "durationMs": 2100.2837564457222
+        }
+      }
+    },
+    {
+      "expected": "WORKSHOP",
+      "sourceSha256": "5aa20bba8319265814d0fa902a8ce4f64db0041a11c42b18bea5f1edc6b5e0a6",
+      "variants": {
+        "before": {
+          "citizenTop": "WORKSHOP",
+          "suggestions": [
+            "WORKSHOP"
+          ],
+          "sampleCount": 16,
+          "durationMs": 1514.2848010425496
+        },
+        "context-slow": {
+          "citizenTop": "WORKSHOP",
+          "suggestions": [
+            "WORKSHOP"
+          ],
+          "sampleCount": 28,
+          "durationMs": 2725.7126418765893
+        },
+        "context-fast": {
+          "citizenTop": "WORKSHOP",
+          "suggestions": [
+            "WORKSHOP"
+          ],
+          "sampleCount": 81,
+          "durationMs": 2692.061868520088
+        }
+      }
+    },
+    {
+      "expected": "UNCLE",
+      "sourceSha256": "b121ef0163adb87cffd989512d01bfd753586fce33f659003e53f657cf552e74",
+      "variants": {
+        "before": {
+          "citizenTop": "CURL2",
+          "suggestions": [
+            "CURL",
+            "UNCLE",
+            "INSECT"
+          ],
+          "sampleCount": 14,
+          "durationMs": 1321.3172181893435
+        },
+        "context-slow": {
+          "citizenTop": "CURL2",
+          "suggestions": [
+            "CURL",
+            "UNCLE",
+            "INSECT"
+          ],
+          "sampleCount": 22,
+          "durationMs": 2134.435506305863
+        },
+        "context-fast": {
+          "citizenTop": "UNCLE",
+          "suggestions": [
+            "UNCLE",
+            "CURL",
+            "INSECT"
+          ],
+          "sampleCount": 66,
+          "durationMs": 2202.195363648906
+        }
+      }
+    },
+    {
+      "expected": "EASTER",
+      "sourceSha256": "de39cf2d0b389c1330f161f7d8afb4f3f9f60f18003267826c4b5fd7a232a8d3",
+      "variants": {
+        "before": {
+          "citizenTop": "EASTER",
+          "suggestions": [
+            "EASTER",
+            "TEACH",
+            "TITLE"
+          ],
+          "sampleCount": 12,
+          "durationMs": 1116.3734978419407
+        },
+        "context-slow": {
+          "citizenTop": "EASTER",
+          "suggestions": [
+            "EASTER"
+          ],
+          "sampleCount": 22,
+          "durationMs": 2131.258495880069
+        },
+        "context-fast": {
+          "citizenTop": "EASTER",
+          "suggestions": [
+            "EASTER"
+          ],
+          "sampleCount": 63,
+          "durationMs": 2097.4289959454645
+        }
+      }
+    },
+    {
+      "expected": "BAG2",
+      "sourceSha256": "1194306b831106f64c112aa8ff145c89da2c6b800374237fb57c353d6f5e6b7c",
+      "variants": {
+        "before": {
+          "citizenTop": "CRACKER2",
+          "suggestions": [
+            "CRACKER",
+            "POOR",
+            "DUSK"
+          ],
+          "sampleCount": 12,
+          "durationMs": 1601.0666896719026
+        },
+        "context-slow": {
+          "citizenTop": "BASKET2",
+          "suggestions": [
+            "BASKET"
+          ],
+          "sampleCount": 22,
+          "durationMs": 2801.8667069258295
+        },
+        "context-fast": {
+          "citizenTop": "BASKET2",
+          "suggestions": [
+            "BASKET",
+            "ARM",
+            "BAG"
+          ],
+          "sampleCount": 41,
+          "durationMs": 2668.444482786504
+        }
+      }
+    },
+    {
+      "expected": "MACHINE",
+      "sourceSha256": "35cfee219ac18626a099fca719d5f490bfae22ddb02c7ae3967052f664d3e816",
+      "variants": {
+        "before": {
+          "citizenTop": "MACHINE",
+          "suggestions": [
+            "MACHINE",
+            "CONCERNED",
+            "ENGINE"
+          ],
+          "sampleCount": 10,
+          "durationMs": 900
+        },
+        "context-slow": {
+          "citizenTop": "MACHINE",
+          "suggestions": [
+            "MACHINE"
+          ],
+          "sampleCount": 20,
+          "durationMs": 1900
+        },
+        "context-fast": {
+          "citizenTop": "MACHINE",
+          "suggestions": [
+            "MACHINE",
+            "CONCERN"
+          ],
+          "sampleCount": 56,
+          "durationMs": 1833.3333333333333
+        }
+      }
+    },
+    {
+      "expected": "NEWSTOME",
+      "sourceSha256": "f6eba77781ab6dcf85f960caa0649b6f12fd4c828b16aa2dca3edc736eba3af8",
+      "variants": {
+        "before": {
+          "citizenTop": "NEWSTOME",
+          "suggestions": [
+            "NEWSTOME"
+          ],
+          "sampleCount": 12,
+          "durationMs": 1063.4184209240425
+        },
+        "context-slow": {
+          "citizenTop": "NEWSTOME",
+          "suggestions": [
+            "NEWSTOME"
+          ],
+          "sampleCount": 25,
+          "durationMs": 2320.1856456524565
+        },
+        "context-fast": {
+          "citizenTop": "NEWSTOME",
+          "suggestions": [
+            "NEWSTOME"
+          ],
+          "sampleCount": 37,
+          "durationMs": 2320.1856456524565
+        }
+      }
+    },
+    {
+      "expected": "ACCENT",
+      "sourceSha256": "c9fc41657b501ca4218abaec4d403d0ef9de7e7a95cc9a097617a3303acd4759",
+      "variants": {
+        "before": {
+          "citizenTop": "CANDY1",
+          "suggestions": [
+            "CANDY",
+            "WALK-TIGHTROPE-CL"
+          ],
+          "sampleCount": 16,
+          "durationMs": 1447.7366964228515
+        },
+        "context-slow": {
+          "citizenTop": "CANDY1",
+          "suggestions": [
+            "CANDY"
+          ],
+          "sampleCount": 29,
+          "durationMs": 2702.4418333226563
+        },
+        "context-fast": {
+          "citizenTop": "CANDY1",
+          "suggestions": [
+            "CANDY"
+          ],
+          "sampleCount": 43,
+          "durationMs": 2702.4418333226563
+        }
+      }
+    },
+    {
+      "expected": "PIG",
+      "sourceSha256": "2508d807eda4ccd99bb0e35bb53c83d040982e7ecc7a4fecc99c56b66199d34d",
+      "variants": {
+        "before": {
+          "citizenTop": "ATTITUDE",
+          "suggestions": [
+            "ATTITUDE",
+            "EAT",
+            "DEODORANT"
+          ],
+          "sampleCount": 6,
+          "durationMs": 593.7654521819243
+        },
+        "context-slow": {
+          "citizenTop": "KISS1",
+          "suggestions": [
+            "KISS",
+            "BURP"
+          ],
+          "sampleCount": 19,
+          "durationMs": 1781.296356545773
+        },
+        "context-fast": {
+          "citizenTop": "KISS1",
+          "suggestions": [
+            "KISS",
+            "ABSOLUTELYNOTHING"
+          ],
+          "sampleCount": 28,
+          "durationMs": 1781.296356545773
+        }
+      }
+    },
+    {
+      "expected": "WASHDISHES",
+      "sourceSha256": "e1ba7028a620bf6dbf59151ca61495e90b307e1d3159307553b8d5ba8bc11fd7",
+      "variants": {
+        "before": {
+          "citizenTop": "SCRUB",
+          "suggestions": [
+            "SCRUB",
+            "ERASER",
+            "DICTIONARY"
+          ],
+          "sampleCount": 15,
+          "durationMs": 1400
+        },
+        "context-slow": {
+          "citizenTop": "WASHDISHES",
+          "suggestions": [
+            "WASHDISHES",
+            "WEEK",
+            "ILL"
+          ],
+          "sampleCount": 26,
+          "durationMs": 2500
+        },
+        "context-fast": {
+          "citizenTop": "WASHDISHES",
+          "suggestions": [
+            "WASHDISHES",
+            "GRADUATESCHOOL",
+            "BREATHE"
+          ],
+          "sampleCount": 73,
+          "durationMs": 2400
+        }
+      }
+    },
+    {
+      "expected": "EACH",
+      "sourceSha256": "ef9368f08e80596af2f55774e72ebed52473fad35739c932361863655406771e",
+      "variants": {
+        "before": {
+          "citizenTop": "TEXT",
+          "suggestions": [
+            "TEXT"
+          ],
+          "sampleCount": 9,
+          "durationMs": 799.8805923696592
+        },
+        "context-slow": {
+          "citizenTop": "TEXT",
+          "suggestions": [
+            "TEXT",
+            "EACH",
+            "ARCHERY"
+          ],
+          "sampleCount": 21,
+          "durationMs": 1999.701480924148
+        },
+        "context-fast": {
+          "citizenTop": "TEXT",
+          "suggestions": [
+            "TEXT",
+            "EACH",
+            "DIARRHEA"
+          ],
+          "sampleCount": 62,
+          "durationMs": 2033.0298389395505
+        }
+      }
+    },
+    {
+      "expected": "BINOCULARS",
+      "sourceSha256": "2cd45a4ddb8cac02de6abce15731a15f31469787a470ae37405b71d16d4ca826",
+      "variants": {
+        "before": {
+          "citizenTop": "STACK1",
+          "suggestions": [
+            "STACK",
+            "EARMUFFS"
+          ],
+          "sampleCount": 11,
+          "durationMs": 987.9144936007378
+        },
+        "context-slow": {
+          "citizenTop": "BINOCULARS",
+          "suggestions": [
+            "BINOCULARS"
+          ],
+          "sampleCount": 24,
+          "durationMs": 2272.2033352816966
+        },
+        "context-fast": {
+          "citizenTop": "BINOCULARS",
+          "suggestions": [
+            "BINOCULARS"
+          ],
+          "sampleCount": 35,
+          "durationMs": 2239.272852161672
+        }
+      }
+    },
+    {
+      "expected": "FORK4",
+      "sourceSha256": "675837529f1654eb3adadf18e8e698f849961d75549a090ee0f29c118016af6e",
+      "variants": {
+        "before": {
+          "citizenTop": "CAKE",
+          "suggestions": [
+            "CAKE"
+          ],
+          "sampleCount": 10,
+          "durationMs": 899.8363792391062
+        },
+        "context-slow": {
+          "citizenTop": "CAKE",
+          "suggestions": [
+            "CAKE"
+          ],
+          "sampleCount": 19,
+          "durationMs": 1799.6727584782125
+        },
+        "context-fast": {
+          "citizenTop": "CAKE",
+          "suggestions": [
+            "CAKE",
+            "FORK"
+          ],
+          "sampleCount": 55,
+          "durationMs": 1799.6727584782125
+        }
+      }
+    },
+    {
+      "expected": "WEAR",
+      "sourceSha256": "4f24926381c53a79dda0d90ce75d0be3151a165065763175dd5a31dc88bd5b44",
+      "variants": {
+        "before": {
+          "citizenTop": null,
+          "suggestions": [],
+          "sampleCount": 0,
+          "durationMs": 0
+        },
+        "context-slow": {
+          "citizenTop": null,
+          "suggestions": [],
+          "sampleCount": 0,
+          "durationMs": 0
+        },
+        "context-fast": {
+          "citizenTop": "WEAR",
+          "suggestions": [
+            "WEAR",
+            "DRESS",
+            "ARCHERY"
+          ],
+          "sampleCount": 42,
+          "durationMs": 1368.0612007924592
+        }
+      }
+    },
+    {
+      "expected": "YESTERDAY",
+      "sourceSha256": "02f544b3c579386f3a63734327dacf4c543115ca19edd060aa88bcdb2f7f7bf8",
+      "variants": {
+        "before": {
+          "citizenTop": "YESTERDAY",
+          "suggestions": [
+            "YESTERDAY"
+          ],
+          "sampleCount": 11,
+          "durationMs": 999.8900852230483
+        },
+        "context-slow": {
+          "citizenTop": "YESTERDAY",
+          "suggestions": [
+            "YESTERDAY"
+          ],
+          "sampleCount": 24,
+          "durationMs": 2299.7471960130115
+        },
+        "context-fast": {
+          "citizenTop": "YESTERDAY",
+          "suggestions": [
+            "YESTERDAY"
+          ],
+          "sampleCount": 69,
+          "durationMs": 2266.4175265055765
+        }
+      }
+    },
+    {
+      "expected": "SCREWDRIVER3",
+      "sourceSha256": "9598cecbcee4b610fb862ecb157db4846b33037e869b254616f5b94a2dfb6a10",
+      "variants": {
+        "before": {
+          "citizenTop": "SCREWDRIVER3",
+          "suggestions": [
+            "SCREWDRIVER"
+          ],
+          "sampleCount": 14,
+          "durationMs": 1303.5380069425187
+        },
+        "context-slow": {
+          "citizenTop": "SCREWDRIVER3",
+          "suggestions": [
+            "SCREWDRIVER"
+          ],
+          "sampleCount": 26,
+          "durationMs": 2506.8038595048433
+        },
+        "context-fast": {
+          "citizenTop": "SCREWDRIVER3",
+          "suggestions": [
+            "SCREWDRIVER"
+          ],
+          "sampleCount": 76,
+          "durationMs": 2506.803859504843
+        }
+      }
+    },
+    {
+      "expected": "EVERYTHING",
+      "sourceSha256": "04f9b0c09407787e7a285c7f45f6e3505d06f747f1ab737edbecdf551a92fb1b",
+      "variants": {
+        "before": {
+          "citizenTop": "EVERYTHING",
+          "suggestions": [
+            "EVERYTHING"
+          ],
+          "sampleCount": 10,
+          "durationMs": 1199.883510454784
+        },
+        "context-slow": {
+          "citizenTop": "EVERYTHING",
+          "suggestions": [
+            "EVERYTHING"
+          ],
+          "sampleCount": 23,
+          "durationMs": 2199.786435833771
+        },
+        "context-fast": {
+          "citizenTop": "EVERYTHING",
+          "suggestions": [
+            "EVERYTHING",
+            "BEACH",
+            "ALIGN"
+          ],
+          "sampleCount": 64,
+          "durationMs": 2099.7961432958723
+        }
+      }
+    },
+    {
+      "expected": "SENATE",
+      "sourceSha256": "8147a0f9f8961b5af79b138a4feb60e12de3aa7954206c11b403f9dbb5519523",
+      "variants": {
+        "before": {
+          "citizenTop": "CARROT2",
+          "suggestions": [
+            "CARROT",
+            "SENATE",
+            "LEFT"
+          ],
+          "sampleCount": 11,
+          "durationMs": 1002.6316096459079
+        },
+        "context-slow": {
+          "citizenTop": "SENATE",
+          "suggestions": [
+            "SENATE"
+          ],
+          "sampleCount": 19,
+          "durationMs": 1804.7368973626342
+        },
+        "context-fast": {
+          "citizenTop": "SENATE",
+          "suggestions": [
+            "SENATE",
+            "ATLANTA"
+          ],
+          "sampleCount": 57,
+          "durationMs": 1871.5790046723614
+        }
+      }
+    },
+    {
+      "expected": "BEAK",
+      "sourceSha256": "af846eeb8b244e61cf40d0615706071894963bf9295210d29f00d0f4942aaf18",
+      "variants": {
+        "before": {
+          "citizenTop": null,
+          "suggestions": [],
+          "sampleCount": 0,
+          "durationMs": 0
+        },
+        "context-slow": {
+          "citizenTop": null,
+          "suggestions": [],
+          "sampleCount": 0,
+          "durationMs": 0
+        },
+        "context-fast": {
+          "citizenTop": "LIGHTNING",
+          "suggestions": [
+            "LIGHTNING",
+            "ALGEBRA"
+          ],
+          "sampleCount": 39,
+          "durationMs": 1266.6666666666667
+        }
+      }
+    },
+    {
+      "expected": "DRIP",
+      "sourceSha256": "c98f85530cb73326f2186829a4d40045e2b7a2219d73ffb7624d58110e603867",
+      "variants": {
+        "before": {
+          "citizenTop": "DRIP",
+          "suggestions": [
+            "DRIP"
+          ],
+          "sampleCount": 10,
+          "durationMs": 720
+        },
+        "context-slow": {
+          "citizenTop": "DRIP",
+          "suggestions": [
+            "DRIP"
+          ],
+          "sampleCount": 25,
+          "durationMs": 1920
+        },
+        "context-fast": {
+          "citizenTop": "DRIP",
+          "suggestions": [
+            "DRIP"
+          ],
+          "sampleCount": 49,
+          "durationMs": 1920
+        }
+      }
+    },
+    {
+      "expected": "APPEAR",
+      "sourceSha256": "98cce2e93e48619925654ce5da2c78f4a3caa93e8f615bbd05e8c5d36c38e4bc",
+      "variants": {
+        "before": {
+          "citizenTop": "WORD",
+          "suggestions": [
+            "WORD",
+            "TO",
+            "MEET"
+          ],
+          "sampleCount": 13,
+          "durationMs": 1162.0024839058037
+        },
+        "context-slow": {
+          "citizenTop": "PLUS",
+          "suggestions": [
+            "PLUS",
+            "AUDIOLOGIST"
+          ],
+          "sampleCount": 25,
+          "durationMs": 2324.0049678116075
+        },
+        "context-fast": {
+          "citizenTop": "FLIPFLOPS",
+          "suggestions": [
+            "FLIPFLOPS",
+            "APPEAR",
+            "AUDIOLOGIST"
+          ],
+          "sampleCount": 37,
+          "durationMs": 2324.0049678116075
+        }
+      }
+    },
+    {
+      "expected": "HIDE",
+      "sourceSha256": "3f02b735483dbbb940cf20cfeea9b822dab19ffdbbcb88d6b28b692624705415",
+      "variants": {
+        "before": {
+          "citizenTop": "BRAIDS",
+          "suggestions": [
+            "BRAIDS",
+            "GUIDE",
+            "ROAD"
+          ],
+          "sampleCount": 7,
+          "durationMs": 600
+        },
+        "context-slow": {
+          "citizenTop": "MICROSCOPE3",
+          "suggestions": [
+            "MICROSCOPE",
+            "GLASS"
+          ],
+          "sampleCount": 16,
+          "durationMs": 1500
+        },
+        "context-fast": {
+          "citizenTop": "MICROSCOPE3",
+          "suggestions": [
+            "MICROSCOPE",
+            "SNOWBOARD",
+            "DAWN"
+          ],
+          "sampleCount": 43,
+          "durationMs": 1400
+        }
+      }
+    },
+    {
+      "expected": "DEAFSCHOOL",
+      "sourceSha256": "da00f56fc206ee6b4ff53ca6d3483c4f2b239689550813a02a5ed6291e2b101b",
+      "variants": {
+        "before": {
+          "citizenTop": "ALCOHOL",
+          "suggestions": [
+            "ALCOHOL"
+          ],
+          "sampleCount": 20,
+          "durationMs": 1900.2209666028289
+        },
+        "context-slow": {
+          "citizenTop": "DEAFSCHOOL",
+          "suggestions": [
+            "DEAFSCHOOL",
+            "ALCOHOL"
+          ],
+          "sampleCount": 29,
+          "durationMs": 2800.3256349936423
+        },
+        "context-fast": {
+          "citizenTop": "DEAFSCHOOL",
+          "suggestions": [
+            "DEAFSCHOOL",
+            "ALCOHOL"
+          ],
+          "sampleCount": 86,
+          "durationMs": 2833.662844934043
+        }
+      }
+    },
+    {
+      "expected": "RUIN",
+      "sourceSha256": "5ebed4111961636ff249f87b37196790eb55637819c9973085e3169875acac1c",
+      "variants": {
+        "before": {
+          "citizenTop": "REPLACE",
+          "suggestions": [
+            "REPLACE",
+            "OFFEND",
+            "WRISTWATCH"
+          ],
+          "sampleCount": 6,
+          "durationMs": 500
+        },
+        "context-slow": {
+          "citizenTop": "RUIN",
+          "suggestions": [
+            "RUIN"
+          ],
+          "sampleCount": 11,
+          "durationMs": 1000
+        },
+        "context-fast": {
+          "citizenTop": "RUIN",
+          "suggestions": [
+            "RUIN"
+          ],
+          "sampleCount": 33,
+          "durationMs": 1066.6666666666667
+        }
+      }
+    },
+    {
+      "expected": "TURBAN",
+      "sourceSha256": "0b41b4da2dbcab301f5a13e8811bd5b14604b44359887af6e75ce6151d20098c",
+      "variants": {
+        "before": {
+          "citizenTop": "UNICORN",
+          "suggestions": [
+            "UNICORN",
+            "BUN"
+          ],
+          "sampleCount": 13,
+          "durationMs": 1200
+        },
+        "context-slow": {
+          "citizenTop": "BOY",
+          "suggestions": [
+            "BOY",
+            "TURBAN",
+            "BUN"
+          ],
+          "sampleCount": 25,
+          "durationMs": 2400
+        },
+        "context-fast": {
+          "citizenTop": "BOY",
+          "suggestions": [
+            "BOY",
+            "TURBAN"
+          ],
+          "sampleCount": 72,
+          "durationMs": 2366.6666666666665
+        }
+      }
+    },
+    {
+      "expected": "VAMPIRE",
+      "sourceSha256": "219ba0cbe7de6a02a75024ce2fda15a810035a9b56c16f766d02986853cbaab5",
+      "variants": {
+        "before": {
+          "citizenTop": "GUM",
+          "suggestions": [
+            "GUM",
+            "MICROPHONE",
+            "FLORIDA"
+          ],
+          "sampleCount": 7,
+          "durationMs": 1040
+        },
+        "context-slow": {
+          "citizenTop": "PEACH2",
+          "suggestions": [
+            "PEACH",
+            "COMPANY"
+          ],
+          "sampleCount": 29,
+          "durationMs": 2240
+        },
+        "context-fast": {
+          "citizenTop": "VAMPIRE",
+          "suggestions": [
+            "VAMPIRE",
+            "NIECE",
+            "COMPANY"
+          ],
+          "sampleCount": 57,
+          "durationMs": 2240
+        }
+      }
+    },
+    {
+      "expected": "BANANA2",
+      "sourceSha256": "a88c7b433cbf90ec8792c8f1baeb78daeb81032130a4d1852203be74aa497fb5",
+      "variants": {
+        "before": {
+          "citizenTop": "BANANA2",
+          "suggestions": [
+            "BANANA"
+          ],
+          "sampleCount": 16,
+          "durationMs": 1448.2492041306816
+        },
+        "context-slow": {
+          "citizenTop": "BANANA2",
+          "suggestions": [
+            "BANANA"
+          ],
+          "sampleCount": 29,
+          "durationMs": 2703.398514377272
+        },
+        "context-fast": {
+          "citizenTop": "BANANA2",
+          "suggestions": [
+            "BANANA"
+          ],
+          "sampleCount": 43,
+          "durationMs": 2703.398514377272
+        }
+      }
+    },
+    {
+      "expected": "LEND",
+      "sourceSha256": "beaa3ff43691d99f98c9e47c90b355e781d957449430f0dccc614a94efd8d979",
+      "variants": {
+        "before": {
+          "citizenTop": "SINCE",
+          "suggestions": [
+            "SINCE",
+            "LEND",
+            "CRUSH"
+          ],
+          "sampleCount": 12,
+          "durationMs": 1100.1279280332164
+        },
+        "context-slow": {
+          "citizenTop": "SINCE",
+          "suggestions": [
+            "SINCE",
+            "LEND"
+          ],
+          "sampleCount": 24,
+          "durationMs": 2300.267485887635
+        },
+        "context-fast": {
+          "citizenTop": "SINCE",
+          "suggestions": [
+            "SINCE"
+          ],
+          "sampleCount": 72,
+          "durationMs": 2366.941905768436
+        }
+      }
+    },
+    {
+      "expected": "ORGANIZATION",
+      "sourceSha256": "e6b6e5f32849ca3ac1a2ce6f69ce1dd7d7d3a005fe91cefc104502637004f95b",
+      "variants": {
+        "before": {
+          "citizenTop": "ORGANIZATION",
+          "suggestions": [
+            "ORGANIZATION"
+          ],
+          "sampleCount": 10,
+          "durationMs": 902.700012339306
+        },
+        "context-slow": {
+          "citizenTop": "ORGANIZATION",
+          "suggestions": [
+            "ORGANIZATION"
+          ],
+          "sampleCount": 10,
+          "durationMs": 902.700012339306
+        },
+        "context-fast": {
+          "citizenTop": "ORGANIZATION",
+          "suggestions": [
+            "ORGANIZATION"
+          ],
+          "sampleCount": 30,
+          "durationMs": 969.5666799199954
+        }
+      }
+    },
+    {
+      "expected": "BERRY",
+      "sourceSha256": "b20639ffd09a5caf13c7789f353b9c6bc6c78651d93e27983015ff1e68c4d202",
+      "variants": {
+        "before": {
+          "citizenTop": "CHERRY1",
+          "suggestions": [
+            "CHERRY",
+            "MANAGE"
+          ],
+          "sampleCount": 10,
+          "durationMs": 882.6413816711217
+        },
+        "context-slow": {
+          "citizenTop": "CHERRY2",
+          "suggestions": [
+            "CHERRY",
+            "BERRY"
+          ],
+          "sampleCount": 20,
+          "durationMs": 1863.3540279723682
+        },
+        "context-fast": {
+          "citizenTop": "CHERRY2",
+          "suggestions": [
+            "CHERRY",
+            "ARCHERY"
+          ],
+          "sampleCount": 29,
+          "durationMs": 1830.6636064289933
+        }
+      }
+    },
+    {
+      "expected": "ERASE1",
+      "sourceSha256": "52c1a64001eb8902f86273a8107c336d9b5d756d446a737fd253ddf7c01d00dd",
+      "variants": {
+        "before": {
+          "citizenTop": "CRACKER2",
+          "suggestions": [
+            "CRACKER",
+            "SHARE",
+            "BETWEEN"
+          ],
+          "sampleCount": 9,
+          "durationMs": 800
+        },
+        "context-slow": {
+          "citizenTop": "NEAR",
+          "suggestions": [
+            "NEAR",
+            "CORNER",
+            "GERMANY"
+          ],
+          "sampleCount": 17,
+          "durationMs": 1600
+        },
+        "context-fast": {
+          "citizenTop": "GERMANY",
+          "suggestions": [
+            "GERMANY",
+            "BREAKTIME",
+            "NEAR"
+          ],
+          "sampleCount": 51,
+          "durationMs": 1666.6666666666667
+        }
+      }
+    },
+    {
+      "expected": "SNOWSUIT",
+      "sourceSha256": "d7d81d0a946f9ac3dfbb6cf60d0007662fdf1ea35d649c126fd101107d0d683f",
+      "variants": {
+        "before": {
+          "citizenTop": "SNOWSUIT",
+          "suggestions": [
+            "SNOWSUIT",
+            "MOOSE"
+          ],
+          "sampleCount": 19,
+          "durationMs": 1804.909134723885
+        },
+        "context-slow": {
+          "citizenTop": "SNOWSUIT",
+          "suggestions": [
+            "SNOWSUIT"
+          ],
+          "sampleCount": 26,
+          "durationMs": 2506.8182426720623
+        },
+        "context-fast": {
+          "citizenTop": "SNOWSUIT",
+          "suggestions": [
+            "SNOWSUIT",
+            "SNOWMAN"
+          ],
+          "sampleCount": 94,
+          "durationMs": 3108.4546209133578
+        }
+      }
+    },
+    {
+      "expected": "SPECIALIST",
+      "sourceSha256": "8a1e41f7e49bb01c5d21116f1e1f2d48d68ad5e5cf11a5c685930a7ac38986d2",
+      "variants": {
+        "before": {
+          "citizenTop": "WALK-TIGHTROPE-CL",
+          "suggestions": [
+            "WALK-TIGHTROPE-CL",
+            "DEMAND",
+            "LET"
+          ],
+          "sampleCount": 10,
+          "durationMs": 902.5081913031415
+        },
+        "context-slow": {
+          "citizenTop": "SPECIALIST",
+          "suggestions": [
+            "SPECIALIST",
+            "LEAF",
+            "WALK-TIGHTROPE-CL"
+          ],
+          "sampleCount": 20,
+          "durationMs": 1905.2950705288542
+        },
+        "context-fast": {
+          "citizenTop": "SPECIALIST",
+          "suggestions": [
+            "SPECIALIST",
+            "LEAF",
+            "PREPARE"
+          ],
+          "sampleCount": 55,
+          "durationMs": 1805.0163826062828
+        }
+      }
+    },
+    {
+      "expected": "TOSS",
+      "sourceSha256": "d97c0f26488d1268937a50c80d4c6157e644c2b3252b010faf65523dfc1b2ba3",
+      "variants": {
+        "before": {
+          "citizenTop": "TOSS",
+          "suggestions": [
+            "TOSS",
+            "RAGE"
+          ],
+          "sampleCount": 9,
+          "durationMs": 1199.8681022676583
+        },
+        "context-slow": {
+          "citizenTop": "TOSS",
+          "suggestions": [
+            "TOSS"
+          ],
+          "sampleCount": 26,
+          "durationMs": 2499.725213057621
+        },
+        "context-fast": {
+          "citizenTop": "TOSS",
+          "suggestions": [
+            "TOSS"
+          ],
+          "sampleCount": 75,
+          "durationMs": 2466.395543550186
+        }
+      }
+    },
+    {
+      "expected": "REPLACE",
+      "sourceSha256": "2f8fc8796d20114263c08b00940b1451691eadd831a8dd5ad563d733dd546651",
+      "variants": {
+        "before": {
+          "citizenTop": "REPLACE",
+          "suggestions": [
+            "REPLACE"
+          ],
+          "sampleCount": 6,
+          "durationMs": 500.14286943514327
+        },
+        "context-slow": {
+          "citizenTop": "REPLACE",
+          "suggestions": [
+            "REPLACE",
+            "AUDIOLOGIST"
+          ],
+          "sampleCount": 12,
+          "durationMs": 1100.3143127573153
+        },
+        "context-fast": {
+          "citizenTop": "REPLACE",
+          "suggestions": [
+            "REPLACE",
+            "AUDIOLOGIST"
+          ],
+          "sampleCount": 35,
+          "durationMs": 1133.657170719658
+        }
+      }
+    },
+    {
+      "expected": "PERFUME1",
+      "sourceSha256": "3289d2c44b86de730f7e1804dde3942245c7ae9e46dffc9155be5a2294ef5f69",
+      "variants": {
+        "before": {
+          "citizenTop": "ATLANTA",
+          "suggestions": [
+            "ATLANTA",
+            "PERFUME",
+            "SWIMSUIT"
+          ],
+          "sampleCount": 9,
+          "durationMs": 784.1087348255082
+        },
+        "context-slow": {
+          "citizenTop": "PERFUME1",
+          "suggestions": [
+            "PERFUME",
+            "ATLANTA",
+            "SWIMSUIT"
+          ],
+          "sampleCount": 22,
+          "durationMs": 2058.285428916958
+        },
+        "context-fast": {
+          "citizenTop": "ATLANTA",
+          "suggestions": [
+            "ATLANTA",
+            "PERFUME",
+            "SWIMSUIT"
+          ],
+          "sampleCount": 31,
+          "durationMs": 1960.2718370637697
+        }
+      }
+    },
+    {
+      "expected": "DIP3",
+      "sourceSha256": "e95b4b405a7b628606f67a038f0dc105a23b2aeb041bf23560e5c246ae9643cd",
+      "variants": {
+        "before": {
+          "citizenTop": "MUSIC",
+          "suggestions": [
+            "MUSIC",
+            "CATEGORY",
+            "PSYCHOLOGY"
+          ],
+          "sampleCount": 10,
+          "durationMs": 879.0779248216263
+        },
+        "context-slow": {
+          "citizenTop": "DIP3",
+          "suggestions": [
+            "DIP",
+            "BOUNCE",
+            "STIR"
+          ],
+          "sampleCount": 18,
+          "durationMs": 1660.4805246630717
+        },
+        "context-fast": {
+          "citizenTop": "FRY",
+          "suggestions": [
+            "FRY",
+            "DIP",
+            "TYPE"
+          ],
+          "sampleCount": 26,
+          "durationMs": 1627.9220830030115
+        }
+      }
+    },
+    {
+      "expected": "BIG",
+      "sourceSha256": "fcf598103429cc567c7ff88f73c48dc85c000399fed0b70c886959b14f05ef29",
+      "variants": {
+        "before": {
+          "citizenTop": "BIG",
+          "suggestions": [
+            "BIG"
+          ],
+          "sampleCount": 9,
+          "durationMs": 799.8857279948678
+        },
+        "context-slow": {
+          "citizenTop": "BIG",
+          "suggestions": [
+            "BIG"
+          ],
+          "sampleCount": 19,
+          "durationMs": 1799.7428879884524
+        },
+        "context-fast": {
+          "citizenTop": "BIG",
+          "suggestions": [
+            "BIG"
+          ],
+          "sampleCount": 52,
+          "durationMs": 1699.7571719890939
+        }
+      }
+    },
+    {
+      "expected": "NECKLACE4",
+      "sourceSha256": "517123f17ed2132c56e791c202de321358977a204e0de374544bde3b8ccd17c3",
+      "variants": {
+        "before": {
+          "citizenTop": "INJECT",
+          "suggestions": [
+            "INJECT",
+            "BOW",
+            "RATHER"
+          ],
+          "sampleCount": 10,
+          "durationMs": 886.00115427323
+        },
+        "context-slow": {
+          "citizenTop": "HUNGRY",
+          "suggestions": [
+            "HUNGRY",
+            "RATHER"
+          ],
+          "sampleCount": 22,
+          "durationMs": 2067.336026637537
+        },
+        "context-fast": {
+          "citizenTop": "HUNGRY",
+          "suggestions": [
+            "HUNGRY",
+            "RATHER"
+          ],
+          "sampleCount": 32,
+          "durationMs": 2034.5211690718616
+        }
+      }
+    },
+    {
+      "expected": "SHAME",
+      "sourceSha256": "d084f4b86542592aff89f90435b2acb9dc8772d08098e1b0b481e1e3ec32bb02",
+      "variants": {
+        "before": {
+          "citizenTop": "SHAME",
+          "suggestions": [
+            "SHAME",
+            "LIGHTER",
+            "APPROACH"
+          ],
+          "sampleCount": 6,
+          "durationMs": 482.03612010056634
+        },
+        "context-slow": {
+          "citizenTop": "SHAME",
+          "suggestions": [
+            "SHAME"
+          ],
+          "sampleCount": 13,
+          "durationMs": 1156.8866882413593
+        },
+        "context-fast": {
+          "citizenTop": "SHAME",
+          "suggestions": [
+            "SHAME"
+          ],
+          "sampleCount": 19,
+          "durationMs": 1156.8866882413593
+        }
+      }
+    },
+    {
+      "expected": "PILL",
+      "sourceSha256": "4204ceca77398891eef64bb0dd2e49470a38ddefdece816e36ff7cc499eb1257",
+      "variants": {
+        "before": {
+          "citizenTop": "MICROPHONE",
+          "suggestions": [
+            "MICROPHONE",
+            "PILL"
+          ],
+          "sampleCount": 12,
+          "durationMs": 1100.1964156809001
+        },
+        "context-slow": {
+          "citizenTop": "PILL",
+          "suggestions": [
+            "PILL",
+            "MICROPHONE"
+          ],
+          "sampleCount": 19,
+          "durationMs": 1800.3214074778364
+        },
+        "context-fast": {
+          "citizenTop": "PILL",
+          "suggestions": [
+            "PILL",
+            "MICROPHONE"
+          ],
+          "sampleCount": 56,
+          "durationMs": 1833.6606928015
+        }
+      }
+    },
+    {
+      "expected": "BRAINWASH",
+      "sourceSha256": "a1d3a2225652b5dd59b5821fadb68774a8190fd2660dab98a2ef01ec545e0e6b",
+      "variants": {
+        "before": {
+          "citizenTop": "CHEW4",
+          "suggestions": [
+            "CHEW",
+            "BRAINWASH",
+            "EFFORT"
+          ],
+          "sampleCount": 17,
+          "durationMs": 1583.4790497448457
+        },
+        "context-slow": {
+          "citizenTop": "BRAINWASH",
+          "suggestions": [
+            "BRAINWASH",
+            "QUOTE"
+          ],
+          "sampleCount": 29,
+          "durationMs": 2771.0883370534802
+        },
+        "context-fast": {
+          "citizenTop": "BRAINWASH",
+          "suggestions": [
+            "BRAINWASH"
+          ],
+          "sampleCount": 42,
+          "durationMs": 2705.1100433141114
+        }
+      }
+    },
+    {
+      "expected": "TAKEOFF1",
+      "sourceSha256": "eda8aedf1fcf5f3d9cbbf249062222e34147978973914bfd6ef62e0daf2e6070",
+      "variants": {
+        "before": {
+          "citizenTop": "CHASE",
+          "suggestions": [
+            "CHASE",
+            "BUSH"
+          ],
+          "sampleCount": 9,
+          "durationMs": 888.4208922294389
+        },
+        "context-slow": {
+          "citizenTop": "TAKEOFF2",
+          "suggestions": [
+            "TAKEOFF"
+          ],
+          "sampleCount": 21,
+          "durationMs": 1974.268649398753
+        },
+        "context-fast": {
+          "citizenTop": "TAKEOFF2",
+          "suggestions": [
+            "TAKEOFF"
+          ],
+          "sampleCount": 31,
+          "durationMs": 1974.268649398753
+        }
+      }
+    },
+    {
+      "expected": "DEAF2",
+      "sourceSha256": "05c518da96fc3d10de25d4edeb45af810180adc44e0574071d5217d993a9211c",
+      "variants": {
+        "before": {
+          "citizenTop": "SMOOTH",
+          "suggestions": [
+            "SMOOTH",
+            "PRINCIPAL",
+            "AUDIOLOGIST"
+          ],
+          "sampleCount": 13,
+          "durationMs": 1200
+        },
+        "context-slow": {
+          "citizenTop": "DEAF2",
+          "suggestions": [
+            "DEAF"
+          ],
+          "sampleCount": 29,
+          "durationMs": 2240
+        },
+        "context-fast": {
+          "citizenTop": "DEAF2",
+          "suggestions": [
+            "DEAF"
+          ],
+          "sampleCount": 56,
+          "durationMs": 2200
+        }
+      }
+    },
+    {
+      "expected": "DRINK2",
+      "sourceSha256": "899e2b0d3f8645fa8e001fb76a118d9ee8fa8abb7603427cbfdf19aa78cee2b4",
+      "variants": {
+        "before": {
+          "citizenTop": "DRINK2",
+          "suggestions": [
+            "DRINK",
+            "BULL",
+            "MEASURE"
+          ],
+          "sampleCount": 6,
+          "durationMs": 500.0847324251756
+        },
+        "context-slow": {
+          "citizenTop": "DRINK2",
+          "suggestions": [
+            "DRINK",
+            "CABBAGE"
+          ],
+          "sampleCount": 18,
+          "durationMs": 1700.2880902455968
+        },
+        "context-fast": {
+          "citizenTop": "DRINK2",
+          "suggestions": [
+            "DRINK"
+          ],
+          "sampleCount": 54,
+          "durationMs": 1766.9660545689535
+        }
+      }
+    },
+    {
+      "expected": "LEAF1",
+      "sourceSha256": "dd57e8ddd8533f5212e8a155712b2fb3514a0f56711393ebfd4b4e4ce3764ce3",
+      "variants": {
+        "before": {
+          "citizenTop": "JAPAN",
+          "suggestions": [
+            "JAPAN",
+            "EGO",
+            "ENEMY"
+          ],
+          "sampleCount": 7,
+          "durationMs": 599.8604526903537
+        },
+        "context-slow": {
+          "citizenTop": "WATERSKI",
+          "suggestions": [
+            "WATERSKI",
+            "LEAF",
+            "DETERMINE"
+          ],
+          "sampleCount": 15,
+          "durationMs": 1399.6743896108255
+        },
+        "context-fast": {
+          "citizenTop": "LEAF1",
+          "suggestions": [
+            "LEAF",
+            "FAIL",
+            "WATERSKI"
+          ],
+          "sampleCount": 43,
+          "durationMs": 1399.6743896108255
+        }
+      }
+    },
+    {
+      "expected": "PEPSI",
+      "sourceSha256": "cbdf69703390b0690ee35132c8c92d62ed2843f4f7a8f1dae898fd11d8e6a447",
+      "variants": {
+        "before": {
+          "citizenTop": "PEPSI",
+          "suggestions": [
+            "PEPSI",
+            "IDEA"
+          ],
+          "sampleCount": 13,
+          "durationMs": 1099.319310948001
+        },
+        "context-slow": {
+          "citizenTop": "PEPSI",
+          "suggestions": [
+            "PEPSI",
+            "IDEA",
+            "COMPANY"
+          ],
+          "sampleCount": 29,
+          "durationMs": 2367.7646697341556
+        },
+        "context-fast": {
+          "citizenTop": "PEPSI",
+          "suggestions": [
+            "PEPSI",
+            "IDEA",
+            "COMPANY"
+          ],
+          "sampleCount": 57,
+          "durationMs": 2367.7646697341556
+        }
+      }
+    }
+  ]
+}
+

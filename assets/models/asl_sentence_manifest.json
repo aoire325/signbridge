@@ -1,0 +1,42 @@
+{
+  "source": "FatimahEmadEldin/ytasl-t5-v1_1-base",
+  "revision": "cc6330e8a992975b80bf95b098cdf27f8379febe",
+  "license": "CC-BY-4.0",
+  "checkpointSha256": "326219fbbb8b62352d6ff0be4dbaca96f51dd2251a634f4fe26ab1105d02e36f",
+  "encoderSha256": "646606f8ca97381008a7df0df4bae564cd1678d245676eecdc29d1755e782a68",
+  "decoderSha256": "45d1adedfd0271cbde1c36d2fcbcd1a00d7a20c299fb8465cd862dd5f55a91ac",
+  "encoderInputs": {
+    "features": [
+      1,
+      96,
+      208
+    ],
+    "mask": [
+      1,
+      96
+    ]
+  },
+  "decoderInputs": {
+    "hidden": [
+      1,
+      96,
+      768
+    ],
+    "mask": [
+      1,
+      96
+    ],
+    "tokens": [
+      1,
+      64
+    ],
+    "position": [
+      1
+    ]
+  },
+  "precision": "float16 weights, float32 activations",
+  "preprocessing": "104-point sign-space reference adapter; training normalization not specified by checkpoint author",
+  "decoding": "greedy, EOS=1, PAD=0, max 63 emitted tokens, no-repeat-trigram",
+  "validation": "Float32 encoder and decoder parity against strict-loaded PyTorch; float16 38-token greedy conformance; no live ASL accuracy claim"
+}
+

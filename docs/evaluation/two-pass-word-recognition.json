@@ -1,0 +1,1590 @@
+{
+  "date": "2026-10-24",
+  "liveCameraBenchmark": false,
+  "datasetRevision": "06068a7ce431c3d1482aea838e8d918ba1eb5853",
+  "selection": {
+    "count": 48,
+    "offset": 12,
+    "commonLabelsPreferred": true
+  },
+  "modelSha256": "a20d55f5960c7f33a46f1390aded133783f7daa315b0f3edad1b49ec97aa2371",
+  "development": "Separate 12-gloss diagnostic: original 8/12, original+mirrored 9/12; speed-only 8/12 and six-view 8/12. Two-view policy selected before the 48-gloss check.",
+  "before": {
+    "examples": 48,
+    "citizenTop1Correct": 33,
+    "firstSuggestionCorrect": 33,
+    "correctSuggestionPresent": 40,
+    "incorrectAlternatives": 50,
+    "totalAlternatives": 90,
+    "noSuggestion": 0
+  },
+  "after": {
+    "examples": 48,
+    "citizenTop1Correct": 36,
+    "firstSuggestionCorrect": 35,
+    "correctSuggestionPresent": 37,
+    "incorrectAlternatives": 21,
+    "totalAlternatives": 58,
+    "noSuggestion": 4
+  },
+  "scope": "Existing 48 public original-test-split pose examples, same as prior capture check. Not recordings of the reported user confusions. Both runs include the partial-wrist association fix. No weights or class-specific thresholds changed.",
+  "reportedDevice": "Front camera, Expanded words",
+  "unverifiedUserCases": [
+    {
+      "expected": "mom",
+      "reportedOutputs": [
+        "bed"
+      ],
+      "status": "Requires labeled phone replay"
+    },
+    {
+      "expected": "thank you",
+      "reportedOutputs": [
+        "lamp",
+        "four"
+      ],
+      "status": "Requires labeled phone replay"
+    },
+    {
+      "expected": "ball",
+      "reportedOutputs": [
+        "basic",
+        "email"
+      ],
+      "status": "Requires labeled phone replay"
+    },
+    {
+      "expected": "not",
+      "reportedOutputs": [
+        "longtime",
+        "nut",
+        "call"
+      ],
+      "status": "Requires labeled phone replay"
+    },
+    {
+      "expected": "breathe",
+      "reportedOutputs": [
+        "bow"
+      ],
+      "status": "Requires labeled phone replay"
+    },
+    {
+      "expected": "check",
+      "reportedOutputs": [
+        "to drown",
+        "project",
+        "fromthenon"
+      ],
+      "status": "Requires labeled phone replay"
+    },
+    {
+      "expected": "hello",
+      "reportedOutputs": [
+        "sunbathe",
+        "forest",
+        "lamp"
+      ],
+      "status": "Requires labeled phone replay"
+    },
+    {
+      "expected": "bye",
+      "reportedOutputs": [
+        "why not",
+        "mature"
+      ],
+      "status": "Requires labeled phone replay"
+    }
+  ],
+  "details": [
+    {
+      "expected": "PJS",
+      "sourceSha256": "edfce9a1a78322ca80ac6e0f2169e0d3662fc2437c8f44d3aeebb3f891dbd266",
+      "before": {
+        "expected": "PJS",
+        "prediction": null,
+        "correct": false,
+        "citizenTop": "PJS",
+        "wlaslTop": "third",
+        "standardTop": "lion",
+        "suggestions": [
+          "PJS"
+        ],
+        "sampleCount": 36,
+        "durationMs": 2245.893276595911
+      },
+      "after": {
+        "expected": "PJS",
+        "prediction": null,
+        "correct": false,
+        "citizenTop": "PJS",
+        "wlaslTop": "third",
+        "standardTop": "lion",
+        "suggestions": [
+          "PJS",
+          "SQUAREIDIOT"
+        ],
+        "sampleCount": 36,
+        "durationMs": 2245.893276595911
+      }
+    },
+    {
+      "expected": "LIVE2",
+      "sourceSha256": "146bc815269c37389cfc6c774dd72adcf408036f6453119f7d612db21a4bfd51",
+      "before": {
+        "expected": "LIVE2",
+        "prediction": null,
+        "correct": false,
+        "citizenTop": "LIVE2",
+        "wlaslTop": "wind",
+        "standardTop": "sign",
+        "suggestions": [
+          "LIVE"
+        ],
+        "sampleCount": 64,
+        "durationMs": 2100.2837564457222
+      },
+      "after": {
+        "expected": "LIVE2",
+        "prediction": null,
+        "correct": false,
+        "citizenTop": "LIVE2",
+        "wlaslTop": "wind",
+        "standardTop": "sign",
+        "suggestions": [
+          "LIVE"
+        ],
+        "sampleCount": 64,
+        "durationMs": 2100.2837564457222
+      }
+    },
+    {
+      "expected": "WORKSHOP",
+      "sourceSha256": "5aa20bba8319265814d0fa902a8ce4f64db0041a11c42b18bea5f1edc6b5e0a6",
+      "before": {
+        "expected": "WORKSHOP",
+        "prediction": "WORKSHOP",
+        "correct": true,
+        "citizenTop": "WORKSHOP",
+        "wlaslTop": "workshop",
+        "standardTop": "class",
+        "suggestions": [
+          "WORKSHOP"
+        ],
+        "sampleCount": 81,
+        "durationMs": 2692.061868520088
+      },
+      "after": {
+        "expected": "WORKSHOP",
+        "prediction": "WORKSHOP",
+        "correct": true,
+        "citizenTop": "WORKSHOP",
+        "wlaslTop": "workshop",
+        "standardTop": "class",
+        "suggestions": [
+          "WORKSHOP"
+        ],
+        "sampleCount": 81,
+        "durationMs": 2692.061868520088
+      }
+    },
+    {
+      "expected": "UNCLE",
+      "sourceSha256": "b121ef0163adb87cffd989512d01bfd753586fce33f659003e53f657cf552e74",
+      "before": {
+        "expected": "UNCLE",
+        "prediction": null,
+        "correct": false,
+        "citizenTop": "UNCLE",
+        "wlaslTop": "insect",
+        "standardTop": "uncle",
+        "suggestions": [
+          "UNCLE",
+          "CURL",
+          "INSECT"
+        ],
+        "sampleCount": 66,
+        "durationMs": 2202.195363648906
+      },
+      "after": {
+        "expected": "UNCLE",
+        "prediction": null,
+        "correct": false,
+        "citizenTop": "UNCLE",
+        "wlaslTop": "insect",
+        "standardTop": "uncle",
+        "suggestions": [
+          "UNCLE"
+        ],
+        "sampleCount": 66,
+        "durationMs": 2202.195363648906
+      }
+    },
+    {
+      "expected": "EASTER",
+      "sourceSha256": "de39cf2d0b389c1330f161f7d8afb4f3f9f60f18003267826c4b5fd7a232a8d3",
+      "before": {
+        "expected": "EASTER",
+        "prediction": null,
+        "correct": false,
+        "citizenTop": "EASTER",
+        "wlaslTop": "decorate",
+        "standardTop": "evaluate",
+        "suggestions": [
+          "EASTER"
+        ],
+        "sampleCount": 63,
+        "durationMs": 2097.4289959454645
+      },
+      "after": {
+        "expected": "EASTER",
+        "prediction": null,
+        "correct": false,
+        "citizenTop": "EASTER",
+        "wlaslTop": "decorate",
+        "standardTop": "evaluate",
+        "suggestions": [
+          "EASTER"
+        ],
+        "sampleCount": 63,
+        "durationMs": 2097.4289959454645
+      }
+    },
+    {
+      "expected": "BAG2",
+      "sourceSha256": "1194306b831106f64c112aa8ff145c89da2c6b800374237fb57c353d6f5e6b7c",
+      "before": {
+        "expected": "BAG2",
+        "prediction": "BASKET",
+        "correct": false,
+        "citizenTop": "BASKET2",
+        "wlaslTop": "music",
+        "standardTop": "dolphin",
+        "suggestions": [
+          "BASKET",
+          "ARM",
+          "BAG"
+        ],
+        "sampleCount": 41,
+        "durationMs": 2668.444482786504
+      },
+      "after": {
+        "expected": "BAG2",
+        "prediction": "BASKET",
+        "correct": false,
+        "citizenTop": "BASKET2",
+        "wlaslTop": "music",
+        "standardTop": "dolphin",
+        "suggestions": [
+          "BASKET"
+        ],
+        "sampleCount": 41,
+        "durationMs": 2668.444482786504
+      }
+    },
+    {
+      "expected": "MACHINE",
+      "sourceSha256": "35cfee219ac18626a099fca719d5f490bfae22ddb02c7ae3967052f664d3e816",
+      "before": {
+        "expected": "MACHINE",
+        "prediction": null,
+        "correct": false,
+        "citizenTop": "MACHINE",
+        "wlaslTop": "concern",
+        "standardTop": "basketball",
+        "suggestions": [
+          "MACHINE",
+          "CONCERN"
+        ],
+        "sampleCount": 56,
+        "durationMs": 1833.3333333333333
+      },
+      "after": {
+        "expected": "MACHINE",
+        "prediction": null,
+        "correct": false,
+        "citizenTop": "MACHINE",
+        "wlaslTop": "concern",
+        "standardTop": "basketball",
+        "suggestions": [
+          "MACHINE"
+        ],
+        "sampleCount": 56,
+        "durationMs": 1833.3333333333333
+      }
+    },
+    {
+      "expected": "NEWSTOME",
+      "sourceSha256": "f6eba77781ab6dcf85f960caa0649b6f12fd4c828b16aa2dca3edc736eba3af8",
+      "before": {
+        "expected": "NEWSTOME",
+        "prediction": "NEWSTOME",
+        "correct": true,
+        "citizenTop": "NEWSTOME",
+        "wlaslTop": "ready",
+        "standardTop": "ready",
+        "suggestions": [
+          "NEWSTOME"
+        ],
+        "sampleCount": 37,
+        "durationMs": 2320.1856456524565
+      },
+      "after": {
+        "expected": "NEWSTOME",
+        "prediction": "NEWSTOME",
+        "correct": true,
+        "citizenTop": "NEWSTOME",
+        "wlaslTop": "ready",
+        "standardTop": "ready",
+        "suggestions": [
+          "NEWSTOME"
+        ],
+        "sampleCount": 37,
+        "durationMs": 2320.1856456524565
+      }
+    },
+    {
+      "expected": "ACCENT",
+      "sourceSha256": "c9fc41657b501ca4218abaec4d403d0ef9de7e7a95cc9a097617a3303acd4759",
+      "before": {
+        "expected": "ACCENT",
+        "prediction": "CANDY",
+        "correct": false,
+        "citizenTop": "CANDY1",
+        "wlaslTop": "candy",
+        "standardTop": "candy",
+        "suggestions": [
+          "CANDY"
+        ],
+        "sampleCount": 43,
+        "durationMs": 2702.4418333226563
+      },
+      "after": {
+        "expected": "ACCENT",
+        "prediction": "CANDY",
+        "correct": false,
+        "citizenTop": "CANDY1",
+        "wlaslTop": "candy",
+        "standardTop": "candy",
+        "suggestions": [
+          "CANDY"
+        ],
+        "sampleCount": 43,
+        "durationMs": 2702.4418333226563
+      }
+    },
+    {
+      "expected": "PIG",
+      "sourceSha256": "2508d807eda4ccd99bb0e35bb53c83d040982e7ecc7a4fecc99c56b66199d34d",
+      "before": {
+        "expected": "PIG",
+        "prediction": null,
+        "correct": false,
+        "citizenTop": "KISS1",
+        "wlaslTop": "committee",
+        "standardTop": "appointment",
+        "suggestions": [
+          "KISS",
+          "ABSOLUTELYNOTHING"
+        ],
+        "sampleCount": 28,
+        "durationMs": 1781.296356545773
+      },
+      "after": {
+        "expected": "PIG",
+        "prediction": null,
+        "correct": false,
+        "citizenTop": "ABSOLUTELYNOTHING",
+        "wlaslTop": "committee",
+        "standardTop": "appointment",
+        "suggestions": [
+          "ABSOLUTELYNOTHING"
+        ],
+        "sampleCount": 28,
+        "durationMs": 1781.296356545773
+      }
+    },
+    {
+      "expected": "WASHDISHES",
+      "sourceSha256": "e1ba7028a620bf6dbf59151ca61495e90b307e1d3159307553b8d5ba8bc11fd7",
+      "before": {
+        "expected": "WASHDISHES",
+        "prediction": null,
+        "correct": false,
+        "citizenTop": "WASHDISHES",
+        "wlaslTop": "hurricane",
+        "standardTop": "table",
+        "suggestions": [
+          "WASHDISHES",
+          "GRADUATESCHOOL",
+          "BREATHE"
+        ],
+        "sampleCount": 73,
+        "durationMs": 2400
+      },
+      "after": {
+        "expected": "WASHDISHES",
+        "prediction": null,
+        "correct": false,
+        "citizenTop": "WASHDISHES",
+        "wlaslTop": "hurricane",
+        "standardTop": "table",
+        "suggestions": [
+          "WASHDISHES"
+        ],
+        "sampleCount": 73,
+        "durationMs": 2400
+      }
+    },
+    {
+      "expected": "EACH",
+      "sourceSha256": "ef9368f08e80596af2f55774e72ebed52473fad35739c932361863655406771e",
+      "before": {
+        "expected": "EACH",
+        "prediction": null,
+        "correct": false,
+        "citizenTop": "TEXT",
+        "wlaslTop": "diarrhea",
+        "standardTop": "what",
+        "suggestions": [
+          "TEXT",
+          "EACH",
+          "DIARRHEA"
+        ],
+        "sampleCount": 62,
+        "durationMs": 2033.0298389395505
+      },
+      "after": {
+        "expected": "EACH",
+        "prediction": null,
+        "correct": false,
+        "citizenTop": "TEXT",
+        "wlaslTop": "diarrhea",
+        "standardTop": "what",
+        "suggestions": [
+          "TEXT"
+        ],
+        "sampleCount": 62,
+        "durationMs": 2033.0298389395505
+      }
+    },
+    {
+      "expected": "BINOCULARS",
+      "sourceSha256": "2cd45a4ddb8cac02de6abce15731a15f31469787a470ae37405b71d16d4ca826",
+      "before": {
+        "expected": "BINOCULARS",
+        "prediction": null,
+        "correct": false,
+        "citizenTop": "BINOCULARS",
+        "wlaslTop": "hope",
+        "standardTop": "hope",
+        "suggestions": [
+          "BINOCULARS"
+        ],
+        "sampleCount": 35,
+        "durationMs": 2239.272852161672
+      },
+      "after": {
+        "expected": "BINOCULARS",
+        "prediction": null,
+        "correct": false,
+        "citizenTop": "BINOCULARS",
+        "wlaslTop": "hope",
+        "standardTop": "hope",
+        "suggestions": [
+          "BINOCULARS"
+        ],
+        "sampleCount": 35,
+        "durationMs": 2239.272852161672
+      }
+    },
+    {
+      "expected": "FORK4",
+      "sourceSha256": "675837529f1654eb3adadf18e8e698f849961d75549a090ee0f29c118016af6e",
+      "before": {
+        "expected": "FORK4",
+        "prediction": null,
+        "correct": false,
+        "citizenTop": "CAKE",
+        "wlaslTop": "study",
+        "standardTop": "purple",
+        "suggestions": [
+          "CAKE",
+          "FORK"
+        ],
+        "sampleCount": 55,
+        "durationMs": 1799.6727584782125
+      },
+      "after": {
+        "expected": "FORK4",
+        "prediction": null,
+        "correct": false,
+        "citizenTop": "CAKE",
+        "wlaslTop": "study",
+        "standardTop": "purple",
+        "suggestions": [
+          "CAKE",
+          "FORK"
+        ],
+        "sampleCount": 55,
+        "durationMs": 1799.6727584782125
+      }
+    },
+    {
+      "expected": "WEAR",
+      "sourceSha256": "4f24926381c53a79dda0d90ce75d0be3151a165065763175dd5a31dc88bd5b44",
+      "before": {
+        "expected": "WEAR",
+        "prediction": null,
+        "correct": false,
+        "citizenTop": "WEAR",
+        "wlaslTop": "archery",
+        "standardTop": "fat",
+        "suggestions": [
+          "WEAR",
+          "DRESS",
+          "ARCHERY"
+        ],
+        "sampleCount": 42,
+        "durationMs": 1368.0612007924592
+      },
+      "after": {
+        "expected": "WEAR",
+        "prediction": null,
+        "correct": false,
+        "citizenTop": "WEAR",
+        "wlaslTop": "archery",
+        "standardTop": "fat",
+        "suggestions": [
+          "WEAR",
+          "BODY"
+        ],
+        "sampleCount": 42,
+        "durationMs": 1368.0612007924592
+      }
+    },
+    {
+      "expected": "YESTERDAY",
+      "sourceSha256": "02f544b3c579386f3a63734327dacf4c543115ca19edd060aa88bcdb2f7f7bf8",
+      "before": {
+        "expected": "YESTERDAY",
+        "prediction": null,
+        "correct": false,
+        "citizenTop": "YESTERDAY",
+        "wlaslTop": "candy",
+        "standardTop": "priest",
+        "suggestions": [
+          "YESTERDAY"
+        ],
+        "sampleCount": 69,
+        "durationMs": 2266.4175265055765
+      },
+      "after": {
+        "expected": "YESTERDAY",
+        "prediction": null,
+        "correct": false,
+        "citizenTop": "YESTERDAY",
+        "wlaslTop": "candy",
+        "standardTop": "priest",
+        "suggestions": [
+          "YESTERDAY"
+        ],
+        "sampleCount": 69,
+        "durationMs": 2266.4175265055765
+      }
+    },
+    {
+      "expected": "SCREWDRIVER3",
+      "sourceSha256": "9598cecbcee4b610fb862ecb157db4846b33037e869b254616f5b94a2dfb6a10",
+      "before": {
+        "expected": "SCREWDRIVER3",
+        "prediction": null,
+        "correct": false,
+        "citizenTop": "SCREWDRIVER3",
+        "wlaslTop": "waiter",
+        "standardTop": "monkey",
+        "suggestions": [
+          "SCREWDRIVER"
+        ],
+        "sampleCount": 76,
+        "durationMs": 2506.803859504843
+      },
+      "after": {
+        "expected": "SCREWDRIVER3",
+        "prediction": null,
+        "correct": false,
+        "citizenTop": "SCREWDRIVER3",
+        "wlaslTop": "waiter",
+        "standardTop": "monkey",
+        "suggestions": [
+          "SCREWDRIVER"
+        ],
+        "sampleCount": 76,
+        "durationMs": 2506.803859504843
+      }
+    },
+    {
+      "expected": "EVERYTHING",
+      "sourceSha256": "04f9b0c09407787e7a285c7f45f6e3505d06f747f1ab737edbecdf551a92fb1b",
+      "before": {
+        "expected": "EVERYTHING",
+        "prediction": null,
+        "correct": false,
+        "citizenTop": "EVERYTHING",
+        "wlaslTop": "roar",
+        "standardTop": "embarrass",
+        "suggestions": [
+          "EVERYTHING",
+          "BEACH",
+          "ALIGN"
+        ],
+        "sampleCount": 64,
+        "durationMs": 2099.7961432958723
+      },
+      "after": {
+        "expected": "EVERYTHING",
+        "prediction": null,
+        "correct": false,
+        "citizenTop": "EVERYTHING",
+        "wlaslTop": "roar",
+        "standardTop": "embarrass",
+        "suggestions": [
+          "EVERYTHING"
+        ],
+        "sampleCount": 64,
+        "durationMs": 2099.7961432958723
+      }
+    },
+    {
+      "expected": "SENATE",
+      "sourceSha256": "8147a0f9f8961b5af79b138a4feb60e12de3aa7954206c11b403f9dbb5519523",
+      "before": {
+        "expected": "SENATE",
+        "prediction": null,
+        "correct": false,
+        "citizenTop": "SENATE",
+        "wlaslTop": "rabbit",
+        "standardTop": "none",
+        "suggestions": [
+          "SENATE",
+          "ATLANTA"
+        ],
+        "sampleCount": 57,
+        "durationMs": 1871.5790046723614
+      },
+      "after": {
+        "expected": "SENATE",
+        "prediction": null,
+        "correct": false,
+        "citizenTop": "SENATE",
+        "wlaslTop": "rabbit",
+        "standardTop": "none",
+        "suggestions": [
+          "SENATE",
+          "ATLANTA"
+        ],
+        "sampleCount": 57,
+        "durationMs": 1871.5790046723614
+      }
+    },
+    {
+      "expected": "BEAK",
+      "sourceSha256": "af846eeb8b244e61cf40d0615706071894963bf9295210d29f00d0f4942aaf18",
+      "before": {
+        "expected": "BEAK",
+        "prediction": null,
+        "correct": false,
+        "citizenTop": "LIGHTNING",
+        "wlaslTop": "algebra",
+        "standardTop": "no",
+        "suggestions": [
+          "LIGHTNING",
+          "ALGEBRA"
+        ],
+        "sampleCount": 39,
+        "durationMs": 1266.6666666666667
+      },
+      "after": {
+        "expected": "BEAK",
+        "prediction": null,
+        "correct": false,
+        "citizenTop": "LIGHTNING",
+        "wlaslTop": "algebra",
+        "standardTop": "no",
+        "suggestions": [
+          "LIGHTNING"
+        ],
+        "sampleCount": 39,
+        "durationMs": 1266.6666666666667
+      }
+    },
+    {
+      "expected": "DRIP",
+      "sourceSha256": "c98f85530cb73326f2186829a4d40045e2b7a2219d73ffb7624d58110e603867",
+      "before": {
+        "expected": "DRIP",
+        "prediction": null,
+        "correct": false,
+        "citizenTop": "DRIP",
+        "wlaslTop": "lion",
+        "standardTop": "dolphin",
+        "suggestions": [
+          "DRIP"
+        ],
+        "sampleCount": 49,
+        "durationMs": 1920
+      },
+      "after": {
+        "expected": "DRIP",
+        "prediction": null,
+        "correct": false,
+        "citizenTop": "DRIP",
+        "wlaslTop": "lion",
+        "standardTop": "dolphin",
+        "suggestions": [
+          "DRIP"
+        ],
+        "sampleCount": 49,
+        "durationMs": 1920
+      }
+    },
+    {
+      "expected": "APPEAR",
+      "sourceSha256": "98cce2e93e48619925654ce5da2c78f4a3caa93e8f615bbd05e8c5d36c38e4bc",
+      "before": {
+        "expected": "APPEAR",
+        "prediction": "FLIPFLOPS",
+        "correct": false,
+        "citizenTop": "FLIPFLOPS",
+        "wlaslTop": "audiologist",
+        "standardTop": "star",
+        "suggestions": [
+          "FLIPFLOPS",
+          "APPEAR",
+          "AUDIOLOGIST"
+        ],
+        "sampleCount": 37,
+        "durationMs": 2324.0049678116075
+      },
+      "after": {
+        "expected": "APPEAR",
+        "prediction": null,
+        "correct": false,
+        "citizenTop": "FLIPFLOPS",
+        "wlaslTop": "audiologist",
+        "standardTop": "star",
+        "suggestions": [],
+        "sampleCount": 37,
+        "durationMs": 2324.0049678116075
+      }
+    },
+    {
+      "expected": "HIDE",
+      "sourceSha256": "3f02b735483dbbb940cf20cfeea9b822dab19ffdbbcb88d6b28b692624705415",
+      "before": {
+        "expected": "HIDE",
+        "prediction": null,
+        "correct": false,
+        "citizenTop": "MICROSCOPE3",
+        "wlaslTop": "dawn",
+        "standardTop": "table",
+        "suggestions": [
+          "MICROSCOPE",
+          "SNOWBOARD",
+          "DAWN"
+        ],
+        "sampleCount": 43,
+        "durationMs": 1400
+      },
+      "after": {
+        "expected": "HIDE",
+        "prediction": null,
+        "correct": false,
+        "citizenTop": "MICROSCOPE3",
+        "wlaslTop": "dawn",
+        "standardTop": "table",
+        "suggestions": [],
+        "sampleCount": 43,
+        "durationMs": 1400
+      }
+    },
+    {
+      "expected": "DEAFSCHOOL",
+      "sourceSha256": "da00f56fc206ee6b4ff53ca6d3483c4f2b239689550813a02a5ed6291e2b101b",
+      "before": {
+        "expected": "DEAFSCHOOL",
+        "prediction": null,
+        "correct": false,
+        "citizenTop": "DEAFSCHOOL",
+        "wlaslTop": "get",
+        "standardTop": "suspect",
+        "suggestions": [
+          "DEAFSCHOOL",
+          "ALCOHOL"
+        ],
+        "sampleCount": 86,
+        "durationMs": 2833.662844934043
+      },
+      "after": {
+        "expected": "DEAFSCHOOL",
+        "prediction": "DEAFSCHOOL",
+        "correct": true,
+        "citizenTop": "DEAFSCHOOL",
+        "wlaslTop": "get",
+        "standardTop": "suspect",
+        "suggestions": [
+          "DEAFSCHOOL"
+        ],
+        "sampleCount": 86,
+        "durationMs": 2833.662844934043
+      }
+    },
+    {
+      "expected": "RUIN",
+      "sourceSha256": "5ebed4111961636ff249f87b37196790eb55637819c9973085e3169875acac1c",
+      "before": {
+        "expected": "RUIN",
+        "prediction": null,
+        "correct": false,
+        "citizenTop": "RUIN",
+        "wlaslTop": "quit",
+        "standardTop": "compromise",
+        "suggestions": [
+          "RUIN"
+        ],
+        "sampleCount": 33,
+        "durationMs": 1066.6666666666667
+      },
+      "after": {
+        "expected": "RUIN",
+        "prediction": null,
+        "correct": false,
+        "citizenTop": "RUIN",
+        "wlaslTop": "quit",
+        "standardTop": "compromise",
+        "suggestions": [
+          "RUIN"
+        ],
+        "sampleCount": 33,
+        "durationMs": 1066.6666666666667
+      }
+    },
+    {
+      "expected": "TURBAN",
+      "sourceSha256": "0b41b4da2dbcab301f5a13e8811bd5b14604b44359887af6e75ce6151d20098c",
+      "before": {
+        "expected": "TURBAN",
+        "prediction": null,
+        "correct": false,
+        "citizenTop": "BOY",
+        "wlaslTop": "crown",
+        "standardTop": "hat",
+        "suggestions": [
+          "BOY",
+          "TURBAN"
+        ],
+        "sampleCount": 72,
+        "durationMs": 2366.6666666666665
+      },
+      "after": {
+        "expected": "TURBAN",
+        "prediction": null,
+        "correct": false,
+        "citizenTop": "BOY",
+        "wlaslTop": "crown",
+        "standardTop": "hat",
+        "suggestions": [
+          "BOY",
+          "TURBAN"
+        ],
+        "sampleCount": 72,
+        "durationMs": 2366.6666666666665
+      }
+    },
+    {
+      "expected": "VAMPIRE",
+      "sourceSha256": "219ba0cbe7de6a02a75024ce2fda15a810035a9b56c16f766d02986853cbaab5",
+      "before": {
+        "expected": "VAMPIRE",
+        "prediction": null,
+        "correct": false,
+        "citizenTop": "VAMPIRE",
+        "wlaslTop": "company",
+        "standardTop": "priest",
+        "suggestions": [
+          "VAMPIRE",
+          "NIECE",
+          "COMPANY"
+        ],
+        "sampleCount": 57,
+        "durationMs": 2240
+      },
+      "after": {
+        "expected": "VAMPIRE",
+        "prediction": null,
+        "correct": false,
+        "citizenTop": "VAMPIRE",
+        "wlaslTop": "company",
+        "standardTop": "priest",
+        "suggestions": [
+          "VAMPIRE",
+          "COMPANY"
+        ],
+        "sampleCount": 57,
+        "durationMs": 2240
+      }
+    },
+    {
+      "expected": "BANANA2",
+      "sourceSha256": "a88c7b433cbf90ec8792c8f1baeb78daeb81032130a4d1852203be74aa497fb5",
+      "before": {
+        "expected": "BANANA2",
+        "prediction": null,
+        "correct": false,
+        "citizenTop": "BANANA2",
+        "wlaslTop": "first",
+        "standardTop": "point",
+        "suggestions": [
+          "BANANA"
+        ],
+        "sampleCount": 43,
+        "durationMs": 2703.398514377272
+      },
+      "after": {
+        "expected": "BANANA2",
+        "prediction": null,
+        "correct": false,
+        "citizenTop": "BANANA2",
+        "wlaslTop": "first",
+        "standardTop": "point",
+        "suggestions": [
+          "BANANA",
+          "PEEL"
+        ],
+        "sampleCount": 43,
+        "durationMs": 2703.398514377272
+      }
+    },
+    {
+      "expected": "LEND",
+      "sourceSha256": "beaa3ff43691d99f98c9e47c90b355e781d957449430f0dccc614a94efd8d979",
+      "before": {
+        "expected": "LEND",
+        "prediction": null,
+        "correct": false,
+        "citizenTop": "SINCE",
+        "wlaslTop": "breakfast",
+        "standardTop": "dress",
+        "suggestions": [
+          "SINCE"
+        ],
+        "sampleCount": 72,
+        "durationMs": 2366.941905768436
+      },
+      "after": {
+        "expected": "LEND",
+        "prediction": null,
+        "correct": false,
+        "citizenTop": "SINCE",
+        "wlaslTop": "breakfast",
+        "standardTop": "dress",
+        "suggestions": [
+          "SINCE"
+        ],
+        "sampleCount": 72,
+        "durationMs": 2366.941905768436
+      }
+    },
+    {
+      "expected": "ORGANIZATION",
+      "sourceSha256": "e6b6e5f32849ca3ac1a2ce6f69ce1dd7d7d3a005fe91cefc104502637004f95b",
+      "before": {
+        "expected": "ORGANIZATION",
+        "prediction": "ORGANIZATION",
+        "correct": true,
+        "citizenTop": "ORGANIZATION",
+        "wlaslTop": "department",
+        "standardTop": "class",
+        "suggestions": [
+          "ORGANIZATION"
+        ],
+        "sampleCount": 30,
+        "durationMs": 969.5666799199954
+      },
+      "after": {
+        "expected": "ORGANIZATION",
+        "prediction": "ORGANIZATION",
+        "correct": true,
+        "citizenTop": "ORGANIZATION",
+        "wlaslTop": "department",
+        "standardTop": "class",
+        "suggestions": [
+          "ORGANIZATION"
+        ],
+        "sampleCount": 30,
+        "durationMs": 969.5666799199954
+      }
+    },
+    {
+      "expected": "BERRY",
+      "sourceSha256": "b20639ffd09a5caf13c7789f353b9c6bc6c78651d93e27983015ff1e68c4d202",
+      "before": {
+        "expected": "BERRY",
+        "prediction": null,
+        "correct": false,
+        "citizenTop": "CHERRY2",
+        "wlaslTop": "archery",
+        "standardTop": "sign",
+        "suggestions": [
+          "CHERRY",
+          "ARCHERY"
+        ],
+        "sampleCount": 29,
+        "durationMs": 1830.6636064289933
+      },
+      "after": {
+        "expected": "BERRY",
+        "prediction": null,
+        "correct": false,
+        "citizenTop": "BERRY",
+        "wlaslTop": "archery",
+        "standardTop": "sign",
+        "suggestions": [
+          "BERRY",
+          "CHERRY"
+        ],
+        "sampleCount": 29,
+        "durationMs": 1830.6636064289933
+      }
+    },
+    {
+      "expected": "ERASE1",
+      "sourceSha256": "52c1a64001eb8902f86273a8107c336d9b5d756d446a737fd253ddf7c01d00dd",
+      "before": {
+        "expected": "ERASE1",
+        "prediction": null,
+        "correct": false,
+        "citizenTop": "GERMANY",
+        "wlaslTop": "music",
+        "standardTop": "monkey",
+        "suggestions": [
+          "GERMANY",
+          "BREAKTIME",
+          "NEAR"
+        ],
+        "sampleCount": 51,
+        "durationMs": 1666.6666666666667
+      },
+      "after": {
+        "expected": "ERASE1",
+        "prediction": null,
+        "correct": false,
+        "citizenTop": "JUNIOR",
+        "wlaslTop": "music",
+        "standardTop": "monkey",
+        "suggestions": [],
+        "sampleCount": 51,
+        "durationMs": 1666.6666666666667
+      }
+    },
+    {
+      "expected": "SNOWSUIT",
+      "sourceSha256": "d7d81d0a946f9ac3dfbb6cf60d0007662fdf1ea35d649c126fd101107d0d683f",
+      "before": {
+        "expected": "SNOWSUIT",
+        "prediction": "SNOWSUIT",
+        "correct": true,
+        "citizenTop": "SNOWSUIT",
+        "wlaslTop": "cloud",
+        "standardTop": "climb",
+        "suggestions": [
+          "SNOWSUIT",
+          "SNOWMAN"
+        ],
+        "sampleCount": 94,
+        "durationMs": 3108.4546209133578
+      },
+      "after": {
+        "expected": "SNOWSUIT",
+        "prediction": null,
+        "correct": false,
+        "citizenTop": "SNOWSUIT",
+        "wlaslTop": "cloud",
+        "standardTop": "climb",
+        "suggestions": [
+          "SNOWSUIT",
+          "SNOWMAN"
+        ],
+        "sampleCount": 94,
+        "durationMs": 3108.4546209133578
+      }
+    },
+    {
+      "expected": "SPECIALIST",
+      "sourceSha256": "8a1e41f7e49bb01c5d21116f1e1f2d48d68ad5e5cf11a5c685930a7ac38986d2",
+      "before": {
+        "expected": "SPECIALIST",
+        "prediction": null,
+        "correct": false,
+        "citizenTop": "SPECIALIST",
+        "wlaslTop": "prepare",
+        "standardTop": "compromise",
+        "suggestions": [
+          "SPECIALIST",
+          "LEAF",
+          "PREPARE"
+        ],
+        "sampleCount": 55,
+        "durationMs": 1805.0163826062828
+      },
+      "after": {
+        "expected": "SPECIALIST",
+        "prediction": null,
+        "correct": false,
+        "citizenTop": "SPECIALIST",
+        "wlaslTop": "prepare",
+        "standardTop": "compromise",
+        "suggestions": [
+          "SPECIALIST"
+        ],
+        "sampleCount": 55,
+        "durationMs": 1805.0163826062828
+      }
+    },
+    {
+      "expected": "TOSS",
+      "sourceSha256": "d97c0f26488d1268937a50c80d4c6157e644c2b3252b010faf65523dfc1b2ba3",
+      "before": {
+        "expected": "TOSS",
+        "prediction": "TOSS",
+        "correct": true,
+        "citizenTop": "TOSS",
+        "wlaslTop": "comb",
+        "standardTop": "fat",
+        "suggestions": [
+          "TOSS"
+        ],
+        "sampleCount": 75,
+        "durationMs": 2466.395543550186
+      },
+      "after": {
+        "expected": "TOSS",
+        "prediction": "TOSS",
+        "correct": true,
+        "citizenTop": "TOSS",
+        "wlaslTop": "comb",
+        "standardTop": "fat",
+        "suggestions": [
+          "TOSS"
+        ],
+        "sampleCount": 75,
+        "durationMs": 2466.395543550186
+      }
+    },
+    {
+      "expected": "REPLACE",
+      "sourceSha256": "2f8fc8796d20114263c08b00940b1451691eadd831a8dd5ad563d733dd546651",
+      "before": {
+        "expected": "REPLACE",
+        "prediction": null,
+        "correct": false,
+        "citizenTop": "REPLACE",
+        "wlaslTop": "audiologist",
+        "standardTop": "compromise",
+        "suggestions": [
+          "REPLACE",
+          "AUDIOLOGIST"
+        ],
+        "sampleCount": 35,
+        "durationMs": 1133.657170719658
+      },
+      "after": {
+        "expected": "REPLACE",
+        "prediction": null,
+        "correct": false,
+        "citizenTop": "REPLACE",
+        "wlaslTop": "audiologist",
+        "standardTop": "compromise",
+        "suggestions": [
+          "REPLACE"
+        ],
+        "sampleCount": 35,
+        "durationMs": 1133.657170719658
+      }
+    },
+    {
+      "expected": "PERFUME1",
+      "sourceSha256": "3289d2c44b86de730f7e1804dde3942245c7ae9e46dffc9155be5a2294ef5f69",
+      "before": {
+        "expected": "PERFUME1",
+        "prediction": "SWIMSUIT",
+        "correct": false,
+        "citizenTop": "ATLANTA",
+        "wlaslTop": "swimsuit",
+        "standardTop": "appointment",
+        "suggestions": [
+          "ATLANTA",
+          "PERFUME",
+          "SWIMSUIT"
+        ],
+        "sampleCount": 31,
+        "durationMs": 1960.2718370637697
+      },
+      "after": {
+        "expected": "PERFUME1",
+        "prediction": null,
+        "correct": false,
+        "citizenTop": "PERFUME1",
+        "wlaslTop": "swimsuit",
+        "standardTop": "appointment",
+        "suggestions": [
+          "PERFUME",
+          "SWIMSUIT"
+        ],
+        "sampleCount": 31,
+        "durationMs": 1960.2718370637697
+      }
+    },
+    {
+      "expected": "DIP3",
+      "sourceSha256": "e95b4b405a7b628606f67a038f0dc105a23b2aeb041bf23560e5c246ae9643cd",
+      "before": {
+        "expected": "DIP3",
+        "prediction": null,
+        "correct": false,
+        "citizenTop": "FRY",
+        "wlaslTop": "none",
+        "standardTop": "compare",
+        "suggestions": [
+          "FRY",
+          "DIP",
+          "TYPE"
+        ],
+        "sampleCount": 26,
+        "durationMs": 1627.9220830030115
+      },
+      "after": {
+        "expected": "DIP3",
+        "prediction": null,
+        "correct": false,
+        "citizenTop": "FRY",
+        "wlaslTop": "none",
+        "standardTop": "compare",
+        "suggestions": [
+          "FRY"
+        ],
+        "sampleCount": 26,
+        "durationMs": 1627.9220830030115
+      }
+    },
+    {
+      "expected": "BIG",
+      "sourceSha256": "fcf598103429cc567c7ff88f73c48dc85c000399fed0b70c886959b14f05ef29",
+      "before": {
+        "expected": "BIG",
+        "prediction": "BIG",
+        "correct": true,
+        "citizenTop": "BIG",
+        "wlaslTop": "big",
+        "standardTop": "basketball",
+        "suggestions": [
+          "BIG"
+        ],
+        "sampleCount": 52,
+        "durationMs": 1699.7571719890939
+      },
+      "after": {
+        "expected": "BIG",
+        "prediction": "BIG",
+        "correct": true,
+        "citizenTop": "BIG",
+        "wlaslTop": "big",
+        "standardTop": "basketball",
+        "suggestions": [
+          "BIG",
+          "FINALLY"
+        ],
+        "sampleCount": 52,
+        "durationMs": 1699.7571719890939
+      }
+    },
+    {
+      "expected": "NECKLACE4",
+      "sourceSha256": "517123f17ed2132c56e791c202de321358977a204e0de374544bde3b8ccd17c3",
+      "before": {
+        "expected": "NECKLACE4",
+        "prediction": null,
+        "correct": false,
+        "citizenTop": "HUNGRY",
+        "wlaslTop": "rather",
+        "standardTop": "white",
+        "suggestions": [
+          "HUNGRY",
+          "RATHER"
+        ],
+        "sampleCount": 32,
+        "durationMs": 2034.5211690718616
+      },
+      "after": {
+        "expected": "NECKLACE4",
+        "prediction": null,
+        "correct": false,
+        "citizenTop": "NECKLACE4",
+        "wlaslTop": "rather",
+        "standardTop": "white",
+        "suggestions": [
+          "NECKLACE",
+          "HUNGRY"
+        ],
+        "sampleCount": 32,
+        "durationMs": 2034.5211690718616
+      }
+    },
+    {
+      "expected": "SHAME",
+      "sourceSha256": "d084f4b86542592aff89f90435b2acb9dc8772d08098e1b0b481e1e3ec32bb02",
+      "before": {
+        "expected": "SHAME",
+        "prediction": null,
+        "correct": false,
+        "citizenTop": "SHAME",
+        "wlaslTop": "wait",
+        "standardTop": "easy",
+        "suggestions": [
+          "SHAME"
+        ],
+        "sampleCount": 19,
+        "durationMs": 1156.8866882413593
+      },
+      "after": {
+        "expected": "SHAME",
+        "prediction": null,
+        "correct": false,
+        "citizenTop": "SHAME",
+        "wlaslTop": "wait",
+        "standardTop": "easy",
+        "suggestions": [
+          "SHAME"
+        ],
+        "sampleCount": 19,
+        "durationMs": 1156.8866882413593
+      }
+    },
+    {
+      "expected": "PILL",
+      "sourceSha256": "4204ceca77398891eef64bb0dd2e49470a38ddefdece816e36ff7cc499eb1257",
+      "before": {
+        "expected": "PILL",
+        "prediction": "PILL",
+        "correct": true,
+        "citizenTop": "PILL",
+        "wlaslTop": "ski",
+        "standardTop": "sick",
+        "suggestions": [
+          "PILL",
+          "MICROPHONE"
+        ],
+        "sampleCount": 56,
+        "durationMs": 1833.6606928015
+      },
+      "after": {
+        "expected": "PILL",
+        "prediction": "PILL",
+        "correct": true,
+        "citizenTop": "PILL",
+        "wlaslTop": "ski",
+        "standardTop": "sick",
+        "suggestions": [
+          "PILL",
+          "MICROPHONE"
+        ],
+        "sampleCount": 56,
+        "durationMs": 1833.6606928015
+      }
+    },
+    {
+      "expected": "BRAINWASH",
+      "sourceSha256": "a1d3a2225652b5dd59b5821fadb68774a8190fd2660dab98a2ef01ec545e0e6b",
+      "before": {
+        "expected": "BRAINWASH",
+        "prediction": "BRAINWASH",
+        "correct": true,
+        "citizenTop": "BRAINWASH",
+        "wlaslTop": "ski",
+        "standardTop": "convince",
+        "suggestions": [
+          "BRAINWASH"
+        ],
+        "sampleCount": 42,
+        "durationMs": 2705.1100433141114
+      },
+      "after": {
+        "expected": "BRAINWASH",
+        "prediction": "BRAINWASH",
+        "correct": true,
+        "citizenTop": "BRAINWASH",
+        "wlaslTop": "ski",
+        "standardTop": "convince",
+        "suggestions": [
+          "BRAINWASH"
+        ],
+        "sampleCount": 42,
+        "durationMs": 2705.1100433141114
+      }
+    },
+    {
+      "expected": "TAKEOFF1",
+      "sourceSha256": "eda8aedf1fcf5f3d9cbbf249062222e34147978973914bfd6ef62e0daf2e6070",
+      "before": {
+        "expected": "TAKEOFF1",
+        "prediction": "TAKEOFF",
+        "correct": true,
+        "citizenTop": "TAKEOFF2",
+        "wlaslTop": "wind",
+        "standardTop": "wind",
+        "suggestions": [
+          "TAKEOFF"
+        ],
+        "sampleCount": 31,
+        "durationMs": 1974.268649398753
+      },
+      "after": {
+        "expected": "TAKEOFF1",
+        "prediction": "TAKEOFF",
+        "correct": true,
+        "citizenTop": "TAKEOFF2",
+        "wlaslTop": "wind",
+        "standardTop": "wind",
+        "suggestions": [
+          "TAKEOFF"
+        ],
+        "sampleCount": 31,
+        "durationMs": 1974.268649398753
+      }
+    },
+    {
+      "expected": "DEAF2",
+      "sourceSha256": "05c518da96fc3d10de25d4edeb45af810180adc44e0574071d5217d993a9211c",
+      "before": {
+        "expected": "DEAF2",
+        "prediction": null,
+        "correct": false,
+        "citizenTop": "DEAF2",
+        "wlaslTop": "grab",
+        "standardTop": "no",
+        "suggestions": [
+          "DEAF"
+        ],
+        "sampleCount": 56,
+        "durationMs": 2200
+      },
+      "after": {
+        "expected": "DEAF2",
+        "prediction": null,
+        "correct": false,
+        "citizenTop": "DEAF2",
+        "wlaslTop": "grab",
+        "standardTop": "no",
+        "suggestions": [
+          "DEAF"
+        ],
+        "sampleCount": 56,
+        "durationMs": 2200
+      }
+    },
+    {
+      "expected": "DRINK2",
+      "sourceSha256": "899e2b0d3f8645fa8e001fb76a118d9ee8fa8abb7603427cbfdf19aa78cee2b4",
+      "before": {
+        "expected": "DRINK2",
+        "prediction": null,
+        "correct": false,
+        "citizenTop": "DRINK2",
+        "wlaslTop": "lion",
+        "standardTop": "tall",
+        "suggestions": [
+          "DRINK"
+        ],
+        "sampleCount": 54,
+        "durationMs": 1766.9660545689535
+      },
+      "after": {
+        "expected": "DRINK2",
+        "prediction": null,
+        "correct": false,
+        "citizenTop": "DRINK2",
+        "wlaslTop": "lion",
+        "standardTop": "tall",
+        "suggestions": [
+          "DRINK"
+        ],
+        "sampleCount": 54,
+        "durationMs": 1766.9660545689535
+      }
+    },
+    {
+      "expected": "LEAF1",
+      "sourceSha256": "dd57e8ddd8533f5212e8a155712b2fb3514a0f56711393ebfd4b4e4ce3764ce3",
+      "before": {
+        "expected": "LEAF1",
+        "prediction": null,
+        "correct": false,
+        "citizenTop": "LEAF1",
+        "wlaslTop": "wind",
+        "standardTop": "compromise",
+        "suggestions": [
+          "LEAF",
+          "FAIL",
+          "WATERSKI"
+        ],
+        "sampleCount": 43,
+        "durationMs": 1399.6743896108255
+      },
+      "after": {
+        "expected": "LEAF1",
+        "prediction": null,
+        "correct": false,
+        "citizenTop": "LEAF1",
+        "wlaslTop": "wind",
+        "standardTop": "compromise",
+        "suggestions": [],
+        "sampleCount": 43,
+        "durationMs": 1399.6743896108255
+      }
+    },
+    {
+      "expected": "PEPSI",
+      "sourceSha256": "cbdf69703390b0690ee35132c8c92d62ed2843f4f7a8f1dae898fd11d8e6a447",
+      "before": {
+        "expected": "PEPSI",
+        "prediction": null,
+        "correct": false,
+        "citizenTop": "PEPSI",
+        "wlaslTop": "company",
+        "standardTop": "none",
+        "suggestions": [
+          "PEPSI",
+          "IDEA",
+          "COMPANY"
+        ],
+        "sampleCount": 57,
+        "durationMs": 2367.7646697341556
+      },
+      "after": {
+        "expected": "PEPSI",
+        "prediction": "PEPSI",
+        "correct": true,
+        "citizenTop": "PEPSI",
+        "wlaslTop": "company",
+        "standardTop": "none",
+        "suggestions": [
+          "PEPSI",
+          "IDEA"
+        ],
+        "sampleCount": 57,
+        "durationMs": 2367.7646697341556
+      }
+    }
+  ]
+}
+

@@ -1,0 +1,6 @@
+{
+  "platforms": ["apple", "android"],
+  "apple": { "modules": ["SignBridgeTrackerModule"] },
+  "android": { "modules": ["expo.modules.signbridgetracker.SignBridgeTrackerModule"] }
+}
+

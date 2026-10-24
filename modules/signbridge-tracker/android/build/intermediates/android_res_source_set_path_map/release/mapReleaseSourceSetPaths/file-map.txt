@@ -1,0 +1,10 @@
+expo.modules.signbridgetracker.signbridge-tracker-pngs-0 /Users/khoiphung/Documents/ChatGPT/hackpsu_app/modules/signbridge-tracker/android/build/generated/res/pngs/release
+expo.modules.signbridgetracker.signbridge-tracker-updated_navigation_xml-1 /Users/khoiphung/Documents/ChatGPT/hackpsu_app/modules/signbridge-tracker/android/build/generated/updated_navigation_xml/release
+expo.modules.signbridgetracker.signbridge-tracker-mergeReleaseResources-2 /Users/khoiphung/Documents/ChatGPT/hackpsu_app/modules/signbridge-tracker/android/build/intermediates/incremental/release/mergeReleaseResources/merged.dir
+expo.modules.signbridgetracker.signbridge-tracker-mergeReleaseResources-3 /Users/khoiphung/Documents/ChatGPT/hackpsu_app/modules/signbridge-tracker/android/build/intermediates/incremental/release/mergeReleaseResources/stripped.dir
+expo.modules.signbridgetracker.signbridge-tracker-release-4 /Users/khoiphung/Documents/ChatGPT/hackpsu_app/modules/signbridge-tracker/android/build/intermediates/merged_res/release/mergeReleaseResources
+expo.modules.signbridgetracker.signbridge-tracker-release-5 /Users/khoiphung/Documents/ChatGPT/hackpsu_app/modules/signbridge-tracker/android/build/intermediates/packaged_res/release/packageReleaseResources
+expo.modules.signbridgetracker.signbridge-tracker-main-6 /Users/khoiphung/Documents/ChatGPT/hackpsu_app/modules/signbridge-tracker/android/src/main/res
+expo.modules.signbridgetracker.signbridge-tracker-release-7 /Users/khoiphung/Documents/ChatGPT/hackpsu_app/modules/signbridge-tracker/android/src/release/res
+gradleHome-0 /Users/khoiphung/.gradle
+

@@ -1,0 +1,27 @@
+{
+  "sourceRevision": "17f0148b00ef87a5957ec103da8d10bd8eb1fa23",
+  "checkpointSha256": "b08d84afb5a0fdf4c723fd7be2db897b2490a921ccf538cff1b345f905934d68",
+  "trainingCsvSha256": "87a105649b98ea577182ebfce49d59fe9ca834a2489384f6fe7bc03f14966329",
+  "bytes": 15192136,
+  "sha256": "a20d55f5960c7f33a46f1390aded133783f7daa315b0f3edad1b49ec97aa2371",
+  "inputShape": [
+    1,
+    2,
+    128,
+    27
+  ],
+  "classes": 2731,
+  "precision": "float32",
+  "maxAbsoluteErrors": [
+    3.0517578125e-05,
+    3.814697265625e-05,
+    6.866455078125e-05
+  ],
+  "developerCpuMs": [
+    50.381624954752624,
+    49.327375018037856,
+    49.66587503440678
+  ],
+  "validation": "Three synthetic fixtures plus upstream preprocessing fixture; not live ASL accuracy."
+}
+

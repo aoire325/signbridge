@@ -1,0 +1,20 @@
+{
+  "sourceRevision": "dacb4568719caa03c44764034f599a9f8a0f63f4",
+  "checkpointSha256": "23a994294be6156bcebb4d333a891dc8594a83f461b58b84068472729f5ba929",
+  "bytes": 26510516,
+  "sha256": "e2f7259fd05d8a5d6372df05276b1ddf17214fe2bd8a894088f111a69f072305",
+  "classes": 2000,
+  "inputShape": [
+    1,
+    55,
+    100
+  ],
+  "precision": "float32",
+  "maxAbsoluteErrors": [
+    6.67572021484375e-06,
+    6.198883056640625e-06,
+    6.198883056640625e-06
+  ],
+  "validation": "Three synthetic conversion fixtures; not live ASL accuracy."
+}
+

@@ -1,0 +1,31 @@
+{
+  "asl_alphabet_int8.tflite": {
+    "bytes": 94544,
+    "sha256": "416f709b3c5f56bdbcaf3758a51fa777ceb35ebf6799c6b970d34425542ea6ee"
+  },
+  "asl_sentence_decoder.tflite": {
+    "bytes": 325411648,
+    "sha256": "45d1adedfd0271cbde1c36d2fcbcd1a00d7a20c299fb8465cd862dd5f55a91ac"
+  },
+  "asl_sentence_encoder.tflite": {
+    "bytes": 170484256,
+    "sha256": "646606f8ca97381008a7df0df4bae564cd1678d245676eecdc29d1755e782a68"
+  },
+  "asl_words_1000.tflite": {
+    "bytes": 25482516,
+    "sha256": "89a5abb3a74a71836b2382dcd2f7a9c8b10d8b3a33536367d90a752751fdb380"
+  },
+  "asl_words_citizen.tflite": {
+    "bytes": 15192136,
+    "sha256": "a20d55f5960c7f33a46f1390aded133783f7daa315b0f3edad1b49ec97aa2371"
+  },
+  "asl_words_2000.tflite": {
+    "bytes": 26510516,
+    "sha256": "e2f7259fd05d8a5d6372df05276b1ddf17214fe2bd8a894088f111a69f072305"
+  },
+  "asl_words_250.tflite": {
+    "bytes": 11242036,
+    "sha256": "fe09669ee26a4f59a11bae3a7114885279c6706ac603101c8f8de5672d67d2d3"
+  }
+}
+

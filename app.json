@@ -1,0 +1,54 @@
+{
+  "expo": {
+    "name": "SignBridge",
+    "slug": "signbridge-asl",
+    "version": "1.1.0",
+    "platforms": [
+      "ios",
+      "android"
+    ],
+    "orientation": "portrait",
+    "icon": "./assets/images/icon.png",
+    "scheme": "signbridge",
+    "userInterfaceStyle": "light",
+    "ios": {
+      "bundleIdentifier": "com.signbridge.asl",
+      "icon": "./assets/images/icon.png"
+    },
+    "android": {
+      "package": "com.signbridge.asl",
+      "adaptiveIcon": {
+        "backgroundColor": "#162631",
+        "foregroundImage": "./assets/images/android-icon-foreground.png",
+        "monochromeImage": "./assets/images/android-icon-monochrome.png"
+      },
+      "predictiveBackGestureEnabled": false
+    },
+    "plugins": [
+      "./plugins/with-ios-dev-launcher-script-warning",
+      "expo-router",
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "SignBridge uses the camera to show your signing during a session.",
+          "recordAudioAndroid": false
+        }
+      ],
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#F6F5EF",
+          "image": "./assets/images/splash-icon.png",
+          "imageWidth": 76
+        }
+      ],
+      "expo-asset",
+      "./plugins/with-ios-tflite-isolation"
+    ],
+    "experiments": {
+      "typedRoutes": true,
+      "reactCompiler": true
+    }
+  }
+}
+
