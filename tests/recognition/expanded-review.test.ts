@@ -68,7 +68,8 @@ describe('expanded vocabulary accuracy gate', () => {
 
   it('never auto-appends conflicting predictions, but lets the user confirm one once', async () => {
     await recognize();
-    expect(current.candidates).toEqual(['HELLO']);
+    expect(current.candidates).toHaveLength(3);
+    expect(current.candidates[0]).toBe('HELLO');
     expect(mockAppend).not.toHaveBeenCalled();
     act(() => { current.chooseCandidate('HELLO'); current.chooseCandidate('HELLO'); });
     expect(mockAppend).toHaveBeenCalledWith('HELLO');
@@ -80,16 +81,18 @@ describe('expanded vocabulary accuracy gate', () => {
   it('requires review even for apparent strong agreement until live accuracy is validated', async () => {
     mockWlaslWord = 'hello';
     await recognize();
-    expect(current.candidates).toEqual(['HELLO']);
+    expect(current.candidates).toHaveLength(3);
+    expect(current.candidates[0]).toBe('HELLO');
     expect(mockAppend).not.toHaveBeenCalled();
     expect(mockCitizenPasses).toBe(2);
   });
 
-  it('preserves the first native output before buffer reuse and withholds conflicting views', async () => {
+  it('preserves both native outputs and offers distinct choices when views disagree', async () => {
     mockMirroredWord = 'WATER';
     await recognize();
-    expect(current.candidates).toEqual([]);
-    expect(current.message).toMatch(/consistent match/i);
+    expect(current.candidates).toHaveLength(3);
+    expect(current.candidates).toEqual(expect.arrayContaining(['HELLO', 'WATER']));
+    expect(new Set(current.candidates).size).toBe(3);
     expect(mockAppend).not.toHaveBeenCalled();
   });
 
@@ -111,6 +114,33 @@ describe('expanded vocabulary accuracy gate', () => {
     act(() => current.chooseCandidate('HELLO'));
     expect(mockAppend).not.toHaveBeenCalled();
     expect(current.candidates).toEqual([]);
+  });
+
+  it('automatically recognizes the next sign without selecting or retrying', async () => {
+    await recognize();
+    expect(current.candidates).toHaveLength(3);
+    await act(async () => {
+      for (let t = 900; t <= 1500; t += 100) current.onFrame({ ...frame(t), hands: [] });
+      for (let t = 1600; t <= 2400; t += 100) current.onFrame(frame(t));
+      current.finishSign();
+    });
+    expect(mockCitizenPasses).toBe(4);
+    expect(current.candidates).toHaveLength(3);
+    expect(mockAppend).not.toHaveBeenCalled();
+  });
+
+  it('does not capture control taps and gestures during inference', async () => {
+    let release!: () => void;
+    mockSecondPassWait = new Promise<void>((resolve) => { release = resolve; });
+    await recognize();
+    act(() => {
+      for (let t = 900; t <= 5000; t += 100) current.onFrame({ ...frame(t), hands: t < 1600 ? [] : frame(t).hands });
+    });
+    await act(async () => release());
+    act(() => current.chooseCandidate('HELLO'));
+    await act(async () => { current.onFrame(frame(5100)); current.finishSign(); });
+    expect(mockCitizenPasses).toBe(2);
+    expect(mockAppend).toHaveBeenCalledTimes(1);
   });
 }); 
 

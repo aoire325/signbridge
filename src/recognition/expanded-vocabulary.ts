@@ -63,23 +63,22 @@ export function decodeExpandedWord(citizen: Float32Array, wlasl: Float32Array): 
   return best ? { label: display.get(best.key)!, confidence: best.confidence, margin: best.margin } : null;
 }
 
-/** Unconfirmed alternatives never enter the transcript until the user chooses.
- * Prefer the MediaPipe-trained model for its own vocabulary. The OpenPose
- * adapter only supplies an additional model-exclusive word; its unrelated
- * shared-word guesses must not displace a better matched model's alternatives.
- * With a second view, Citizen candidates must appear in both top-three lists;
- * exclusive WLASL proposals need the existing strong-score rejection heuristic.
- * Omit the second view only when reproducing the historical single-pass check.
+/** Three distinct ranked alternatives for review, including weak matches.
+ * Average the two anatomical views; variants share one lexical rank. Scores
+ * are not accuracy estimates and no alternative is automatically accepted.
+ * Historical single-view replay retains its original filtering policy.
  */
 export function expandedWordSuggestions(citizen: Float32Array, wlasl: Float32Array, mirrored?: Float32Array): string[] {
   const a = ranking(mirrored ? combineCitizenViews(citizen, mirrored) : citizen, CITIZEN_LABELS, citizenWord);
   const b = ranking(wlasl, WLASL_LABELS, wordKey);
-  const mirrorKeys = mirrored ? new Set(ranking(mirrored, CITIZEN_LABELS, citizenWord).slice(0, 3).map((r) => r.key)) : null;
-  const stable = mirrorKeys ? new Set(ranking(citizen, CITIZEN_LABELS, citizenWord).slice(0, 3).map((r) => r.key)
-    .filter((key) => mirrorKeys.has(key))) : null;
-  const candidates = [a[0], a[1], citizenKeys.has(b[0].key) ? a[2] : b[0]]
-    .filter((word) => word.confidence >= 0.05 && (!stable || (citizenKeys.has(word.key)
-      ? stable.has(word.key) : word.confidence >= 0.65 && word.margin >= 0.2)));
-  return [...new Set(candidates.map((word) => display.get(word.key)!))].slice(0, 3);
-} 
-
+  if (!mirrored) {
+    const candidates = [a[0], a[1], citizenKeys.has(b[0].key) ? a[2] : b[0]]
+      .filter((word) => word.confidence >= 0.05);
+    return [...new Set(candidates.map((word) => display.get(word.key)!))].slice(0, 3);
+  }
+  // Preserve access to model-exclusive vocabulary only for a strong proposal;
+  // confidence from these separately trained models is not directly comparable.
+  const exclusive = !citizenKeys.has(b[0].key) && b[0].confidence >= 0.65 && b[0].margin >= 0.2;
+  const candidates = exclusive ? [a[0], a[1], b[0]] : a.slice(0, 3);
+  return candidates.map((word) => display.get(word.key)!);
+}

@@ -44,6 +44,12 @@ describe('trained expanded vocabulary and conservative model agreement', () => {
     const wlasl = scores(WLASL_LABELS); wlasl[WLASL_LABELS.indexOf('about')] = 0.1;
     expect(decodeExpandedWord(citizen, wlasl)?.label).toBe('ABOUT');
     expect(decodeExpandedWord(citizen, wlasl)?.confidence).toBeCloseTo(0.8);
+    const choices = expandedWordSuggestions(citizen, wlasl, citizen);
+    expect(choices).toHaveLength(3);
+    expect(new Set(choices.map(wordKey)).size).toBe(3);
+    expect(choices[0]).toBe('ABOUT');
+    expect(choices).not.toContain('ABOUT1');
+    expect(choices).not.toContain('ABOUT2');
     const invalid = scores(CITIZEN_LABELS); invalid[0] = NaN;
     expect(() => decodeExpandedWord(invalid, wlasl)).toThrow(/invalid/i);
     expect(() => decodeExpandedWord(new Float32Array(1000), wlasl)).toThrow(/invalid/i);
@@ -79,7 +85,7 @@ describe('two-pass recognition checks', () => {
     expect(combined.every(Number.isFinite)).toBe(true);
     expect(() => combineCitizenViews(a, new Float32Array(2))).toThrow(/invalid/i);
   });
-  it('withholds unrelated guesses that are not supported in both anatomical views', () => {
+  it('ranks three distinct alternatives even when anatomical views disagree', () => {
     const view = (words: string[]) => {
       const logits = new Float32Array(CITIZEN_LABELS.length).fill(-20);
       words.forEach((word, i) => { logits[CITIZEN_LABELS.indexOf(word)] = 6 - i; });
@@ -87,8 +93,43 @@ describe('two-pass recognition checks', () => {
     };
     const a = view(['LAMP', 'FOREST', 'SUNBATHE']);
     const b = view(['HELLO', 'BYE', 'MOTHER']);
-    expect(expandedWordSuggestions(a, scores(WLASL_LABELS, 'hello'), b)).toEqual([]);
-    expect(expandedWordSuggestions(scores(CITIZEN_LABELS, 'HELLO'), scores(WLASL_LABELS, 'water'), scores(CITIZEN_LABELS, 'HELLO'))).toEqual(['HELLO']);
+    const result = expandedWordSuggestions(a, scores(WLASL_LABELS, 'hello'), b);
+    expect(result).toHaveLength(3);
+    expect(new Set(result).size).toBe(3);
+    expect(result).toContain('HELLO');
+    expect(expandedWordSuggestions(scores(CITIZEN_LABELS, 'HELLO'), scores(WLASL_LABELS, 'water'), scores(CITIZEN_LABELS, 'HELLO'))).toHaveLength(3);
+  });
+  it('fills all three ranked choices when an exclusive WLASL guess is rejected', () => {
+    const view = (first: string) => {
+      const logits = new Float32Array(CITIZEN_LABELS.length).fill(-20);
+      for (const [word, probability] of [[first, 0.7], ['WATER', 0.2], ['FRIEND', 0.1]] as const) {
+        logits[CITIZEN_LABELS.indexOf(word)] = Math.log(probability);
+      }
+      return logits;
+    };
+    const citizenKeys = new Set(CITIZEN_LABELS.map(citizenWord));
+    const exclusive = WLASL_LABELS.find((label) => !citizenKeys.has(wordKey(label)))!;
+    const weak = scores(WLASL_LABELS); weak[WLASL_LABELS.indexOf(exclusive)] = 0.1;
+    const a = view('HELLO'); const b = view('HELP');
+    expect(expandedWordSuggestions(a, weak, b)).toEqual(['HELLO', 'HELP', 'WATER']);
+    expect(expandedWordSuggestions(a, scores(WLASL_LABELS, exclusive), b)).toEqual(['HELLO', 'HELP', exclusive.toUpperCase()]);
+    // Historical single-pass reports retain their original slot selection.
+    expect(expandedWordSuggestions(a, weak)).toEqual(['HELLO', 'WATER']);
+  });
+  it('keeps three ranked choices even when lower matches have weak scores', () => {
+    const a = new Float32Array(CITIZEN_LABELS.length).fill(-20);
+    for (const [label, probability] of [['HELLO', 0.6], ['WATER', 0.3], ['FRIEND', 0.1]] as const) {
+      a[CITIZEN_LABELS.indexOf(label)] = Math.log(probability);
+    }
+    const citizenKeys = new Set(CITIZEN_LABELS.map(citizenWord));
+    const exclusive = WLASL_LABELS.find((label) => !citizenKeys.has(wordKey(label)))!;
+    const weak = scores(WLASL_LABELS); weak[WLASL_LABELS.indexOf(exclusive)] = 0.1;
+    expect(expandedWordSuggestions(a, weak, a)).toEqual(['HELLO', 'WATER', 'FRIEND']);
+    expect(expandedWordSuggestions(a, scores(WLASL_LABELS, exclusive), a)).toEqual(['HELLO', 'WATER', exclusive.toUpperCase()]);
+    a[CITIZEN_LABELS.indexOf('HELLO')] = Math.log(0.94);
+    a[CITIZEN_LABELS.indexOf('WATER')] = Math.log(0.04);
+    a[CITIZEN_LABELS.indexOf('FRIEND')] = Math.log(0.02);
+    expect(expandedWordSuggestions(a, weak, a)).toEqual(['HELLO', 'WATER', 'FRIEND']);
   });
   it.each(['BED', 'LAMP', 'EMAIL', 'NUT', 'BOW', 'FOREST', 'MATURE'])('does not hard-code a correction for %s', (label) => {
       const trained = CITIZEN_LABELS.find((word) => citizenWord(word) === label);

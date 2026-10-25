@@ -58,5 +58,46 @@ describe('hand identity shared by word and sentence inputs', () => {
     const ambiguous = original.hands.map((h) => ({ ...h, landmarks: original.hands[0].landmarks }));
     expect(visibleHands({ ...original, pose, hands: ambiguous }).map((h) => h.side)).toEqual(['Right', 'Left']);
   });
+
+  it('preserves detected hands with uncertain handedness when pose wrists identify them', () => {
+    const original = frame();
+    const input = { ...original, hands: original.hands.map((hand) => ({ ...hand, score: 0.51 })) };
+    expect(visibleHands(input).map((hand) => hand.side)).toEqual(['Left', 'Right']);
+    expect(packWordLandmarks(input)[468 * 3]).toBeCloseTo(0.2);
+    expect(packWordLandmarks(input)[522 * 3]).toBeCloseTo(0.8);
+    expect(visibleHands({ ...input, hands: input.hands.slice(0, 1) })[0].side).toBe('Left');
+    expect(input.hands.map((hand) => hand.side)).toEqual(['Right', 'Left']);
+  });
+
+  it('only rescues the directly anchored hand when the other pose wrist is missing', () => {
+    const original = frame();
+    const input = { ...original,
+      pose: original.pose.map((p, i) => i === 16 ? { ...p, visibility: 0.1 } : p),
+      hands: original.hands.map((hand) => ({ ...hand, score: 0.51 })) };
+    expect(visibleHands(input).map((hand) => hand.side)).toEqual(['Left']);
+    expect(visibleHands({ ...input, hands: input.hands.slice(1) })).toEqual([]);
+  });
+
+  it('rejects uncertain handedness when anatomical association is absent or ambiguous', () => {
+    const original = frame();
+    const hands = original.hands.map((hand) => ({ ...hand, score: 0.51 }));
+    for (const pose of [[], original.pose.map((p) => ({ ...p, visibility: 0.1 })),
+      original.pose.map(() => point(0.5)), original.pose.map(() => point(0.5, 0.1))]) {
+      expect(visibleHands({ ...original, pose, hands })).toEqual([]);
+    }
+    const pose = original.pose.map((p, i) => i === 16 ? { ...p, visibility: 0 } : p);
+    const ambiguous = hands.map((hand) => ({ ...hand, landmarks: hands[0].landmarks }));
+    expect(visibleHands({ ...original, pose, hands: ambiguous })).toEqual([]);
+    for (const width of [0, NaN, Infinity]) expect(visibleHands({ ...original, hands, width })).toEqual([]);
+  });
+
+  it('does not rescue malformed hands even with a matching pose wrist', () => {
+    const original = frame();
+    for (const score of [0.1, NaN, Infinity, 1.1]) {
+      expect(visibleHands({ ...original, hands: original.hands.map((hand) => ({ ...hand, score })) })).toEqual([]);
+    }
+    expect(visibleHands({ ...original, hands: original.hands.map((hand) => ({ ...hand, score: 0.51,
+      landmarks: hand.landmarks.map((point, i) => i === 8 ? { ...point, x: NaN } : point) })) })).toEqual([]);
+  });
 }); 
 

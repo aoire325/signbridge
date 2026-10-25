@@ -55,11 +55,11 @@ export function useAslWordRecognizer(active: boolean, sessionToken: number, onWo
         ? secondaryState.error.message : 'Word models are preparing. Please try the sign again in a moment.');
       return;
     }
-    if (busy.current) { setMessage('Still processing the previous sign. Please repeat this word.'); return; }
+    if (busy.current) return;
     const generation = lifecycle.current.generation;
     const current = () => lifecycle.current.active && lifecycle.current.generation === generation;
     busy.current = true;
-    setSuggestions({ generation, labels: [], activation });
+    setSuggestions({ generation: -1, labels: [], activation: null });
     setProcessing(true);
     setMessage('Reading your sign…');
     try {
@@ -93,8 +93,7 @@ export function useAslWordRecognizer(active: boolean, sessionToken: number, onWo
           new Float32Array(mirroredOutputs[0]));
         setSuggestions({ generation, labels, activation });
         setLastWord(null);
-        setMessage(labels.length ? 'Choose the correct match below. If none matches your sign, try again or type the word.'
-          : 'The recognition checks did not find a consistent match. Keep your signing hand and shoulders visible, then repeat one complete sign.');
+        setMessage('Possible matches — choose one, or sign another word.');
         return;
       } else prediction = decodeWordPrediction(firstScores, standard ? EXPANDED_WORD_LABELS : WORD_MODEL_LABELS);
       setLastWord(prediction);
@@ -107,6 +106,12 @@ export function useAslWordRecognizer(active: boolean, sessionToken: number, onWo
     } catch (error) {
       if (current()) setMessage(error instanceof Error ? error.message : 'Could not read this sign. Please try again.');
     } finally {
+      if (current()) {
+        // Discard movements during inference; both segmenters wait for hands
+        // to leave the frame before starting another isolated sign.
+        segmenter.current.reset();
+        segmenter.current.finish();
+      }
       busy.current = false;
       // Never leave a stale spinner after a camera switch or paused edit.
       setProcessing(false);
@@ -121,6 +126,8 @@ export function useAslWordRecognizer(active: boolean, sessionToken: number, onWo
       lastDisplayTimestamp.current = next.timestampMs;
       setDisplaySession(sessionToken); setFrame(next);
     }
+    // Keep tracking live; discard movements only while inference is busy.
+    if (busy.current) return;
     const result = segmenter.current.accept(next);
     if (result.kind === 'complete') void recognize(result);
     else if (!busy.current) {
@@ -140,14 +147,20 @@ export function useAslWordRecognizer(active: boolean, sessionToken: number, onWo
     else void recognize(result);
   }, [recognize]);
 
+  const resumeCapture = useCallback(() => {
+    segmenter.current.reset();
+    segmenter.current.finish();
+    setSuggestions({ generation: -1, labels: [], activation: null });
+  }, []);
+
   const chooseCandidate = useCallback((label: string) => {
     if (!lifecycle.current.active || busy.current || confirmedSuggestions.current === suggestions || suggestions.generation !== lifecycle.current.generation
       || !suggestions.labels.includes(label)) return;
     confirmedSuggestions.current = suggestions;
     onWord(label);
-    setSuggestions({ generation: -1, labels: [], activation: null });
+    resumeCapture();
     setMessage(`Added ${label} after your review. Lower both hands before signing the next word.`);
-  }, [onWord, suggestions]);
+  }, [onWord, suggestions, resumeCapture]);
 
   return {
     frame: active && displaySession === sessionToken ? frame : null,

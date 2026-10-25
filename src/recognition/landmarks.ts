@@ -1,6 +1,7 @@
 export type Landmark = { x: number; y: number; z: number; visibility?: number };
 export type TrackedHand = {
   side: 'Left' | 'Right' | 'Unknown';
+  /** MediaPipe Left/Right classification confidence, not hand presence. */
   score: number;
   landmarks: readonly Landmark[];
 };
@@ -26,14 +27,19 @@ function validPoint(point: Landmark | undefined): point is Landmark {
 }
 
 export function visibleHands(frame: TrackingFrame) {
-  const hands = frame.hands.filter((hand) => hand.score >= 0.6 && hand.landmarks.length === 21
+  // MediaPipe reports the top binary handedness class (score >= 0.5). A
+  // near-tie can still contain valid hand landmarks when a pose wrist resolves
+  // its identity. Keep the existing 0.6 fallback where geometry cannot help.
+  const hands = frame.hands.filter((hand) => Number.isFinite(hand.score) && hand.score >= 0.5 && hand.score <= 1 && hand.landmarks.length === 21
     && hand.landmarks.every(validPoint) && (hand.side === 'Left' || hand.side === 'Right'));
+  const fallback = () => hands.filter((hand) => hand.score >= 0.6);
   // Independent hand and pose detectors can disagree on handedness, especially
   // with an unmirrored camera or crossed arms. Match wrists, never screen halves.
   const wrists = [frame.pose[15], frame.pose[16]];
-  if (hands.length < 1 || hands.length > 2 || frame.width <= 0 || frame.height <= 0) return hands;
+  if (hands.length < 1 || hands.length > 2 || !Number.isFinite(frame.width) || !Number.isFinite(frame.height)
+    || frame.width <= 0 || frame.height <= 0) return fallback();
   const reliable = wrists.map((p) => validPoint(p) && (p.visibility ?? 1) >= 0.6);
-  if (!reliable.some(Boolean)) return hands;
+  if (!reliable.some(Boolean)) return fallback();
   const diagonal = Math.hypot(frame.width, frame.height);
   const distance = (hand: TrackedHand, side: number) => Math.hypot(
     (hand.landmarks[0].x - wrists[side].x) * frame.width,
@@ -44,21 +50,21 @@ export function visibleHands(frame: TrackingFrame) {
     const side = reliable[0] ? 0 : 1;
     const distances = hands.map((hand) => distance(hand, side));
     const closest = distances.length === 1 || distances[0] < distances[1] ? 0 : 1;
-    if (distances[closest] > 0.08 || (hands.length === 2 && Math.abs(distances[0] - distances[1]) < 0.04)) return hands;
-    return hands.map((hand, i) => ({ ...hand,
-      side: ((i === closest ? side : 1 - side) === 0 ? 'Left' : 'Right') as 'Left' | 'Right' }));
+    if (distances[closest] > 0.08 || (hands.length === 2 && Math.abs(distances[0] - distances[1]) < 0.04)) return fallback();
+    return hands.flatMap((hand, i) => i !== closest && hand.score < 0.6 ? [] : [{ ...hand,
+      side: ((i === closest ? side : 1 - side) === 0 ? 'Left' : 'Right') as 'Left' | 'Right' }]);
   }
   if (hands.length === 1) {
     const distances = [distance(hands[0], 0), distance(hands[0], 1)];
     const side = distances[0] < distances[1] ? 0 : 1;
-    if (distances[side] > 0.12 || Math.abs(distances[0] - distances[1]) < 0.04) return hands;
+    if (distances[side] > 0.12 || Math.abs(distances[0] - distances[1]) < 0.04) return fallback();
     return [{ ...hands[0], side: side === 0 ? 'Left' as const : 'Right' as const }];
   }
   const direct = distance(hands[0], 0) + distance(hands[1], 1);
   const swapped = distance(hands[0], 1) + distance(hands[1], 0);
   const first = direct < swapped ? 0 : 1;
   if (Math.abs(direct - swapped) < 0.04 || distance(hands[0], first) > 0.12
-    || distance(hands[1], 1 - first) > 0.12) return hands;
+    || distance(hands[1], 1 - first) > 0.12) return fallback();
   return hands.map((hand, i) => ({ ...hand,
     side: (i === first ? 'Left' : 'Right') as 'Left' | 'Right' }));
 }

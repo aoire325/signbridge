@@ -48,7 +48,7 @@ describe('face, upper-body and hand framing', () => {
     const direct = trackingOverlayGeometry(input, size, false);
     const mirrored = trackingOverlayGeometry(input, size, true);
     expect(new Set(direct.lines.map((l) => l.group))).toEqual(new Set(['face', 'body', 'hand']));
-    expect(direct.lines.length + direct.dots.length).toBeLessThan(200);
+    expect(direct.lines.length + direct.dots.length).toBeLessThan(300);
     direct.dots.forEach((dot, i) => {
       expect(dot.x + mirrored.dots[i].x).toBeCloseTo(size.width);
       expect(dot.y).toBeCloseTo(mirrored.dots[i].y);
@@ -57,6 +57,27 @@ describe('face, upper-body and hand framing', () => {
     });
     expect(JSON.stringify(input)).toBe(before);
     expect(trackingOverlayGeometry(input, { width: 0, height: 0 }, false)).toEqual({ lines: [], dots: [] });
+  });
+
+  it('follows eyes, nose, mouth, hands and elbows with real landmark dots', () => {
+    const input = frame();
+    const size = { width: 480, height: 640 };
+    const overlay = trackingOverlayGeometry(input, size, false);
+    for (const i of [33, 133, 263, 362, 1, 4, 98, 294, 13, 14, 61, 291, 468, 473]) {
+      expect(overlay.dots.find((d) => d.key === `face-${i}`)).toMatchObject({
+        x: input.face[i].x * 480, y: input.face[i].y * 640,
+      });
+    }
+    expect(overlay.dots.filter((d) => d.group === 'hand')).toHaveLength(21);
+    expect(overlay.dots.map((d) => d.key)).toEqual(expect.arrayContaining(['body-13', 'body-14']));
+    expect(new Set(overlay.dots.map((d) => d.key)).size).toBe(overlay.dots.length);
+    const moved = { ...input, face: input.face.map((p, i) => i === 13 ? { ...p, y: p.y + 0.05 } : p) };
+    expect(trackingOverlayGeometry(moved, size, false).dots.find((d) => d.key === 'face-13')!.y)
+      .toBeCloseTo((input.face[13].y + 0.05) * 640);
+    const withoutIris = trackingOverlayGeometry({ ...input, face: input.face.slice(0, 468) }, size, false);
+    expect(withoutIris.dots.some((d) => d.key === 'face-468' || d.key === 'face-473')).toBe(false);
+    const hidden = trackingOverlayGeometry({ ...input, face: [] }, size, false);
+    expect(hidden.dots.some((d) => d.group === 'face')).toBe(false);
   });
 
   it('counts reliable hands and gives edge guidance without requiring two hands for a sign', () => {

@@ -127,8 +127,8 @@ function SettingSwitch({
         accessibilityState={{ checked: value }}
         value={value}
         onValueChange={onValueChange}
-        trackColor={{ false: '#D9E0DC', true: '#9FD8C3' }}
-        thumbColor={value ? colors.teal : '#FFFFFF'}
+        trackColor={{ false: colors.line, true: colors.accent }}
+        thumbColor={value ? colors.teal : colors.white}
       />
     </View>
   );
@@ -143,14 +143,14 @@ const styles = StyleSheet.create({
   eyebrow: { color: colors.teal, fontSize: 9, letterSpacing: 1.5, fontWeight: '800', marginBottom: 3 },
   title: { color: colors.navy, fontSize: 22, lineHeight: 27, fontWeight: '800', letterSpacing: -0.4 },
   card: { borderRadius: 20, padding: 17, borderWidth: 1, borderColor: colors.line, backgroundColor: colors.white, gap: 10 },
-  statusCard: { borderRadius: 20, padding: 17, borderWidth: 1, borderColor: '#E7E1D6', backgroundColor: colors.warmCard, gap: 11 },
+  statusCard: { borderRadius: 20, padding: 17, borderWidth: 1, borderColor: colors.line, backgroundColor: colors.warmCard, gap: 11 },
   statusHeader: { flexDirection: 'row', alignItems: 'center', gap: 10 },
-  statusGlyph: { width: 36, height: 36, borderRadius: 12, backgroundColor: '#EEE8DA', alignItems: 'center', justifyContent: 'center' },
+  statusGlyph: { width: 36, height: 36, borderRadius: 12, backgroundColor: colors.accent, alignItems: 'center', justifyContent: 'center' },
   statusGlyphText: { color: colors.ochre, fontSize: 18, fontWeight: '800' },
   statusCopy: { flex: 1, gap: 3 },
   cardEyebrow: { color: colors.inkMuted, fontSize: 9, letterSpacing: 1.1, fontWeight: '800' },
   statusTitle: { color: colors.navy, fontSize: 16, fontWeight: '800' },
-  statusTag: { backgroundColor: '#EEE8DA', borderRadius: 8, paddingHorizontal: 9, paddingVertical: 6 },
+  statusTag: { backgroundColor: colors.accent, borderRadius: 8, paddingHorizontal: 9, paddingVertical: 6 },
   statusTagReady: { backgroundColor: colors.mintSoft },
   statusTagText: { color: colors.ochre, fontSize: 9, letterSpacing: 0.8, fontWeight: '800' },
   statusTagTextReady: { color: colors.tealDeep },
@@ -160,7 +160,7 @@ const styles = StyleSheet.create({
   infoLabel: { color: colors.inkSoft, fontSize: 12 },
   infoValue: { color: colors.navy, fontSize: 12, fontWeight: '700' },
   alphabetGrid: { flexDirection: 'row', flexWrap: 'wrap', gap: 6, marginTop: 2 },
-  letterChip: { minWidth: 28, height: 29, paddingHorizontal: 8, borderRadius: 8, alignItems: 'center', justifyContent: 'center', backgroundColor: 'rgba(255,255,255,0.7)', borderWidth: 1, borderColor: '#E5DDCF' },
+  letterChip: { minWidth: 28, height: 29, paddingHorizontal: 8, borderRadius: 8, alignItems: 'center', justifyContent: 'center', backgroundColor: 'rgba(255,255,255,0.7)', borderWidth: 1, borderColor: colors.line },
   letterChipText: { color: colors.tealDeep, fontSize: 11, fontWeight: '800' },
   scopeNote: { color: colors.inkSoft, backgroundColor: 'rgba(255,255,255,0.62)', borderRadius: 12, padding: 11, fontSize: 12, lineHeight: 18 },
   cardTitle: { color: colors.navy, fontSize: 16, fontWeight: '800' },

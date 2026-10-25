@@ -16,7 +16,13 @@ const FACE_PATHS = [
   [70, 63, 105, 66, 107], [300, 293, 334, 296, 336],
   [61, 40, 37, 0, 267, 270, 291, 321, 314, 17, 84, 91, 61],
   [78, 81, 13, 311, 308, 402, 14, 178, 78],
+  [168, 6, 197, 195, 5, 4, 1, 19, 94, 2],
+  [98, 97, 2, 326, 327, 294],
+  [469, 470, 471, 472, 469], [474, 475, 476, 477, 474],
 ];
+// Deduplicate contour endpoints. Iris centres are available in the 478-point
+// task model; older 468-point frames simply omit them without inventing dots.
+const FACE_DOTS = [...new Set([...FACE_PATHS.flat(), 468, 473])];
 type Point = { x: number; y: number };
 type Group = 'face' | 'body' | 'hand';
 type Line = { key: string; group: Group; from: Point; to: Point; color: string; thickness: number };
@@ -46,7 +52,7 @@ export function trackingOverlayGeometry(frame: TrackingFrame | null, size: { wid
   if (feedback.face !== 'missing') {
     FACE_PATHS.forEach((path, index) => path.slice(1).forEach((b, i) =>
       line(frame.face[path[i]], frame.face[b], `face-${index}-${i}`, 'face', TRACKING_COLORS.face, 1.25)));
-    dot(frame.face[1], 'face-nose', 'face', TRACKING_COLORS.face, 2);
+    for (const i of FACE_DOTS) dot(frame.face[i], `face-${i}`, 'face', TRACKING_COLORS.face, 2);
   }
   visibleHands(frame).forEach((hand, index) => {
     const color = hand.side === 'Left' ? TRACKING_COLORS.leftHand : TRACKING_COLORS.rightHand;
