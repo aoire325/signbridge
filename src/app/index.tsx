@@ -1,6 +1,6 @@
 import * as Clipboard from 'expo-clipboard';
 import { router, useIsFocused, useLocalSearchParams } from 'expo-router';
-import { useCallback, useEffect, useLayoutEffect, useRef, useState, type ComponentRef } from 'react';
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, type ComponentRef } from 'react';
 import {
   ActivityIndicator,
   Keyboard,
@@ -26,12 +26,13 @@ import type { TrackingFrame } from '@/recognition/landmarks';
 import { trackingFeedback } from '@/recognition/tracking-feedback';
 import { colors } from '@/constants/palette';
 import { useSentenceTranslator } from '@/recognition/use-sentence-translator';
-import { useAslWordRecognizer, type WordVocabulary } from '@/recognition/use-asl-word-recognizer';
-import { SUPPORTED_WORD_LABELS } from '@/recognition/expanded-vocabulary';
-import { EXPANDED_WORD_LABELS } from '@/recognition/asl1000-recognition';
-import { WORD_MODEL_LABELS } from '@/recognition/asl-word-recognition';
+import { useAslWordRecognizer } from '@/recognition/use-asl-word-recognizer';
+import { RECOGNITION_WORD_LABELS } from '@/recognition/expanded-vocabulary';
 import { useAccessibilitySettings } from '@/state/accessibility-settings';
 import { useTranscript } from '@/state/use-transcript';
+import { useRecognitionExamples } from '@/state/use-recognition-examples';
+import { RecognitionLab } from '@/components/recognition-lab';
+import { PersonalSignPanel } from '@/components/personal-sign-panel';
 
 export default function HomeScreen() {
   const isFocused = useIsFocused();
@@ -44,16 +45,21 @@ export default function HomeScreen() {
   const scrollRef = useRef<ComponentRef<typeof ScrollView>>(null);
   const contentRef = useRef<ComponentRef<typeof View>>(null);
   const [showOptions, setShowOptions] = useState(false);
+  const [showLab, setShowLab] = useState(false);
+  const [showPersonalSigns, setShowPersonalSigns] = useState(false);
+  const [initiallyAddWord, setInitiallyAddWord] = useState(false);
+  const [personalFlowToken, setPersonalFlowToken] = useState(0);
   const [showTrackingGuides, setShowTrackingGuides] = useState(true);
   const [focusedControl, setFocusedControl] = useState('');
   const camera = useCameraSession(isFocused && inStudio);
   const transcript = useTranscript();
   const [sentenceMode, setSentenceMode] = useState(false);
   const sentence = useSentenceTranslator(sentenceMode, camera.isActive && !transcript.isEditing, camera.sessionToken);
-  const [wordVocabulary, setWordVocabulary] = useState<WordVocabulary>('expanded');
-  const expandedVocabulary = wordVocabulary === 'expanded';
-  const vocabulary = expandedVocabulary ? SUPPORTED_WORD_LABELS : wordVocabulary === 'standard' ? EXPANDED_WORD_LABELS : WORD_MODEL_LABELS;
-  const recognizer = useAslWordRecognizer(!sentenceMode && camera.isActive && !transcript.isEditing, camera.sessionToken, transcript.appendWord, wordVocabulary);
+  const wordActive = !sentenceMode && camera.isActive && !transcript.isEditing;
+  const lab = useRecognitionExamples(inStudio, wordActive, camera.sessionToken);
+  const dictionaryWords = useMemo(() => [...new Set([...RECOGNITION_WORD_LABELS, ...lab.savedVariants.map((variant) => variant.label)])]
+    .sort((a, b) => a.localeCompare(b)), [lab.savedVariants]);
+  const recognizer = useAslWordRecognizer(wordActive, camera.sessionToken, transcript.appendWord, lab.learning);
   const currentFrame = sentenceMode ? sentence.frame : recognizer.frame;
   const { highContrast, largeText, tutorialSeen, markTutorialSeen } = useAccessibilitySettings();
   const [previewSessionToken, setPreviewSessionToken] = useState(-1);
@@ -138,6 +144,12 @@ export default function HomeScreen() {
     setTutorialStep(null);
     markTutorialSeen();
   };
+  const openPersonalSigns = (word?: string, addWord = false) => {
+    Keyboard.dismiss();
+    if (sentence.recording || sentence.busy || !lab.beginVariant(word)) return;
+    transcript.commitEditing(); setSentenceMode(false); setShowLab(false); setShowOptions(false);
+    setShowVocabulary(false); setInitiallyAddWord(addWord); setPersonalFlowToken((value) => value + 1); setShowPersonalSigns(true);
+  };
   const revealTutorialTarget = useCallback((target: ComponentRef<typeof View>) => {
     const content = contentRef.current;
     if (!content) return;
@@ -169,7 +181,7 @@ export default function HomeScreen() {
             <TutorialSpotlight step={tutorialStep === 3 ? 3 : null} {...tutorialControls}>
               <View style={styles.controls}>
                 <ActionButton label="Home" text="Home" icon="⌂" compact disabled={sentence.recording || sentence.busy}
-                  onPress={() => { Keyboard.dismiss(); transcript.commitEditing(); camera.pause(); setTutorialStep(null); setShowVocabulary(false); setShowOptions(false); router.setParams({ view: 'welcome' }); }} />
+                  onPress={() => { Keyboard.dismiss(); transcript.commitEditing(); camera.pause(); lab.discard(); setShowPersonalSigns(false); setTutorialStep(null); setShowVocabulary(false); setShowOptions(false); router.setParams({ view: 'welcome' }); }} />
                 <ActionButton label="Dictionary" text="Dictionary" icon="▤" compact onPress={() => { Keyboard.dismiss(); setShowVocabulary(true); }} />
                 <ActionButton label={showOptions ? 'Hide options' : 'Options'} text="Options" icon={showOptions ? '×' : '☰'} compact onPress={() => setShowOptions((visible) => !visible)} />
               </View>
@@ -197,20 +209,21 @@ export default function HomeScreen() {
                 <ActionButton label="Words" text="Words" icon="▤" variant={sentenceMode ? 'secondary' : 'primary'} compact
                   disabled={sentence.busy || sentence.recording} onPress={() => { Keyboard.dismiss(); transcript.commitEditing(); setSentenceMode(false); }} />
                 <ActionButton label="Sentences" text="Sentences" icon="≡" variant={sentenceMode ? 'primary' : 'secondary'} compact
-                  disabled={recognizer.processing} onPress={() => { Keyboard.dismiss(); transcript.commitEditing(); setSentenceMode(true); }} />
+                  disabled={recognizer.processing || lab.busy} onPress={() => { Keyboard.dismiss(); transcript.commitEditing(); lab.discard(); setShowPersonalSigns(false); setSentenceMode(true); }} />
               </View>
-              {!expandedVocabulary ? <ActionButton label={`Use ${SUPPORTED_WORD_LABELS.length.toLocaleString()} entries · review required`} text={`Use ${SUPPORTED_WORD_LABELS.length.toLocaleString()} entries · review required`} icon="③"
-                variant="secondary" onPress={() => setWordVocabulary('expanded')} disabled={recognizer.processing} /> : null}
-              {wordVocabulary !== 'standard' ? <ActionButton label="Use legacy 1,000-sign model" text="Use legacy 1,000-sign model" icon="②"
-                variant="secondary" onPress={() => setWordVocabulary('standard')} disabled={recognizer.processing} /> : null}
-              {wordVocabulary !== 'basic' ? <ActionButton label="Use original 250-sign model" text="Use original 250-sign model" icon="①"
-                variant="secondary" onPress={() => setWordVocabulary('basic')} disabled={recognizer.processing} /> : null}
               <Text style={styles.modelNoticeBody}>Recognition is experimental. Review your text before using it.</Text>
+              <ActionButton label="Personal signs" text="Personal signs" icon="✎" compact disabled={lab.busy || !!lab.request || !!lab.pending || sentence.recording || sentence.busy}
+                onPress={() => openPersonalSigns()} />
+              <ActionButton label={showLab ? 'Close Recognition Lab' : 'Recognition Lab'} text={showLab ? 'Close Recognition Lab' : 'Recognition Lab'} compact
+                disabled={showPersonalSigns}
+                onPress={() => setShowLab((previous) => !previous)} />
+              {showLab ? <RecognitionLab lab={lab} canRecord={wordActive && cameraIsReady && !recognizer.processing} /> : null}
             </View> : null}
           </View>
 
           <View testID="translation-workspace" style={[styles.workspace, wideLayout && styles.workspaceWide]}>
             <View style={styles.cameraColumn}>
+              <View>{lab.request ? <Text accessibilityLiveRegion="polite" style={styles.modelNoticeBody}>Example: {lab.request.label ?? 'UNKNOWN'} · sign once, then tap Finish sign.</Text> : null}</View>
               <TutorialSpotlight step={tutorialStep === 0 ? 0 : null} cameraActive={camera.isActive} {...tutorialControls}>
                 <View style={styles.cameraCard}>
                   <View style={[styles.cameraStage, { height: cameraHeight }]}>
@@ -290,7 +303,7 @@ export default function HomeScreen() {
                             : recognizer.status !== 'loaded' ? 'Preparing the word model…'
                               : recognizer.message)}
                   </Text> : null}
-                  {!sentenceMode && expandedVocabulary && recognizer.candidates.length > 0 ? (
+                  {!sentenceMode && recognizer.candidates.length > 0 ? (
                     <View style={styles.suggestionChips}>
                       {recognizer.candidates.map((word) => <View key={word} style={styles.suggestionChoice}>
                         <ActionButton label={`Add ${word}`} text={word} singleLine
@@ -330,9 +343,14 @@ export default function HomeScreen() {
                   />
                 )}
                 {!sentenceMode ? <ActionButton label={recognizer.processing ? 'Reading sign…' : 'Finish sign'} icon={recognizer.processing ? '◌' : '✓'} variant="primary"
-                  disabled={!cameraIsReady || recognizer.status !== 'loaded' || recognizer.processing || transcript.isEditing}
+                  disabled={!cameraIsReady || (!lab.request && recognizer.status !== 'loaded') || recognizer.processing || transcript.isEditing}
                   onPress={recognizer.finishSign} /> : null}
               </View>
+
+              <View>{showPersonalSigns ? <PersonalSignPanel key={personalFlowToken} lab={lab} initiallyAddWord={initiallyAddWord}
+                onChooseDictionary={() => { Keyboard.dismiss(); setShowVocabulary(true); }} onSelectWord={openPersonalSigns}
+                canRecord={wordActive && cameraIsReady && !recognizer.processing}
+                onClose={() => { Keyboard.dismiss(); if (lab.request || lab.pending) lab.discard(); setShowPersonalSigns(false); }} /> : null}</View>
 
               {sentenceMode ? <View style={styles.teachingCard}>
                 <Text style={styles.sectionTitle}>Translate a signed sentence</Text>
@@ -370,7 +388,7 @@ export default function HomeScreen() {
 
                   <TextInput
                     accessibilityLabel={sentenceMode ? 'Sentence transcript' : 'Word transcript'}
-                    accessibilityHint={sentenceMode ? 'Review the translation draft, then add it to this transcript.' : expandedVocabulary ? 'Select a suggestion to add a word. Transcription pauses while you edit.' : 'Recognized ASL words are added automatically. Transcription pauses while you edit.'}
+                    accessibilityHint={sentenceMode ? 'Review the translation draft, then add it to this transcript.' : 'Select a suggestion to add a word. Transcription pauses while you edit.'}
                     multiline
                     textAlignVertical="top"
                     value={transcript.value}
@@ -413,7 +431,9 @@ export default function HomeScreen() {
         </View>
       </ScrollView>
 
-      {showVocabulary ? <DictionaryPanel words={vocabulary} onClose={() => setShowVocabulary(false)} /> : null}
+      {showVocabulary ? <DictionaryPanel words={dictionaryWords} onClose={() => setShowVocabulary(false)}
+        onSelectWord={(word) => openPersonalSigns(word)} onAddWord={() => openPersonalSigns(undefined, true)}
+        selectionDisabled={lab.busy || !!lab.request || !!lab.pending || sentence.recording || sentence.busy} /> : null}
 
       {feedback ? (
         <View accessibilityLiveRegion="polite" accessibilityRole="status" style={styles.toast}>

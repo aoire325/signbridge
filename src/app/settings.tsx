@@ -42,12 +42,12 @@ export default function SettingsScreen() {
           <Text style={styles.bodyText}>{status.message}</Text>
           <View style={styles.separator} />
           <InfoRow label="Model version" value={status.version ?? 'None'} />
-          <InfoRow label="Vocabulary" value={`${status.supportedSigns.length.toLocaleString()} entries; 250-sign fallback`} />
+          <InfoRow label="Vocabulary" value={`${status.supportedSigns.length.toLocaleString()} supported entries`} />
           <InfoRow label="Output" value="Reviewable words & sentence drafts" />
           <InfoRow label="Tracking" value="Hands · face · shoulders & arms" />
           <InfoRow label="Sentence translation" value="Experimental · fully offline" />
           <Text style={styles.scopeNote}>
-            Word models classify one sign at a time. The expanded vocabulary is the default; legacy 1,000-sign and 250-sign options remain available. Begin with your hands lowered and shoulders visible, sign for 0.5–5 seconds, then lower your hands and wait for the result. Expanded results require review before insertion. Unknown gestures can still resemble supported signs. Edit or Undo incorrect words. Live camera accuracy has not been measured.
+            One 500-word dictionary is available. Sign one word at a time with your shoulders visible, then lower both hands and pause or tap Finish sign. Choose a suggestion to add it to the text. Personal signs can add your version of a Dictionary word or a new word from three examples, regardless of model guesses. Recognition Lab compares results on separate test recordings. Live camera accuracy has not been measured.
           </Text>
         </View>
 
@@ -72,7 +72,7 @@ export default function SettingsScreen() {
         <View style={styles.card}>
           <Text style={styles.cardTitle}>Privacy</Text>
           <Text style={styles.bodyText}>
-            Live camera buffers are analyzed on-device. Hand, body and face landmark sequences are held briefly in memory for word classification or up to 12 seconds of sentence capture. Sentence models and text decoding also run on-device, with no translation server. No photos or video files are created, and nothing is uploaded. This app does not request microphone access. Transcript text is not kept as history.
+            Live camera buffers are analyzed on-device. Hand, body and face landmarks are held briefly in memory. Recognition Lab saves landmark features locally only when you tap Save example; delete or export them from the Lab. No photos or video files are created, and nothing is automatically uploaded. Sentence translation also runs on-device. This app does not request microphone access. Transcript text is not kept as history.
           </Text>
           <View style={styles.privacyPill}>
             <View style={styles.privacyDot} />
@@ -83,7 +83,7 @@ export default function SettingsScreen() {
         <View style={styles.card}>
           <Text style={styles.cardTitle}>About isolated word recognition</Text>
           <Text style={styles.bodyText}>
-            Expanded recognition combines the 2,731 ASL Citizen sign classes with the 2,000 WLASL classes, deduplicating variants and overlaps into word entries. Capture now preserves the beginning and ending of a sign. Suggestions prioritize ASL Citizen for its MediaPipe-trained vocabulary; the experimental OpenPose adapter can suggest additional WLASL-only words. Recorded-pose checks improved, but every suggestion still needs your review. Sentence mode uses a separate trained T5 pose-to-English model and needs no pauses between words. Review sentence drafts before use. Live word and sentence accuracy still need validation.
+            Expanded recognition combines the 2,731 ASL Citizen sign classes with the 2,000 WLASL classes, deduplicating variants and overlaps into word entries. Capture now preserves the beginning and ending of a sign. Suggestions prioritize ASL Citizen for its MediaPipe-trained vocabulary; the experimental OpenPose adapter can suggest additional WLASL-only words and strong shared-word alternatives. Recorded-pose checks improved, but every suggestion still needs your review. Sentence mode uses a separate trained T5 pose-to-English model and needs no pauses between words. Review sentence drafts before use. Live word and sentence accuracy still need validation.
           </Text>
           <Text style={styles.nextStep}>
             Full ASL needs a trained and evaluated sequence model for a defined vocabulary, continuous sign boundaries, nonmanual grammar and translation. A list of matched word labels is not grammatical translation.

@@ -1,0 +1,3012 @@
+{
+  "source": "https://raw.githubusercontent.com/ASL-LEX/asl-lex/2d74fb6cb4a4209702ef5c18b211e937144ad1fb/data-analysis/scripts/data/signdata-11-5-20.csv",
+  "sourceSha256": "fce376594919f6b25ddb1275c721cee77aae31a8b016e02e2fd82172a33f9443",
+  "sourcePage": "https://asl-lex.org/download.html",
+  "sourceLicense": "CC BY 4.0 per the current ASL-LEX download page; historical repository README says CC BY-NC 4.0.",
+  "policy": "Match existing WLASL1000 glosses to ASL-LEX EntryID (ignore punctuation and trailing _variant number). Rank by highest mean subjective sign-frequency rating across matched variants, descending; break ties alphabetically. Select the first 500 strictly by rank, with no exceptions. Alphabetize display only.",
+  "limitations": "Subjective ratings and English gloss matching, not corpus counts or a universal ASL frequency ranking. A matched variant may differ from the model training variant. No claim about recognition accuracy follows from frequency.",
+  "matchedOriginalEntries": 876,
+  "retainedUserWords": [],
+  "entries": [
+    {
+      "word": "about",
+      "entry": "about_1",
+      "meanFrequency": 5.48,
+      "raters": 25
+    },
+    {
+      "word": "accept",
+      "entry": "accept",
+      "meanFrequency": 5.5,
+      "raters": 28
+    },
+    {
+      "word": "add",
+      "entry": "add",
+      "meanFrequency": 5.188,
+      "raters": 32
+    },
+    {
+      "word": "afternoon",
+      "entry": "afternoon",
+      "meanFrequency": 5.8,
+      "raters": 30
+    },
+    {
+      "word": "again",
+      "entry": "again",
+      "meanFrequency": 6.067,
+      "raters": 30
+    },
+    {
+      "word": "age",
+      "entry": "age",
+      "meanFrequency": 5.4,
+      "raters": 25
+    },
+    {
+      "word": "airplane",
+      "entry": "airplane",
+      "meanFrequency": 4.808,
+      "raters": 26
+    },
+    {
+      "word": "all",
+      "entry": "all",
+      "meanFrequency": 5.3,
+      "raters": 30
+    },
+    {
+      "word": "always",
+      "entry": "always",
+      "meanFrequency": 6.103,
+      "raters": 29
+    },
+    {
+      "word": "analyze",
+      "entry": "analyze",
+      "meanFrequency": 5.259,
+      "raters": 27
+    },
+    {
+      "word": "and",
+      "entry": "and",
+      "meanFrequency": 5.208,
+      "raters": 24
+    },
+    {
+      "word": "angry",
+      "entry": "angry",
+      "meanFrequency": 4.96,
+      "raters": 25
+    },
+    {
+      "word": "animal",
+      "entry": "animal",
+      "meanFrequency": 5.4,
+      "raters": 25
+    },
+    {
+      "word": "answer",
+      "entry": "answer",
+      "meanFrequency": 5.067,
+      "raters": 30
+    },
+    {
+      "word": "any",
+      "entry": "any",
+      "meanFrequency": 5.259,
+      "raters": 27
+    },
+    {
+      "word": "appear",
+      "entry": "appear",
+      "meanFrequency": 4.9,
+      "raters": 30
+    },
+    {
+      "word": "apple",
+      "entry": "apple",
+      "meanFrequency": 5.72,
+      "raters": 25
+    },
+    {
+      "word": "appointment",
+      "entry": "appointment",
+      "meanFrequency": 5.033,
+      "raters": 30
+    },
+    {
+      "word": "area",
+      "entry": "area",
+      "meanFrequency": 5.071,
+      "raters": 28
+    },
+    {
+      "word": "argue",
+      "entry": "argue",
+      "meanFrequency": 5.222,
+      "raters": 27
+    },
+    {
+      "word": "arrest",
+      "entry": "arrest_2",
+      "meanFrequency": 4.889,
+      "raters": 27
+    },
+    {
+      "word": "arrive",
+      "entry": "arrive",
+      "meanFrequency": 5.333,
+      "raters": 27
+    },
+    {
+      "word": "art",
+      "entry": "art",
+      "meanFrequency": 4.767,
+      "raters": 30
+    },
+    {
+      "word": "ask",
+      "entry": "ask",
+      "meanFrequency": 5.24,
+      "raters": 25
+    },
+    {
+      "word": "attention",
+      "entry": "attention",
+      "meanFrequency": 5.8,
+      "raters": 25
+    },
+    {
+      "word": "avoid",
+      "entry": "avoid",
+      "meanFrequency": 5.314,
+      "raters": 35
+    },
+    {
+      "word": "baby",
+      "entry": "baby",
+      "meanFrequency": 5.0,
+      "raters": 30
+    },
+    {
+      "word": "back",
+      "entry": "back",
+      "meanFrequency": 4.731,
+      "raters": 26
+    },
+    {
+      "word": "bacon",
+      "entry": "bacon",
+      "meanFrequency": 5.0,
+      "raters": 25
+    },
+    {
+      "word": "bad",
+      "entry": "bad",
+      "meanFrequency": 5.5,
+      "raters": 24
+    },
+    {
+      "word": "bake",
+      "entry": "bake_2",
+      "meanFrequency": 5.12,
+      "raters": 25
+    },
+    {
+      "word": "barely",
+      "entry": "barely",
+      "meanFrequency": 4.821,
+      "raters": 28
+    },
+    {
+      "word": "bark",
+      "entry": "bark_2",
+      "meanFrequency": 5.222,
+      "raters": 27
+    },
+    {
+      "word": "basketball",
+      "entry": "basketball",
+      "meanFrequency": 5.04,
+      "raters": 25
+    },
+    {
+      "word": "bath",
+      "entry": "bath",
+      "meanFrequency": 4.92,
+      "raters": 25
+    },
+    {
+      "word": "bathroom",
+      "entry": "bathroom",
+      "meanFrequency": 6.556,
+      "raters": 27
+    },
+    {
+      "word": "bed",
+      "entry": "bed_2",
+      "meanFrequency": 6.28,
+      "raters": 25
+    },
+    {
+      "word": "beer",
+      "entry": "beer",
+      "meanFrequency": 4.76,
+      "raters": 25
+    },
+    {
+      "word": "before",
+      "entry": "before",
+      "meanFrequency": 4.667,
+      "raters": 27
+    },
+    {
+      "word": "believe",
+      "entry": "believe_2",
+      "meanFrequency": 5.926,
+      "raters": 27
+    },
+    {
+      "word": "best",
+      "entry": "best",
+      "meanFrequency": 5.926,
+      "raters": 27
+    },
+    {
+      "word": "better",
+      "entry": "better",
+      "meanFrequency": 6.37,
+      "raters": 27
+    },
+    {
+      "word": "bicycle",
+      "entry": "bicycle",
+      "meanFrequency": 5.185,
+      "raters": 27
+    },
+    {
+      "word": "bird",
+      "entry": "bird",
+      "meanFrequency": 5.161,
+      "raters": 31
+    },
+    {
+      "word": "birthday",
+      "entry": "birthday",
+      "meanFrequency": 5.185,
+      "raters": 27
+    },
+    {
+      "word": "black",
+      "entry": "black",
+      "meanFrequency": 5.92,
+      "raters": 25
+    },
+    {
+      "word": "body",
+      "entry": "body",
+      "meanFrequency": 4.84,
+      "raters": 25
+    },
+    {
+      "word": "book",
+      "entry": "book",
+      "meanFrequency": 6.677,
+      "raters": 31
+    },
+    {
+      "word": "bored",
+      "entry": "bored",
+      "meanFrequency": 5.8,
+      "raters": 25
+    },
+    {
+      "word": "borrow",
+      "entry": "borrow",
+      "meanFrequency": 4.96,
+      "raters": 25
+    },
+    {
+      "word": "boss",
+      "entry": "boss",
+      "meanFrequency": 5.24,
+      "raters": 25
+    },
+    {
+      "word": "both",
+      "entry": "both",
+      "meanFrequency": 5.815,
+      "raters": 28
+    },
+    {
+      "word": "bother",
+      "entry": "bother",
+      "meanFrequency": 5.071,
+      "raters": 28
+    },
+    {
+      "word": "bowl",
+      "entry": "bowl",
+      "meanFrequency": 4.933,
+      "raters": 30
+    },
+    {
+      "word": "box",
+      "entry": "box",
+      "meanFrequency": 4.833,
+      "raters": 30
+    },
+    {
+      "word": "boy",
+      "entry": "boy",
+      "meanFrequency": 6.16,
+      "raters": 25
+    },
+    {
+      "word": "boyfriend",
+      "entry": "boyfriend",
+      "meanFrequency": 5.407,
+      "raters": 27
+    },
+    {
+      "word": "bread",
+      "entry": "bread",
+      "meanFrequency": 5.259,
+      "raters": 27
+    },
+    {
+      "word": "break",
+      "entry": "break",
+      "meanFrequency": 5.148,
+      "raters": 27
+    },
+    {
+      "word": "bring",
+      "entry": "bring",
+      "meanFrequency": 6.185,
+      "raters": 27
+    },
+    {
+      "word": "brother",
+      "entry": "brother",
+      "meanFrequency": 5.48,
+      "raters": 25
+    },
+    {
+      "word": "brown",
+      "entry": "brown",
+      "meanFrequency": 4.923,
+      "raters": 26
+    },
+    {
+      "word": "building",
+      "entry": "building",
+      "meanFrequency": 5.36,
+      "raters": 25
+    },
+    {
+      "word": "bus",
+      "entry": "bus",
+      "meanFrequency": 5.2,
+      "raters": 35
+    },
+    {
+      "word": "business",
+      "entry": "business",
+      "meanFrequency": 5.185,
+      "raters": 27
+    },
+    {
+      "word": "busy",
+      "entry": "busy",
+      "meanFrequency": 5.656,
+      "raters": 32
+    },
+    {
+      "word": "but",
+      "entry": "but",
+      "meanFrequency": 5.654,
+      "raters": 26
+    },
+    {
+      "word": "butter",
+      "entry": "butter",
+      "meanFrequency": 5.065,
+      "raters": 31
+    },
+    {
+      "word": "buy",
+      "entry": "buy",
+      "meanFrequency": 5.577,
+      "raters": 26
+    },
+    {
+      "word": "california",
+      "entry": "california",
+      "meanFrequency": 5.107,
+      "raters": 28
+    },
+    {
+      "word": "call",
+      "entry": "call",
+      "meanFrequency": 4.967,
+      "raters": 30
+    },
+    {
+      "word": "calm",
+      "entry": "calm",
+      "meanFrequency": 5.148,
+      "raters": 27
+    },
+    {
+      "word": "camera",
+      "entry": "camera",
+      "meanFrequency": 4.8,
+      "raters": 25
+    },
+    {
+      "word": "can",
+      "entry": "can",
+      "meanFrequency": 6.0,
+      "raters": 26
+    },
+    {
+      "word": "candy",
+      "entry": "candy_2",
+      "meanFrequency": 4.654,
+      "raters": 26
+    },
+    {
+      "word": "caption",
+      "entry": "caption",
+      "meanFrequency": 5.2,
+      "raters": 30
+    },
+    {
+      "word": "car",
+      "entry": "car",
+      "meanFrequency": 6.556,
+      "raters": 27
+    },
+    {
+      "word": "careful",
+      "entry": "careful",
+      "meanFrequency": 5.32,
+      "raters": 25
+    },
+    {
+      "word": "cat",
+      "entry": "cat_2",
+      "meanFrequency": 5.333,
+      "raters": 25
+    },
+    {
+      "word": "celebrate",
+      "entry": "celebrate",
+      "meanFrequency": 4.933,
+      "raters": 30
+    },
+    {
+      "word": "cereal",
+      "entry": "cereal",
+      "meanFrequency": 4.741,
+      "raters": 27
+    },
+    {
+      "word": "chair",
+      "entry": "chair",
+      "meanFrequency": 5.714,
+      "raters": 21
+    },
+    {
+      "word": "champion",
+      "entry": "champion",
+      "meanFrequency": 5.815,
+      "raters": 27
+    },
+    {
+      "word": "change",
+      "entry": "change",
+      "meanFrequency": 6.371,
+      "raters": 35
+    },
+    {
+      "word": "chase",
+      "entry": "chase",
+      "meanFrequency": 4.815,
+      "raters": 27
+    },
+    {
+      "word": "chat",
+      "entry": "chat",
+      "meanFrequency": 5.5,
+      "raters": 30
+    },
+    {
+      "word": "cheap",
+      "entry": "cheap",
+      "meanFrequency": 5.926,
+      "raters": 27
+    },
+    {
+      "word": "check",
+      "entry": "check",
+      "meanFrequency": 5.0,
+      "raters": 24
+    },
+    {
+      "word": "cheese",
+      "entry": "cheese",
+      "meanFrequency": 5.63,
+      "raters": 27
+    },
+    {
+      "word": "child",
+      "entry": "child",
+      "meanFrequency": 4.815,
+      "raters": 27
+    },
+    {
+      "word": "children",
+      "entry": "children",
+      "meanFrequency": 5.467,
+      "raters": 30
+    },
+    {
+      "word": "chocolate",
+      "entry": "chocolate",
+      "meanFrequency": 5.56,
+      "raters": 25
+    },
+    {
+      "word": "city",
+      "entry": "city_2",
+      "meanFrequency": 6.083,
+      "raters": 25
+    },
+    {
+      "word": "class",
+      "entry": "class",
+      "meanFrequency": 4.72,
+      "raters": 25
+    },
+    {
+      "word": "clean",
+      "entry": "clean",
+      "meanFrequency": 4.821,
+      "raters": 30
+    },
+    {
+      "word": "close",
+      "entry": "close ",
+      "meanFrequency": 5.577,
+      "raters": 27
+    },
+    {
+      "word": "clothes",
+      "entry": "clothes",
+      "meanFrequency": 5.367,
+      "raters": 30
+    },
+    {
+      "word": "cloud",
+      "entry": "cloud_4",
+      "meanFrequency": 5.542,
+      "raters": 25
+    },
+    {
+      "word": "coffee",
+      "entry": "coffee",
+      "meanFrequency": 6.387,
+      "raters": 31
+    },
+    {
+      "word": "cold",
+      "entry": "cold",
+      "meanFrequency": 5.9,
+      "raters": 30
+    },
+    {
+      "word": "college",
+      "entry": "college",
+      "meanFrequency": 5.783,
+      "raters": 23
+    },
+    {
+      "word": "color",
+      "entry": "color",
+      "meanFrequency": 5.533,
+      "raters": 30
+    },
+    {
+      "word": "comb",
+      "entry": "comb_2",
+      "meanFrequency": 5.24,
+      "raters": 25
+    },
+    {
+      "word": "comfortable",
+      "entry": "comfortable",
+      "meanFrequency": 4.926,
+      "raters": 28
+    },
+    {
+      "word": "community",
+      "entry": "community",
+      "meanFrequency": 5.1,
+      "raters": 30
+    },
+    {
+      "word": "complain",
+      "entry": "complain",
+      "meanFrequency": 5.519,
+      "raters": 27
+    },
+    {
+      "word": "conflict",
+      "entry": "conflict",
+      "meanFrequency": 4.867,
+      "raters": 30
+    },
+    {
+      "word": "contact",
+      "entry": "contact",
+      "meanFrequency": 5.462,
+      "raters": 26
+    },
+    {
+      "word": "convince",
+      "entry": "convince",
+      "meanFrequency": 4.926,
+      "raters": 27
+    },
+    {
+      "word": "cook",
+      "entry": "cook",
+      "meanFrequency": 6.077,
+      "raters": 26
+    },
+    {
+      "word": "cookie",
+      "entry": "cookie",
+      "meanFrequency": 4.96,
+      "raters": 25
+    },
+    {
+      "word": "cool",
+      "entry": "cool_1",
+      "meanFrequency": 6.037,
+      "raters": 27
+    },
+    {
+      "word": "cost",
+      "entry": "cost",
+      "meanFrequency": 5.138,
+      "raters": 30
+    },
+    {
+      "word": "cup",
+      "entry": "cup",
+      "meanFrequency": 5.742,
+      "raters": 31
+    },
+    {
+      "word": "curious",
+      "entry": "curious",
+      "meanFrequency": 5.852,
+      "raters": 27
+    },
+    {
+      "word": "cute",
+      "entry": "cute_1",
+      "meanFrequency": 5.2,
+      "raters": 25
+    },
+    {
+      "word": "dark",
+      "entry": "dark_1",
+      "meanFrequency": 5.6,
+      "raters": 35
+    },
+    {
+      "word": "daughter",
+      "entry": "daughter",
+      "meanFrequency": 5.5,
+      "raters": 32
+    },
+    {
+      "word": "day",
+      "entry": "day",
+      "meanFrequency": 4.733,
+      "raters": 30
+    },
+    {
+      "word": "deaf",
+      "entry": "deaf_1",
+      "meanFrequency": 6.769,
+      "raters": 27
+    },
+    {
+      "word": "decide",
+      "entry": "decide_2",
+      "meanFrequency": 4.962,
+      "raters": 26
+    },
+    {
+      "word": "decorate",
+      "entry": "decorate_1",
+      "meanFrequency": 5.481,
+      "raters": 27
+    },
+    {
+      "word": "delicious",
+      "entry": "delicious",
+      "meanFrequency": 5.48,
+      "raters": 25
+    },
+    {
+      "word": "dentist",
+      "entry": "dentist_2",
+      "meanFrequency": 5.2,
+      "raters": 25
+    },
+    {
+      "word": "develop",
+      "entry": "develop_1",
+      "meanFrequency": 4.69,
+      "raters": 29
+    },
+    {
+      "word": "different",
+      "entry": "different",
+      "meanFrequency": 5.517,
+      "raters": 30
+    },
+    {
+      "word": "dirty",
+      "entry": "dirty",
+      "meanFrequency": 5.533,
+      "raters": 30
+    },
+    {
+      "word": "discuss",
+      "entry": "discuss",
+      "meanFrequency": 5.767,
+      "raters": 30
+    },
+    {
+      "word": "dissolve",
+      "entry": "dissolve",
+      "meanFrequency": 4.655,
+      "raters": 29
+    },
+    {
+      "word": "doctor",
+      "entry": "doctor_2",
+      "meanFrequency": 5.0,
+      "raters": 25
+    },
+    {
+      "word": "dog",
+      "entry": "dog",
+      "meanFrequency": 6.258,
+      "raters": 31
+    },
+    {
+      "word": "door",
+      "entry": "door",
+      "meanFrequency": 6.32,
+      "raters": 25
+    },
+    {
+      "word": "double",
+      "entry": "double",
+      "meanFrequency": 4.857,
+      "raters": 28
+    },
+    {
+      "word": "doubt",
+      "entry": "doubt",
+      "meanFrequency": 5.44,
+      "raters": 25
+    },
+    {
+      "word": "draw",
+      "entry": "draw",
+      "meanFrequency": 4.741,
+      "raters": 27
+    },
+    {
+      "word": "dress",
+      "entry": "dress",
+      "meanFrequency": 4.72,
+      "raters": 25
+    },
+    {
+      "word": "drink",
+      "entry": "drink",
+      "meanFrequency": 6.348,
+      "raters": 23
+    },
+    {
+      "word": "drive",
+      "entry": "drive",
+      "meanFrequency": 5.813,
+      "raters": 32
+    },
+    {
+      "word": "dry",
+      "entry": "dry",
+      "meanFrequency": 5.593,
+      "raters": 27
+    },
+    {
+      "word": "dumb",
+      "entry": "dumb",
+      "meanFrequency": 4.963,
+      "raters": 27
+    },
+    {
+      "word": "easy",
+      "entry": "easy",
+      "meanFrequency": 5.63,
+      "raters": 27
+    },
+    {
+      "word": "eat",
+      "entry": "eat_1",
+      "meanFrequency": 6.84,
+      "raters": 25
+    },
+    {
+      "word": "egg",
+      "entry": "egg",
+      "meanFrequency": 5.44,
+      "raters": 25
+    },
+    {
+      "word": "email",
+      "entry": "email",
+      "meanFrequency": 5.292,
+      "raters": 24
+    },
+    {
+      "word": "emotion",
+      "entry": "emotion",
+      "meanFrequency": 4.96,
+      "raters": 23
+    },
+    {
+      "word": "end",
+      "entry": "end",
+      "meanFrequency": 5.514,
+      "raters": 35
+    },
+    {
+      "word": "energy",
+      "entry": "energy",
+      "meanFrequency": 5.111,
+      "raters": 27
+    },
+    {
+      "word": "english",
+      "entry": "english",
+      "meanFrequency": 4.645,
+      "raters": 31
+    },
+    {
+      "word": "enjoy",
+      "entry": "enjoy",
+      "meanFrequency": 5.692,
+      "raters": 26
+    },
+    {
+      "word": "enough",
+      "entry": "enough",
+      "meanFrequency": 4.741,
+      "raters": 27
+    },
+    {
+      "word": "enter",
+      "entry": "enter",
+      "meanFrequency": 5.063,
+      "raters": 32
+    },
+    {
+      "word": "environment",
+      "entry": "environment",
+      "meanFrequency": 4.867,
+      "raters": 30
+    },
+    {
+      "word": "equal",
+      "entry": "equal",
+      "meanFrequency": 4.7,
+      "raters": 30
+    },
+    {
+      "word": "escape",
+      "entry": "escape",
+      "meanFrequency": 5.0,
+      "raters": 27
+    },
+    {
+      "word": "evaluate",
+      "entry": "evaluate",
+      "meanFrequency": 4.76,
+      "raters": 25
+    },
+    {
+      "word": "event",
+      "entry": "event",
+      "meanFrequency": 5.577,
+      "raters": 27
+    },
+    {
+      "word": "example",
+      "entry": "example",
+      "meanFrequency": 5.704,
+      "raters": 27
+    },
+    {
+      "word": "excited",
+      "entry": "excited",
+      "meanFrequency": 6.036,
+      "raters": 28
+    },
+    {
+      "word": "exercise",
+      "entry": "exercise",
+      "meanFrequency": 4.9,
+      "raters": 30
+    },
+    {
+      "word": "expect",
+      "entry": "expect",
+      "meanFrequency": 5.37,
+      "raters": 27
+    },
+    {
+      "word": "expensive",
+      "entry": "expensive",
+      "meanFrequency": 5.0,
+      "raters": 30
+    },
+    {
+      "word": "experience",
+      "entry": "experience",
+      "meanFrequency": 4.8,
+      "raters": 25
+    },
+    {
+      "word": "face",
+      "entry": "face",
+      "meanFrequency": 5.114,
+      "raters": 35
+    },
+    {
+      "word": "family",
+      "entry": "family",
+      "meanFrequency": 5.967,
+      "raters": 30
+    },
+    {
+      "word": "fast",
+      "entry": "fast",
+      "meanFrequency": 5.034,
+      "raters": 29
+    },
+    {
+      "word": "father",
+      "entry": "father",
+      "meanFrequency": 6.36,
+      "raters": 25
+    },
+    {
+      "word": "fault",
+      "entry": "fault",
+      "meanFrequency": 4.8,
+      "raters": 30
+    },
+    {
+      "word": "favorite",
+      "entry": "favorite",
+      "meanFrequency": 5.48,
+      "raters": 25
+    },
+    {
+      "word": "feed",
+      "entry": "feed_1",
+      "meanFrequency": 5.038,
+      "raters": 27
+    },
+    {
+      "word": "feel",
+      "entry": "feel",
+      "meanFrequency": 5.655,
+      "raters": 29
+    },
+    {
+      "word": "finally",
+      "entry": "finally",
+      "meanFrequency": 5.222,
+      "raters": 27
+    },
+    {
+      "word": "find",
+      "entry": "find",
+      "meanFrequency": 5.28,
+      "raters": 25
+    },
+    {
+      "word": "fine",
+      "entry": "fine_2",
+      "meanFrequency": 6.185,
+      "raters": 27
+    },
+    {
+      "word": "finish",
+      "entry": "finish",
+      "meanFrequency": 5.8,
+      "raters": 25
+    },
+    {
+      "word": "first",
+      "entry": "first",
+      "meanFrequency": 5.767,
+      "raters": 30
+    },
+    {
+      "word": "flower",
+      "entry": "flower",
+      "meanFrequency": 4.92,
+      "raters": 25
+    },
+    {
+      "word": "fold",
+      "entry": "fold_2",
+      "meanFrequency": 5.36,
+      "raters": 25
+    },
+    {
+      "word": "follow",
+      "entry": "follow_1",
+      "meanFrequency": 5.481,
+      "raters": 27
+    },
+    {
+      "word": "football",
+      "entry": "football",
+      "meanFrequency": 5.37,
+      "raters": 27
+    },
+    {
+      "word": "for",
+      "entry": "for",
+      "meanFrequency": 5.08,
+      "raters": 25
+    },
+    {
+      "word": "forest",
+      "entry": "forest",
+      "meanFrequency": 5.63,
+      "raters": 27
+    },
+    {
+      "word": "friday",
+      "entry": "friday",
+      "meanFrequency": 6.32,
+      "raters": 25
+    },
+    {
+      "word": "friend",
+      "entry": "friend",
+      "meanFrequency": 6.462,
+      "raters": 26
+    },
+    {
+      "word": "from",
+      "entry": "from",
+      "meanFrequency": 4.889,
+      "raters": 27
+    },
+    {
+      "word": "fruit",
+      "entry": "fruit",
+      "meanFrequency": 5.3,
+      "raters": 30
+    },
+    {
+      "word": "full",
+      "entry": "full",
+      "meanFrequency": 5.852,
+      "raters": 27
+    },
+    {
+      "word": "funny",
+      "entry": "funny",
+      "meanFrequency": 5.552,
+      "raters": 30
+    },
+    {
+      "word": "future",
+      "entry": "future",
+      "meanFrequency": 4.9,
+      "raters": 30
+    },
+    {
+      "word": "game",
+      "entry": "game",
+      "meanFrequency": 5.833,
+      "raters": 30
+    },
+    {
+      "word": "get",
+      "entry": "get",
+      "meanFrequency": 5.76,
+      "raters": 25
+    },
+    {
+      "word": "give",
+      "entry": "give",
+      "meanFrequency": 5.667,
+      "raters": 27
+    },
+    {
+      "word": "go",
+      "entry": "go",
+      "meanFrequency": 6.033,
+      "raters": 30
+    },
+    {
+      "word": "goal",
+      "entry": "goal",
+      "meanFrequency": 5.0,
+      "raters": 30
+    },
+    {
+      "word": "gone",
+      "entry": "gone",
+      "meanFrequency": 5.308,
+      "raters": 27
+    },
+    {
+      "word": "good",
+      "entry": "good",
+      "meanFrequency": 6.44,
+      "raters": 25
+    },
+    {
+      "word": "green",
+      "entry": "green",
+      "meanFrequency": 5.4,
+      "raters": 25
+    },
+    {
+      "word": "group",
+      "entry": "group",
+      "meanFrequency": 4.867,
+      "raters": 30
+    },
+    {
+      "word": "grow",
+      "entry": "grow",
+      "meanFrequency": 4.84,
+      "raters": 25
+    },
+    {
+      "word": "guess",
+      "entry": "guess_1",
+      "meanFrequency": 4.897,
+      "raters": 29
+    },
+    {
+      "word": "gum",
+      "entry": "gum",
+      "meanFrequency": 5.037,
+      "raters": 27
+    },
+    {
+      "word": "hair",
+      "entry": "hair",
+      "meanFrequency": 5.444,
+      "raters": 27
+    },
+    {
+      "word": "half",
+      "entry": "half",
+      "meanFrequency": 5.0,
+      "raters": 27
+    },
+    {
+      "word": "happen",
+      "entry": "happen",
+      "meanFrequency": 5.208,
+      "raters": 24
+    },
+    {
+      "word": "happy",
+      "entry": "happy",
+      "meanFrequency": 5.7,
+      "raters": 30
+    },
+    {
+      "word": "hard",
+      "entry": "hard",
+      "meanFrequency": 5.793,
+      "raters": 29
+    },
+    {
+      "word": "hate",
+      "entry": "hate",
+      "meanFrequency": 5.407,
+      "raters": 27
+    },
+    {
+      "word": "have",
+      "entry": "have",
+      "meanFrequency": 6.125,
+      "raters": 24
+    },
+    {
+      "word": "headache",
+      "entry": "headache",
+      "meanFrequency": 5.48,
+      "raters": 25
+    },
+    {
+      "word": "hear",
+      "entry": "hear_1",
+      "meanFrequency": 5.029,
+      "raters": 35
+    },
+    {
+      "word": "hearing",
+      "entry": "hearing",
+      "meanFrequency": 5.857,
+      "raters": 28
+    },
+    {
+      "word": "hello",
+      "entry": "hello",
+      "meanFrequency": 6.519,
+      "raters": 27
+    },
+    {
+      "word": "help",
+      "entry": "help",
+      "meanFrequency": 6.148,
+      "raters": 27
+    },
+    {
+      "word": "here",
+      "entry": "here",
+      "meanFrequency": 5.704,
+      "raters": 27
+    },
+    {
+      "word": "history",
+      "entry": "history",
+      "meanFrequency": 4.778,
+      "raters": 27
+    },
+    {
+      "word": "home",
+      "entry": "home",
+      "meanFrequency": 6.48,
+      "raters": 25
+    },
+    {
+      "word": "homework",
+      "entry": "homework",
+      "meanFrequency": 5.44,
+      "raters": 25
+    },
+    {
+      "word": "hope",
+      "entry": "hope",
+      "meanFrequency": 4.741,
+      "raters": 27
+    },
+    {
+      "word": "hot",
+      "entry": "hot",
+      "meanFrequency": 6.296,
+      "raters": 27
+    },
+    {
+      "word": "hour",
+      "entry": "hour",
+      "meanFrequency": 5.333,
+      "raters": 30
+    },
+    {
+      "word": "house",
+      "entry": "house",
+      "meanFrequency": 5.385,
+      "raters": 26
+    },
+    {
+      "word": "how",
+      "entry": "how_2",
+      "meanFrequency": 5.815,
+      "raters": 27
+    },
+    {
+      "word": "hungry",
+      "entry": "hungry",
+      "meanFrequency": 5.767,
+      "raters": 30
+    },
+    {
+      "word": "hurry",
+      "entry": "hurry",
+      "meanFrequency": 5.296,
+      "raters": 27
+    },
+    {
+      "word": "hurt",
+      "entry": "hurt",
+      "meanFrequency": 4.886,
+      "raters": 35
+    },
+    {
+      "word": "husband",
+      "entry": "husband",
+      "meanFrequency": 5.0,
+      "raters": 27
+    },
+    {
+      "word": "ice cream",
+      "entry": "icecream",
+      "meanFrequency": 4.741,
+      "raters": 27
+    },
+    {
+      "word": "idea",
+      "entry": "idea",
+      "meanFrequency": 5.111,
+      "raters": 27
+    },
+    {
+      "word": "if",
+      "entry": "if",
+      "meanFrequency": 5.926,
+      "raters": 27
+    },
+    {
+      "word": "ignore",
+      "entry": "ignore",
+      "meanFrequency": 4.731,
+      "raters": 26
+    },
+    {
+      "word": "important",
+      "entry": "important",
+      "meanFrequency": 5.84,
+      "raters": 25
+    },
+    {
+      "word": "improve",
+      "entry": "improve",
+      "meanFrequency": 5.107,
+      "raters": 28
+    },
+    {
+      "word": "in",
+      "entry": "in",
+      "meanFrequency": 4.867,
+      "raters": 30
+    },
+    {
+      "word": "independent",
+      "entry": "independent",
+      "meanFrequency": 4.793,
+      "raters": 29
+    },
+    {
+      "word": "inside",
+      "entry": "inside",
+      "meanFrequency": 5.536,
+      "raters": 28
+    },
+    {
+      "word": "insurance",
+      "entry": "insurance",
+      "meanFrequency": 4.926,
+      "raters": 27
+    },
+    {
+      "word": "interest",
+      "entry": "interest",
+      "meanFrequency": 4.92,
+      "raters": 25
+    },
+    {
+      "word": "internet",
+      "entry": "internet",
+      "meanFrequency": 6.167,
+      "raters": 30
+    },
+    {
+      "word": "interpret",
+      "entry": "interpret",
+      "meanFrequency": 4.933,
+      "raters": 30
+    },
+    {
+      "word": "jacket",
+      "entry": "jacket_2",
+      "meanFrequency": 5.333,
+      "raters": 27
+    },
+    {
+      "word": "join",
+      "entry": "join",
+      "meanFrequency": 4.852,
+      "raters": 27
+    },
+    {
+      "word": "keep",
+      "entry": "keep",
+      "meanFrequency": 5.107,
+      "raters": 28
+    },
+    {
+      "word": "kiss",
+      "entry": "kiss",
+      "meanFrequency": 5.846,
+      "raters": 26
+    },
+    {
+      "word": "kitchen",
+      "entry": "kitchen",
+      "meanFrequency": 6.038,
+      "raters": 26
+    },
+    {
+      "word": "knife",
+      "entry": "knife_2",
+      "meanFrequency": 5.72,
+      "raters": 25
+    },
+    {
+      "word": "know",
+      "entry": "know",
+      "meanFrequency": 5.767,
+      "raters": 30
+    },
+    {
+      "word": "language",
+      "entry": "language",
+      "meanFrequency": 5.387,
+      "raters": 31
+    },
+    {
+      "word": "last",
+      "entry": "last",
+      "meanFrequency": 4.875,
+      "raters": 24
+    },
+    {
+      "word": "late",
+      "entry": "late",
+      "meanFrequency": 5.067,
+      "raters": 30
+    },
+    {
+      "word": "later",
+      "entry": "later",
+      "meanFrequency": 5.333,
+      "raters": 27
+    },
+    {
+      "word": "laugh",
+      "entry": "laugh",
+      "meanFrequency": 5.267,
+      "raters": 30
+    },
+    {
+      "word": "law",
+      "entry": "law",
+      "meanFrequency": 5.074,
+      "raters": 27
+    },
+    {
+      "word": "lazy",
+      "entry": "lazy",
+      "meanFrequency": 5.407,
+      "raters": 27
+    },
+    {
+      "word": "lead",
+      "entry": "lead",
+      "meanFrequency": 5.0,
+      "raters": 30
+    },
+    {
+      "word": "learn",
+      "entry": "learn",
+      "meanFrequency": 6.2,
+      "raters": 25
+    },
+    {
+      "word": "lecture",
+      "entry": "lecture",
+      "meanFrequency": 4.733,
+      "raters": 30
+    },
+    {
+      "word": "library",
+      "entry": "library",
+      "meanFrequency": 4.963,
+      "raters": 27
+    },
+    {
+      "word": "lie",
+      "entry": "lie",
+      "meanFrequency": 4.917,
+      "raters": 24
+    },
+    {
+      "word": "light",
+      "entry": "light_2",
+      "meanFrequency": 6.296,
+      "raters": 27
+    },
+    {
+      "word": "like",
+      "entry": "like",
+      "meanFrequency": 6.222,
+      "raters": 27
+    },
+    {
+      "word": "list",
+      "entry": "list",
+      "meanFrequency": 4.852,
+      "raters": 27
+    },
+    {
+      "word": "listen",
+      "entry": "listen",
+      "meanFrequency": 5.889,
+      "raters": 27
+    },
+    {
+      "word": "live",
+      "entry": "live_2",
+      "meanFrequency": 5.44,
+      "raters": 25
+    },
+    {
+      "word": "lock",
+      "entry": "lock",
+      "meanFrequency": 4.778,
+      "raters": 27
+    },
+    {
+      "word": "lousy",
+      "entry": "lousy",
+      "meanFrequency": 5.333,
+      "raters": 27
+    },
+    {
+      "word": "love",
+      "entry": "love",
+      "meanFrequency": 6.556,
+      "raters": 27
+    },
+    {
+      "word": "lucky",
+      "entry": "lucky",
+      "meanFrequency": 4.704,
+      "raters": 27
+    },
+    {
+      "word": "lunch",
+      "entry": "lunch_1",
+      "meanFrequency": 5.593,
+      "raters": 27
+    },
+    {
+      "word": "machine",
+      "entry": "machine",
+      "meanFrequency": 4.72,
+      "raters": 25
+    },
+    {
+      "word": "mad",
+      "entry": "mad",
+      "meanFrequency": 5.593,
+      "raters": 27
+    },
+    {
+      "word": "make",
+      "entry": "make",
+      "meanFrequency": 5.567,
+      "raters": 30
+    },
+    {
+      "word": "man",
+      "entry": "man",
+      "meanFrequency": 5.75,
+      "raters": 28
+    },
+    {
+      "word": "many",
+      "entry": "many",
+      "meanFrequency": 5.423,
+      "raters": 26
+    },
+    {
+      "word": "math",
+      "entry": "math",
+      "meanFrequency": 5.32,
+      "raters": 25
+    },
+    {
+      "word": "maybe",
+      "entry": "maybe",
+      "meanFrequency": 6.04,
+      "raters": 25
+    },
+    {
+      "word": "mean",
+      "entry": "mean_2",
+      "meanFrequency": 5.0,
+      "raters": 30
+    },
+    {
+      "word": "measure",
+      "entry": "measure_2",
+      "meanFrequency": 5.28,
+      "raters": 25
+    },
+    {
+      "word": "meat",
+      "entry": "meat_2",
+      "meanFrequency": 4.96,
+      "raters": 27
+    },
+    {
+      "word": "medicine",
+      "entry": "medicine",
+      "meanFrequency": 4.9,
+      "raters": 30
+    },
+    {
+      "word": "meet",
+      "entry": "meet",
+      "meanFrequency": 5.423,
+      "raters": 26
+    },
+    {
+      "word": "meeting",
+      "entry": "meeting",
+      "meanFrequency": 5.621,
+      "raters": 29
+    },
+    {
+      "word": "memorize",
+      "entry": "memorize",
+      "meanFrequency": 4.962,
+      "raters": 27
+    },
+    {
+      "word": "milk",
+      "entry": "milk",
+      "meanFrequency": 6.233,
+      "raters": 30
+    },
+    {
+      "word": "minute",
+      "entry": "minute",
+      "meanFrequency": 4.792,
+      "raters": 24
+    },
+    {
+      "word": "mirror",
+      "entry": "mirror",
+      "meanFrequency": 4.88,
+      "raters": 25
+    },
+    {
+      "word": "miss",
+      "entry": "miss",
+      "meanFrequency": 5.423,
+      "raters": 27
+    },
+    {
+      "word": "monday",
+      "entry": "monday",
+      "meanFrequency": 5.69,
+      "raters": 29
+    },
+    {
+      "word": "money",
+      "entry": "money_2",
+      "meanFrequency": 6.593,
+      "raters": 27
+    },
+    {
+      "word": "month",
+      "entry": "month",
+      "meanFrequency": 6.097,
+      "raters": 31
+    },
+    {
+      "word": "more",
+      "entry": "more",
+      "meanFrequency": 6.458,
+      "raters": 24
+    },
+    {
+      "word": "morning",
+      "entry": "morning",
+      "meanFrequency": 6.1,
+      "raters": 30
+    },
+    {
+      "word": "most",
+      "entry": "most",
+      "meanFrequency": 5.657,
+      "raters": 35
+    },
+    {
+      "word": "mother",
+      "entry": "mother",
+      "meanFrequency": 6.6,
+      "raters": 25
+    },
+    {
+      "word": "move",
+      "entry": "move",
+      "meanFrequency": 5.0,
+      "raters": 26
+    },
+    {
+      "word": "movie",
+      "entry": "movie",
+      "meanFrequency": 5.37,
+      "raters": 27
+    },
+    {
+      "word": "much",
+      "entry": "much",
+      "meanFrequency": 5.32,
+      "raters": 25
+    },
+    {
+      "word": "must",
+      "entry": "must",
+      "meanFrequency": 6.407,
+      "raters": 27
+    },
+    {
+      "word": "my",
+      "entry": "my",
+      "meanFrequency": 6.31,
+      "raters": 29
+    },
+    {
+      "word": "name",
+      "entry": "name",
+      "meanFrequency": 5.926,
+      "raters": 27
+    },
+    {
+      "word": "near",
+      "entry": "near",
+      "meanFrequency": 5.333,
+      "raters": 27
+    },
+    {
+      "word": "necklace",
+      "entry": "necklace_3",
+      "meanFrequency": 5.774,
+      "raters": 31
+    },
+    {
+      "word": "need",
+      "entry": "need",
+      "meanFrequency": 5.4,
+      "raters": 30
+    },
+    {
+      "word": "negative",
+      "entry": "negative",
+      "meanFrequency": 4.933,
+      "raters": 30
+    },
+    {
+      "word": "never",
+      "entry": "never",
+      "meanFrequency": 4.8,
+      "raters": 30
+    },
+    {
+      "word": "new",
+      "entry": "new",
+      "meanFrequency": 5.6,
+      "raters": 25
+    },
+    {
+      "word": "next",
+      "entry": "next",
+      "meanFrequency": 4.9,
+      "raters": 30
+    },
+    {
+      "word": "nice",
+      "entry": "nice",
+      "meanFrequency": 5.692,
+      "raters": 27
+    },
+    {
+      "word": "night",
+      "entry": "night",
+      "meanFrequency": 6.032,
+      "raters": 31
+    },
+    {
+      "word": "no",
+      "entry": "no",
+      "meanFrequency": 6.433,
+      "raters": 30
+    },
+    {
+      "word": "noon",
+      "entry": "noon_2",
+      "meanFrequency": 5.308,
+      "raters": 27
+    },
+    {
+      "word": "north",
+      "entry": "north",
+      "meanFrequency": 4.8,
+      "raters": 30
+    },
+    {
+      "word": "not",
+      "entry": "not",
+      "meanFrequency": 5.6,
+      "raters": 35
+    },
+    {
+      "word": "now",
+      "entry": "now",
+      "meanFrequency": 5.8,
+      "raters": 30
+    },
+    {
+      "word": "off",
+      "entry": "off",
+      "meanFrequency": 5.2,
+      "raters": 35
+    },
+    {
+      "word": "office",
+      "entry": "office",
+      "meanFrequency": 5.333,
+      "raters": 30
+    },
+    {
+      "word": "often",
+      "entry": "often",
+      "meanFrequency": 5.133,
+      "raters": 30
+    },
+    {
+      "word": "ok",
+      "entry": "ok",
+      "meanFrequency": 6.519,
+      "raters": 27
+    },
+    {
+      "word": "old",
+      "entry": "old",
+      "meanFrequency": 5.038,
+      "raters": 26
+    },
+    {
+      "word": "one",
+      "entry": "one",
+      "meanFrequency": 6.148,
+      "raters": 27
+    },
+    {
+      "word": "onion",
+      "entry": "onion",
+      "meanFrequency": 5.28,
+      "raters": 25
+    },
+    {
+      "word": "open",
+      "entry": "open",
+      "meanFrequency": 5.0,
+      "raters": 26
+    },
+    {
+      "word": "opinion",
+      "entry": "opinion_1",
+      "meanFrequency": 5.033,
+      "raters": 30
+    },
+    {
+      "word": "orange",
+      "entry": "orange",
+      "meanFrequency": 4.962,
+      "raters": 26
+    },
+    {
+      "word": "other",
+      "entry": "other",
+      "meanFrequency": 5.5,
+      "raters": 24
+    },
+    {
+      "word": "outside",
+      "entry": "outside",
+      "meanFrequency": 5.367,
+      "raters": 30
+    },
+    {
+      "word": "pants",
+      "entry": "pants_2",
+      "meanFrequency": 5.435,
+      "raters": 25
+    },
+    {
+      "word": "paper",
+      "entry": "paper",
+      "meanFrequency": 6.484,
+      "raters": 31
+    },
+    {
+      "word": "parents",
+      "entry": "parents",
+      "meanFrequency": 6.56,
+      "raters": 25
+    },
+    {
+      "word": "party",
+      "entry": "party_1",
+      "meanFrequency": 5.333,
+      "raters": 27
+    },
+    {
+      "word": "patient",
+      "entry": "patient_2",
+      "meanFrequency": 5.56,
+      "raters": 25
+    },
+    {
+      "word": "pay",
+      "entry": "pay",
+      "meanFrequency": 5.038,
+      "raters": 27
+    },
+    {
+      "word": "people",
+      "entry": "people",
+      "meanFrequency": 6.0,
+      "raters": 30
+    },
+    {
+      "word": "person",
+      "entry": "person",
+      "meanFrequency": 4.84,
+      "raters": 25
+    },
+    {
+      "word": "perspective",
+      "entry": "perspective",
+      "meanFrequency": 4.821,
+      "raters": 28
+    },
+    {
+      "word": "picture",
+      "entry": "picture",
+      "meanFrequency": 6.259,
+      "raters": 27
+    },
+    {
+      "word": "pillow",
+      "entry": "pillow_2",
+      "meanFrequency": 4.923,
+      "raters": 27
+    },
+    {
+      "word": "pizza",
+      "entry": "pizza_2",
+      "meanFrequency": 5.188,
+      "raters": 32
+    },
+    {
+      "word": "place",
+      "entry": "place",
+      "meanFrequency": 5.778,
+      "raters": 27
+    },
+    {
+      "word": "plan",
+      "entry": "plan",
+      "meanFrequency": 5.633,
+      "raters": 30
+    },
+    {
+      "word": "play",
+      "entry": "play",
+      "meanFrequency": 5.967,
+      "raters": 30
+    },
+    {
+      "word": "please",
+      "entry": "please",
+      "meanFrequency": 6.16,
+      "raters": 25
+    },
+    {
+      "word": "popular",
+      "entry": "popular",
+      "meanFrequency": 5.2,
+      "raters": 30
+    },
+    {
+      "word": "possible",
+      "entry": "possible",
+      "meanFrequency": 4.792,
+      "raters": 24
+    },
+    {
+      "word": "postpone",
+      "entry": "postpone",
+      "meanFrequency": 5.107,
+      "raters": 28
+    },
+    {
+      "word": "potato",
+      "entry": "potato",
+      "meanFrequency": 4.8,
+      "raters": 25
+    },
+    {
+      "word": "practice",
+      "entry": "practice",
+      "meanFrequency": 5.519,
+      "raters": 27
+    },
+    {
+      "word": "predict",
+      "entry": "predict",
+      "meanFrequency": 4.963,
+      "raters": 27
+    },
+    {
+      "word": "pretty",
+      "entry": "pretty",
+      "meanFrequency": 5.533,
+      "raters": 30
+    },
+    {
+      "word": "print",
+      "entry": "print",
+      "meanFrequency": 4.92,
+      "raters": 25
+    },
+    {
+      "word": "problem",
+      "entry": "problem_2",
+      "meanFrequency": 5.542,
+      "raters": 24
+    },
+    {
+      "word": "program",
+      "entry": "program",
+      "meanFrequency": 5.259,
+      "raters": 27
+    },
+    {
+      "word": "project",
+      "entry": "project",
+      "meanFrequency": 4.7,
+      "raters": 30
+    },
+    {
+      "word": "promise",
+      "entry": "promise",
+      "meanFrequency": 4.839,
+      "raters": 31
+    },
+    {
+      "word": "provide",
+      "entry": "provide",
+      "meanFrequency": 5.071,
+      "raters": 28
+    },
+    {
+      "word": "purple",
+      "entry": "purple",
+      "meanFrequency": 4.92,
+      "raters": 25
+    },
+    {
+      "word": "put",
+      "entry": "put",
+      "meanFrequency": 5.074,
+      "raters": 27
+    },
+    {
+      "word": "puzzled",
+      "entry": "puzzled",
+      "meanFrequency": 4.92,
+      "raters": 25
+    },
+    {
+      "word": "quiet",
+      "entry": "quiet",
+      "meanFrequency": 5.3,
+      "raters": 30
+    },
+    {
+      "word": "quit",
+      "entry": "quit",
+      "meanFrequency": 4.778,
+      "raters": 27
+    },
+    {
+      "word": "rain",
+      "entry": "rain",
+      "meanFrequency": 5.76,
+      "raters": 25
+    },
+    {
+      "word": "read",
+      "entry": "read",
+      "meanFrequency": 6.387,
+      "raters": 31
+    },
+    {
+      "word": "ready",
+      "entry": "ready",
+      "meanFrequency": 6.37,
+      "raters": 27
+    },
+    {
+      "word": "really",
+      "entry": "really",
+      "meanFrequency": 5.8,
+      "raters": 25
+    },
+    {
+      "word": "reason",
+      "entry": "reason",
+      "meanFrequency": 5.433,
+      "raters": 30
+    },
+    {
+      "word": "red",
+      "entry": "red",
+      "meanFrequency": 5.069,
+      "raters": 29
+    },
+    {
+      "word": "remember",
+      "entry": "remember",
+      "meanFrequency": 5.7,
+      "raters": 30
+    },
+    {
+      "word": "respect",
+      "entry": "respect",
+      "meanFrequency": 5.5,
+      "raters": 30
+    },
+    {
+      "word": "rest",
+      "entry": "rest",
+      "meanFrequency": 5.375,
+      "raters": 24
+    },
+    {
+      "word": "restaurant",
+      "entry": "restaurant",
+      "meanFrequency": 5.889,
+      "raters": 27
+    },
+    {
+      "word": "ride",
+      "entry": "ride_1",
+      "meanFrequency": 4.963,
+      "raters": 27
+    },
+    {
+      "word": "right",
+      "entry": "right_1",
+      "meanFrequency": 6.0,
+      "raters": 30
+    },
+    {
+      "word": "room",
+      "entry": "room",
+      "meanFrequency": 5.742,
+      "raters": 31
+    },
+    {
+      "word": "rule",
+      "entry": "rule",
+      "meanFrequency": 4.889,
+      "raters": 27
+    },
+    {
+      "word": "run",
+      "entry": "run",
+      "meanFrequency": 5.2,
+      "raters": 25
+    },
+    {
+      "word": "sad",
+      "entry": "sad",
+      "meanFrequency": 5.24,
+      "raters": 25
+    },
+    {
+      "word": "salad",
+      "entry": "salad",
+      "meanFrequency": 4.704,
+      "raters": 27
+    },
+    {
+      "word": "salt",
+      "entry": "salt",
+      "meanFrequency": 4.92,
+      "raters": 25
+    },
+    {
+      "word": "same",
+      "entry": "same_1",
+      "meanFrequency": 5.84,
+      "raters": 25
+    },
+    {
+      "word": "saturday",
+      "entry": "saturday",
+      "meanFrequency": 5.889,
+      "raters": 27
+    },
+    {
+      "word": "save",
+      "entry": "save",
+      "meanFrequency": 5.154,
+      "raters": 27
+    },
+    {
+      "word": "schedule",
+      "entry": "schedule",
+      "meanFrequency": 5.92,
+      "raters": 25
+    },
+    {
+      "word": "school",
+      "entry": "school",
+      "meanFrequency": 6.4,
+      "raters": 30
+    },
+    {
+      "word": "science",
+      "entry": "science",
+      "meanFrequency": 4.852,
+      "raters": 27
+    },
+    {
+      "word": "see",
+      "entry": "see",
+      "meanFrequency": 6.333,
+      "raters": 30
+    },
+    {
+      "word": "seem",
+      "entry": "seem",
+      "meanFrequency": 5.148,
+      "raters": 27
+    },
+    {
+      "word": "sell",
+      "entry": "sell",
+      "meanFrequency": 4.966,
+      "raters": 29
+    },
+    {
+      "word": "serious",
+      "entry": "serious",
+      "meanFrequency": 5.125,
+      "raters": 24
+    },
+    {
+      "word": "share",
+      "entry": "share",
+      "meanFrequency": 5.688,
+      "raters": 32
+    },
+    {
+      "word": "shirt",
+      "entry": "shirt_2",
+      "meanFrequency": 4.923,
+      "raters": 27
+    },
+    {
+      "word": "shoes",
+      "entry": "shoes",
+      "meanFrequency": 6.074,
+      "raters": 27
+    },
+    {
+      "word": "shop",
+      "entry": "shop_2",
+      "meanFrequency": 6.231,
+      "raters": 26
+    },
+    {
+      "word": "should",
+      "entry": "should",
+      "meanFrequency": 6.111,
+      "raters": 27
+    },
+    {
+      "word": "show",
+      "entry": "show",
+      "meanFrequency": 5.333,
+      "raters": 30
+    },
+    {
+      "word": "shower",
+      "entry": "shower",
+      "meanFrequency": 5.593,
+      "raters": 27
+    },
+    {
+      "word": "sick",
+      "entry": "sick",
+      "meanFrequency": 5.32,
+      "raters": 25
+    },
+    {
+      "word": "sign",
+      "entry": "sign",
+      "meanFrequency": 5.9,
+      "raters": 30
+    },
+    {
+      "word": "silly",
+      "entry": "silly",
+      "meanFrequency": 5.4,
+      "raters": 25
+    },
+    {
+      "word": "since",
+      "entry": "since",
+      "meanFrequency": 5.115,
+      "raters": 26
+    },
+    {
+      "word": "sister",
+      "entry": "sister",
+      "meanFrequency": 5.385,
+      "raters": 26
+    },
+    {
+      "word": "sit",
+      "entry": "sit",
+      "meanFrequency": 5.615,
+      "raters": 26
+    },
+    {
+      "word": "situation",
+      "entry": "situation",
+      "meanFrequency": 4.857,
+      "raters": 28
+    },
+    {
+      "word": "sleep",
+      "entry": "sleep",
+      "meanFrequency": 6.6,
+      "raters": 25
+    },
+    {
+      "word": "small",
+      "entry": "small",
+      "meanFrequency": 5.0,
+      "raters": 26
+    },
+    {
+      "word": "smart",
+      "entry": "smart",
+      "meanFrequency": 5.222,
+      "raters": 27
+    },
+    {
+      "word": "smile",
+      "entry": "smile_2",
+      "meanFrequency": 5.56,
+      "raters": 25
+    },
+    {
+      "word": "snow",
+      "entry": "snow_2",
+      "meanFrequency": 5.36,
+      "raters": 25
+    },
+    {
+      "word": "soap",
+      "entry": "soap",
+      "meanFrequency": 5.097,
+      "raters": 31
+    },
+    {
+      "word": "socks",
+      "entry": "socks",
+      "meanFrequency": 5.12,
+      "raters": 25
+    },
+    {
+      "word": "some",
+      "entry": "some",
+      "meanFrequency": 5.625,
+      "raters": 24
+    },
+    {
+      "word": "sometimes",
+      "entry": "sometimes",
+      "meanFrequency": 5.813,
+      "raters": 32
+    },
+    {
+      "word": "son",
+      "entry": "son",
+      "meanFrequency": 4.88,
+      "raters": 25
+    },
+    {
+      "word": "soon",
+      "entry": "soon_1",
+      "meanFrequency": 6.259,
+      "raters": 27
+    },
+    {
+      "word": "sorry",
+      "entry": "sorry",
+      "meanFrequency": 5.633,
+      "raters": 30
+    },
+    {
+      "word": "sound",
+      "entry": "sound",
+      "meanFrequency": 4.679,
+      "raters": 28
+    },
+    {
+      "word": "special",
+      "entry": "special_2",
+      "meanFrequency": 5.1,
+      "raters": 30
+    },
+    {
+      "word": "stairs",
+      "entry": "stairs",
+      "meanFrequency": 5.4,
+      "raters": 25
+    },
+    {
+      "word": "stand",
+      "entry": "stand_1",
+      "meanFrequency": 5.219,
+      "raters": 32
+    },
+    {
+      "word": "star",
+      "entry": "star",
+      "meanFrequency": 5.083,
+      "raters": 24
+    },
+    {
+      "word": "start",
+      "entry": "start",
+      "meanFrequency": 5.76,
+      "raters": 25
+    },
+    {
+      "word": "stay",
+      "entry": "stay",
+      "meanFrequency": 5.815,
+      "raters": 27
+    },
+    {
+      "word": "stop",
+      "entry": "stop",
+      "meanFrequency": 5.704,
+      "raters": 27
+    },
+    {
+      "word": "story",
+      "entry": "story_2",
+      "meanFrequency": 4.933,
+      "raters": 30
+    },
+    {
+      "word": "straight",
+      "entry": "straight",
+      "meanFrequency": 5.571,
+      "raters": 35
+    },
+    {
+      "word": "strange",
+      "entry": "strange",
+      "meanFrequency": 5.0,
+      "raters": 30
+    },
+    {
+      "word": "street",
+      "entry": "street",
+      "meanFrequency": 5.29,
+      "raters": 31
+    },
+    {
+      "word": "stress",
+      "entry": "stress",
+      "meanFrequency": 5.125,
+      "raters": 24
+    },
+    {
+      "word": "strong",
+      "entry": "strong",
+      "meanFrequency": 4.926,
+      "raters": 27
+    },
+    {
+      "word": "struggle",
+      "entry": "struggle",
+      "meanFrequency": 5.0,
+      "raters": 28
+    },
+    {
+      "word": "student",
+      "entry": "student",
+      "meanFrequency": 4.704,
+      "raters": 27
+    },
+    {
+      "word": "study",
+      "entry": "study",
+      "meanFrequency": 5.444,
+      "raters": 27
+    },
+    {
+      "word": "summer",
+      "entry": "summer",
+      "meanFrequency": 4.958,
+      "raters": 24
+    },
+    {
+      "word": "summon",
+      "entry": "summon",
+      "meanFrequency": 6.042,
+      "raters": 25
+    },
+    {
+      "word": "sweet",
+      "entry": "sweet",
+      "meanFrequency": 5.31,
+      "raters": 29
+    },
+    {
+      "word": "table",
+      "entry": "table",
+      "meanFrequency": 6.0,
+      "raters": 25
+    },
+    {
+      "word": "take",
+      "entry": "take",
+      "meanFrequency": 5.037,
+      "raters": 27
+    },
+    {
+      "word": "talk",
+      "entry": "talk",
+      "meanFrequency": 5.333,
+      "raters": 30
+    },
+    {
+      "word": "tall",
+      "entry": "tall_2",
+      "meanFrequency": 5.0,
+      "raters": 25
+    },
+    {
+      "word": "teach",
+      "entry": "teach_2",
+      "meanFrequency": 6.6,
+      "raters": 25
+    },
+    {
+      "word": "teacher",
+      "entry": "teacher",
+      "meanFrequency": 6.074,
+      "raters": 27
+    },
+    {
+      "word": "tease",
+      "entry": "tease",
+      "meanFrequency": 5.556,
+      "raters": 27
+    },
+    {
+      "word": "tell",
+      "entry": "tell",
+      "meanFrequency": 5.933,
+      "raters": 30
+    },
+    {
+      "word": "test",
+      "entry": "test",
+      "meanFrequency": 4.741,
+      "raters": 27
+    },
+    {
+      "word": "thank you",
+      "entry": "thank_you",
+      "meanFrequency": 6.571,
+      "raters": 28
+    },
+    {
+      "word": "that",
+      "entry": "that",
+      "meanFrequency": 5.5,
+      "raters": 30
+    },
+    {
+      "word": "there",
+      "entry": "there",
+      "meanFrequency": 5.963,
+      "raters": 27
+    },
+    {
+      "word": "think",
+      "entry": "think",
+      "meanFrequency": 5.867,
+      "raters": 30
+    },
+    {
+      "word": "thirsty",
+      "entry": "thirsty",
+      "meanFrequency": 5.3,
+      "raters": 30
+    },
+    {
+      "word": "throw",
+      "entry": "throw_2",
+      "meanFrequency": 5.185,
+      "raters": 27
+    },
+    {
+      "word": "thursday",
+      "entry": "thursday",
+      "meanFrequency": 5.042,
+      "raters": 24
+    },
+    {
+      "word": "ticket",
+      "entry": "ticket",
+      "meanFrequency": 5.0,
+      "raters": 32
+    },
+    {
+      "word": "time",
+      "entry": "time",
+      "meanFrequency": 6.375,
+      "raters": 24
+    },
+    {
+      "word": "tired",
+      "entry": "tired",
+      "meanFrequency": 6.538,
+      "raters": 26
+    },
+    {
+      "word": "today",
+      "entry": "today",
+      "meanFrequency": 6.406,
+      "raters": 32
+    },
+    {
+      "word": "toilet",
+      "entry": "toilet",
+      "meanFrequency": 5.963,
+      "raters": 27
+    },
+    {
+      "word": "tomato",
+      "entry": "tomato",
+      "meanFrequency": 4.926,
+      "raters": 27
+    },
+    {
+      "word": "tomorrow",
+      "entry": "tomorrow",
+      "meanFrequency": 6.346,
+      "raters": 27
+    },
+    {
+      "word": "tree",
+      "entry": "tree",
+      "meanFrequency": 5.143,
+      "raters": 21
+    },
+    {
+      "word": "tuesday",
+      "entry": "tuesday",
+      "meanFrequency": 5.552,
+      "raters": 29
+    },
+    {
+      "word": "understand",
+      "entry": "understand",
+      "meanFrequency": 6.1,
+      "raters": 30
+    },
+    {
+      "word": "university",
+      "entry": "university",
+      "meanFrequency": 5.333,
+      "raters": 30
+    },
+    {
+      "word": "upset",
+      "entry": "upset_1",
+      "meanFrequency": 4.815,
+      "raters": 27
+    },
+    {
+      "word": "use",
+      "entry": "use",
+      "meanFrequency": 5.346,
+      "raters": 26
+    },
+    {
+      "word": "vacation",
+      "entry": "vacation",
+      "meanFrequency": 4.92,
+      "raters": 25
+    },
+    {
+      "word": "visit",
+      "entry": "visit",
+      "meanFrequency": 5.071,
+      "raters": 28
+    },
+    {
+      "word": "volunteer",
+      "entry": "volunteer",
+      "meanFrequency": 4.786,
+      "raters": 28
+    },
+    {
+      "word": "wait",
+      "entry": "wait",
+      "meanFrequency": 5.88,
+      "raters": 25
+    },
+    {
+      "word": "walk",
+      "entry": "walk",
+      "meanFrequency": 6.111,
+      "raters": 27
+    },
+    {
+      "word": "want",
+      "entry": "want_2",
+      "meanFrequency": 6.771,
+      "raters": 35
+    },
+    {
+      "word": "warn",
+      "entry": "warn",
+      "meanFrequency": 5.36,
+      "raters": 25
+    },
+    {
+      "word": "wash",
+      "entry": "wash_1",
+      "meanFrequency": 5.8,
+      "raters": 35
+    },
+    {
+      "word": "watch",
+      "entry": "watch",
+      "meanFrequency": 5.667,
+      "raters": 27
+    },
+    {
+      "word": "water",
+      "entry": "water",
+      "meanFrequency": 6.963,
+      "raters": 27
+    },
+    {
+      "word": "wednesday",
+      "entry": "wednesday",
+      "meanFrequency": 5.56,
+      "raters": 25
+    },
+    {
+      "word": "week",
+      "entry": "week",
+      "meanFrequency": 6.04,
+      "raters": 25
+    },
+    {
+      "word": "what",
+      "entry": "what_1",
+      "meanFrequency": 6.407,
+      "raters": 27
+    },
+    {
+      "word": "when",
+      "entry": "when",
+      "meanFrequency": 5.6,
+      "raters": 30
+    },
+    {
+      "word": "where",
+      "entry": "where",
+      "meanFrequency": 6.24,
+      "raters": 25
+    },
+    {
+      "word": "which",
+      "entry": "which",
+      "meanFrequency": 5.8,
+      "raters": 25
+    },
+    {
+      "word": "white",
+      "entry": "white",
+      "meanFrequency": 4.667,
+      "raters": 30
+    },
+    {
+      "word": "who",
+      "entry": "who",
+      "meanFrequency": 6.233,
+      "raters": 30
+    },
+    {
+      "word": "why",
+      "entry": "why",
+      "meanFrequency": 6.269,
+      "raters": 26
+    },
+    {
+      "word": "wife",
+      "entry": "wife",
+      "meanFrequency": 5.154,
+      "raters": 26
+    },
+    {
+      "word": "will",
+      "entry": "will",
+      "meanFrequency": 6.185,
+      "raters": 27
+    },
+    {
+      "word": "win",
+      "entry": "win",
+      "meanFrequency": 4.96,
+      "raters": 25
+    },
+    {
+      "word": "wind",
+      "entry": "wind",
+      "meanFrequency": 4.714,
+      "raters": 28
+    },
+    {
+      "word": "window",
+      "entry": "window",
+      "meanFrequency": 5.48,
+      "raters": 25
+    },
+    {
+      "word": "wine",
+      "entry": "wine",
+      "meanFrequency": 5.333,
+      "raters": 27
+    },
+    {
+      "word": "with",
+      "entry": "with",
+      "meanFrequency": 5.033,
+      "raters": 30
+    },
+    {
+      "word": "woman",
+      "entry": "woman_2",
+      "meanFrequency": 6.111,
+      "raters": 27
+    },
+    {
+      "word": "word",
+      "entry": "word",
+      "meanFrequency": 5.207,
+      "raters": 30
+    },
+    {
+      "word": "work",
+      "entry": "work",
+      "meanFrequency": 6.739,
+      "raters": 23
+    },
+    {
+      "word": "world",
+      "entry": "world",
+      "meanFrequency": 5.32,
+      "raters": 25
+    },
+    {
+      "word": "wow",
+      "entry": "wow",
+      "meanFrequency": 5.704,
+      "raters": 27
+    },
+    {
+      "word": "write",
+      "entry": "write",
+      "meanFrequency": 5.593,
+      "raters": 27
+    },
+    {
+      "word": "wrong",
+      "entry": "wrong_1",
+      "meanFrequency": 6.08,
+      "raters": 25
+    },
+    {
+      "word": "year",
+      "entry": "year",
+      "meanFrequency": 5.44,
+      "raters": 25
+    },
+    {
+      "word": "yes",
+      "entry": "yes",
+      "meanFrequency": 6.885,
+      "raters": 27
+    },
+    {
+      "word": "yesterday",
+      "entry": "yesterday",
+      "meanFrequency": 5.889,
+      "raters": 27
+    },
+    {
+      "word": "you",
+      "entry": "you",
+      "meanFrequency": 6.889,
+      "raters": 27
+    },
+    {
+      "word": "young",
+      "entry": "young",
+      "meanFrequency": 4.962,
+      "raters": 26
+    },
+    {
+      "word": "your",
+      "entry": "your",
+      "meanFrequency": 6.222,
+      "raters": 27
+    }
+  ]
+}

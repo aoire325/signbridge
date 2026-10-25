@@ -5,9 +5,9 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { ActionButton } from '@/components/action-button';
 import { colors } from '@/constants/palette';
 
-type Props = { words: readonly string[]; onClose: () => void };
+type Props = { words: readonly string[]; onClose: () => void; onSelectWord?: (word: string) => void; onAddWord?: () => void; selectionDisabled?: boolean };
 
-export function DictionaryPanel({ words, onClose }: Props) {
+export function DictionaryPanel({ words, onClose, onSelectWord, onAddWord, selectionDisabled = false }: Props) {
   const [query, setQuery] = useState('');
   const [focused, setFocused] = useState(false);
   const matches = useMemo(() => {
@@ -28,10 +28,14 @@ export function DictionaryPanel({ words, onClose }: Props) {
             onFocus={() => setFocused(true)} onBlur={() => setFocused(false)}
             style={[styles.search, focused && styles.focused]} />
           <Text accessibilityLiveRegion="polite" style={styles.count}>{matches.length.toLocaleString()} {matches.length === 1 ? 'word' : 'words'}</Text>
+          {onSelectWord ? <Text style={styles.count}>Select a word to add your gesture version.</Text> : null}
           <FlatList data={matches} keyExtractor={(word) => word} keyboardShouldPersistTaps="handled"
             initialNumToRender={20} maxToRenderPerBatch={20}
-            renderItem={({ item }) => <Text selectable style={styles.word}>{item}</Text>}
+            renderItem={({ item }) => onSelectWord ? <View style={styles.wordChoice}>
+              <ActionButton label={`Select ${item}`} text={item} compact disabled={selectionDisabled} onPress={() => onSelectWord(item)} />
+            </View> : <Text selectable style={styles.word}>{item}</Text>}
             ListEmptyComponent={<Text style={styles.empty}>No matching words.</Text>} />
+          {onAddWord ? <ActionButton label="Word not in Dictionary" text="Word not here? Add new word" compact disabled={selectionDisabled} onPress={onAddWord} /> : null}
         </KeyboardAvoidingView>
       </SafeAreaView>
     </Modal>
@@ -47,5 +51,6 @@ const styles = StyleSheet.create({
   focused: { outlineWidth: 3, outlineColor: colors.navy, outlineOffset: 3 },
   count: { color: colors.inkSoft, fontSize: 14 },
   word: { color: colors.navy, fontSize: 18, paddingVertical: 14, borderBottomWidth: 1, borderBottomColor: colors.line },
+  wordChoice: { paddingVertical: 4 },
   empty: { color: colors.inkSoft, fontSize: 16, paddingVertical: 20 },
 });

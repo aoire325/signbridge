@@ -79,5 +79,25 @@ describe('whole isolated-sign boundaries', () => {
     segmenter.reset(); segmenter.accept(frame(1000));
     expect(segmenter.accept(frame(900)).kind).toBe('interrupted');
   });
+
+  it('finishes after visible hands lower below elbows and settle, then accepts another sign', () => {
+    const lowered = (t: number): TrackingFrame => {
+      const next = frame(t);
+      return { ...next, pose: next.pose.map((p, i) => ({ ...p, y: i === 13 ? 0.7 : i === 15 ? 0.98 : p.y })),
+        hands: next.hands.map((h) => ({ ...h, landmarks: h.landmarks.map((p) => ({ ...p, y: 0.98 })) })) };
+    };
+    const segmenter = capture();
+    for (let t = 0; t <= 800; t += 100) segmenter.accept(frame(t));
+    for (let t = 900; t < 1600; t += 100) expect(segmenter.accept(lowered(t)).kind).not.toBe('complete');
+    expect(segmenter.accept(lowered(1600)).kind).toBe('complete');
+    for (let t = 1700; t <= 2400; t += 100) segmenter.accept(frame(t));
+    expect(segmenter.finish().kind).toBe('complete');
+  });
+
+  it('does not cut a still face-level sign or a brief pause', () => {
+    const segmenter = capture();
+    for (let t = 0; t <= 2000; t += 100) expect(segmenter.accept(frame(t)).kind).toBe('tracking');
+    expect(segmenter.finish().kind).toBe('complete');
+  });
 }); 
 

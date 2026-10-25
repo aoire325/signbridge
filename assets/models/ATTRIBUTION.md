@@ -50,6 +50,17 @@ Reproduction: `scripts/convert-citizen-model.py` and `scripts/convert-asl2000-mo
 
 The deduplicated union is 2,917 lexical entries, including phrases. Variants such as `ABOUT1` and `ABOUT2` count once. All expanded predictions require manual review. Improved capture preserves body lead-in/end frames; a separate 48-example replay improved Citizen top-1 from 19 to 33 correct, but it does not establish live-phone accuracy. Portrait coordinates map into a centered 4:3 canvas to preserve physical XY proportions; this adaptation has synthetic geometry tests and still requires real-camera validation. No model weights were changed for these capture improvements. See `docs/evaluation/word-capture-accuracy.md`.
 
+## Frequency-guided 500-word Dictionary
+
+`asl_common_500_labels.json` is an output allowlist, not a new trained class map. It derives from the existing WLASL1000 glosses and [ASL-LEX 2.0 frequency ratings](https://asl-lex.org/download.html), using the pinned source, SHA-256, matched EntryIDs and selection policy in `asl_common_500_manifest.json`. The transformation selects the first 500 strictly by subjective mean frequency, with alphabetical tie-breaking and no exceptions. Reference videos are not included. The current ASL-LEX download page licenses the database under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/); the historical GitHub README still states CC BY-NC 4.0. Preserve this provenance and review the applicable terms for distribution.
+
+Required ASL-LEX citations:
+
+- Sevcikova Sehyr, Z., Caselli, N., Cohen-Goldberg, A. M., & Emmorey, K. (2021). The ASL-LEX 2.0 Project: A database of lexical and phonological properties for 2,723 signs in American Sign Language. *Journal of Deaf Studies and Deaf Education*. https://doi.org/10.1093/deafed/enaa038
+- Caselli, N., Sevcikova Sehyr, Z., Cohen-Goldberg, A. M., & Emmorey, K. (2017). ASL-LEX: A lexical database of American Sign Language. *Behavior Research Methods*, 49(2), 784–801. https://doi.org/10.3758/s13428-016-0742-0
+
+No ASL-LEX training videos or image assets were downloaded or bundled. Frequency selection and personal template learning do not establish recognition accuracy or alter the pretrained model licenses above.
+
 ## Offline sentence translation
 
 The sentence encoder/decoder are derived from [FatimahEmadEldin/ytasl-t5-v1_1-base](https://huggingface.co/FatimahEmadEldin/ytasl-t5-v1_1-base/tree/cc6330e8a992975b80bf95b098cdf27f8379febe), by **FatimahEmadEldin**, declared **CC BY 4.0** ([license](https://creativecommons.org/licenses/by/4.0/)). The base is Google's `t5-v1_1-base` (Apache 2.0). Original weights and tokenizer are attributed to those authors. Changes: reimplemented inference graph, fixed mobile shapes, separated pose encoder and autoregressive decoder, float16 weight storage, bounded greedy English generation instead of the author's beam/sampling settings. `asl_sentence_manifest.json` records hashes, shapes, revision and limitations.

@@ -1,5 +1,6 @@
 import citizenLabels from '../../assets/models/asl_citizen_labels.json';
 import wlaslLabels from '../../assets/models/asl_2000_labels.json';
+import wordLabels from '../../assets/models/asl_common_500_labels.json';
 import type { WordPrediction } from './asl-word-recognition';
 
 export const CITIZEN_LABELS: readonly string[] = citizenLabels;
@@ -12,6 +13,13 @@ const display = new Map<string, string>();
 for (const label of CITIZEN_LABELS) display.set(citizenWord(label), label.replace(/\d+$/, ''));
 for (const label of WLASL_LABELS) display.set(wordKey(label), label.toUpperCase());
 export const SUPPORTED_WORD_LABELS: readonly string[] = [...display.values()].sort();
+// One public word vocabulary. Keep the trained class arrays intact: changing
+// their order or truncating model outputs would corrupt the class mapping.
+// Strict ASL-LEX frequency-ranked subset; provenance and selection policy are in
+// asl_common_500_manifest.json. Do not truncate either trained model's outputs.
+export const RECOGNITION_WORD_LABELS: readonly string[] = wordLabels.map((word) => word.toUpperCase());
+const recognitionKeys = new Set(RECOGNITION_WORD_LABELS.map(wordKey));
+const recognitionDisplay = new Map(RECOGNITION_WORD_LABELS.map((word) => [wordKey(word), word]));
 
 /** Equal probability averaging of two views of the SAME trained model.
  * Returning log probabilities preserves the existing variant pooling/ranking.
@@ -81,4 +89,31 @@ export function expandedWordSuggestions(citizen: Float32Array, wlasl: Float32Arr
   const exclusive = !citizenKeys.has(b[0].key) && b[0].confidence >= 0.65 && b[0].margin >= 0.2;
   const candidates = exclusive ? [a[0], a[1], b[0]] : a.slice(0, 3);
   return candidates.map((word) => display.get(word.key)!);
+}
+
+/** Restricted, review-only output using the existing two-view recognition.
+ * Keep the full model scores, then rank the permitted words without a confidence
+ * cutoff. Every valid inference returns three possibilities, even for flat scores
+ * or an excluded leading class. These guesses always require user selection.
+ */
+export function limitedWordSuggestions(citizen: Float32Array, wlasl: Float32Array, mirrored: Float32Array): string[] {
+  const a = ranking(combineCitizenViews(citizen, mirrored), CITIZEN_LABELS, citizenWord);
+  const b = ranking(wlasl, WLASL_LABELS, wordKey);
+  const eligible = a.filter((word) => recognitionKeys.has(word.key));
+  const secondary = b.find((word) => recognitionKeys.has(word.key))!;
+  // Give a strong full-vocabulary secondary leader a review slot even when
+  // Citizen also knows that word. Never compare or add the two models' scores.
+  // Evaluate strength BEFORE filtering: excluded mass must not become certainty.
+  const strongSecondary = recognitionKeys.has(b[0].key) && b[0].confidence >= 0.65 && b[0].margin >= 0.2 ? b[0] : null;
+  const proposal = strongSecondary ?? (!citizenKeys.has(secondary.key) ? secondary : null);
+  const candidates = proposal ? [...eligible.slice(0, 2), proposal, ...eligible] : eligible;
+  return [...new Set(candidates.map((word) => recognitionDisplay.get(word.key)!))].slice(0, 3);
+}
+
+/** Capture-only diagnostics. These are model leaders, not verified matches. */
+export function wordModelLeaders(citizen: Float32Array, mirrored: Float32Array, wlasl: Float32Array) {
+  const leaders = (scores: Float32Array, labels: readonly string[], key: (word: string) => string) =>
+    ranking(scores, labels, key).slice(0, 3).map((word) => display.get(word.key)!);
+  return { primary: leaders(citizen, CITIZEN_LABELS, citizenWord), mirrored: leaders(mirrored, CITIZEN_LABELS, citizenWord),
+    secondary: leaders(wlasl, WLASL_LABELS, wordKey) };
 }

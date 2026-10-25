@@ -3,6 +3,8 @@ import * as Clipboard from 'expo-clipboard';
 import { router } from 'expo-router';
 import { WelcomeScreen } from '../../src/components/welcome-screen';
 import HomeScreen from '../../src/app/index';
+import { BASELINE_VERSION, type RecognitionExample } from '../../src/recognition/recognition-examples';
+import { SIGN_FEATURE_WIDTH } from '../../src/recognition/sign-features';
 
 // Keep Expo's native Jest environment; its setup defines window itself and
 // cannot be combined directly with the jsdom environment's window accessor.
@@ -18,6 +20,7 @@ let mockTutorialSeen = true;
 const mockMarkTutorialSeen = jest.fn(() => { mockTutorialSeen = true; });
 let mockStoredTutorial = false;
 let mockStorageFails = false;
+let mockSavedExamples: string | null = null;
 const mockWriteFlag = jest.fn();
 let mockView: string | undefined = 'camera';
 let mockDimensions = { width: 1200, height: 900, fontScale: 1 };
@@ -105,7 +108,14 @@ jest.mock('../../src/state/accessibility-settings', () => ({ useAccessibilitySet
 jest.mock('expo-file-system', () => ({
   Paths: { document: 'file:///documents' },
   File: class {
-    get exists() { if (mockStorageFails) throw new Error('Storage unavailable'); return mockStoredTutorial; }
+    path: string;
+    constructor(...parts: string[]) { this.path = parts.join('/'); }
+    get exists() {
+      if (mockStorageFails) throw new Error('Storage unavailable');
+      return this.path.endsWith('signbridge-examples-v1.json') ? mockSavedExamples !== null : mockStoredTutorial;
+    }
+    get size() { return mockSavedExamples?.length ?? 0; }
+    async text() { return mockSavedExamples; }
     create() { if (mockStorageFails) throw new Error('Storage unavailable'); }
     writeSync(value: string) { mockWriteFlag(value); mockStoredTutorial = true; }
   },
@@ -163,7 +173,7 @@ describe('Sign to Text review flow', () => {
   });
   beforeEach(() => {
     Object.assign(globalThis, { IS_REACT_ACT_ENVIRONMENT: true });
-    jest.clearAllMocks(); mockTutorialSeen = true; mockDimensions = { width: 1200, height: 900, fontScale: 1 }; mockView = 'camera'; mockCameraMounts = 0; mockCandidates = ['HELLO']; mockProcessing = false;
+    jest.clearAllMocks(); mockSavedExamples = null; mockTutorialSeen = true; mockDimensions = { width: 1200, height: 900, fontScale: 1 }; mockView = 'camera'; mockCameraMounts = 0; mockCandidates = ['HELLO']; mockProcessing = false;
     mockSentence.recording = false; mockSentence.busy = false;
     mockRecognitionMessage = 'Sign one word, then lower your hands.';
     container = document.createElement('div'); document.body.appendChild(container);
@@ -171,7 +181,7 @@ describe('Sign to Text review flow', () => {
     act(() => root.render(React.createElement(HomeScreen)));
     act(() => button('Simulate camera ready').click());
   });
-  afterEach(() => { act(() => root.unmount()); container.remove(); });
+  afterEach(() => { act(() => root.unmount()); container.remove(); mockSavedExamples = null; });
 
   it('returns to welcome and reopens the same experience with text intact', () => {
     typeText('Keep my text');
@@ -199,6 +209,7 @@ describe('Sign to Text review flow', () => {
     expect(button('Close Dictionary')).toBeNull();
     typeText('Keep this');
     act(() => button('Dictionary').click());
+    expect(container.textContent).toContain('500 words');
     const search = container.querySelector<HTMLTextAreaElement>('textarea[aria-label="Search Dictionary"]')!;
     expect(search).not.toBeNull();
     act(() => { search.value = 'hello'; search.dispatchEvent(new dom.window.Event('input', { bubbles: true })); });
@@ -211,6 +222,118 @@ describe('Sign to Text review flow', () => {
     expect(mockCameraMounts).toBe(1);
     expect(mockCamera.pause).not.toHaveBeenCalled();
     expect(mockCamera.stop).not.toHaveBeenCalled();
+  });
+
+  it('loads trained personal words into Dictionary, deduplicates versions, and keeps the existing selection flow', async () => {
+    const version = (label: string, variantId: string, count = 3): RecognitionExample[] => Array.from({ length: count }, (_, i) => ({
+      id: `${variantId}-${i}`, label, variantId, signer: 'me', session: variantId, split: 'train',
+      createdAt: '2026-10-25', baselineVersion: BASELINE_VERSION,
+      sequence: { version: 1, durationMs: 1000, frames: Array.from({ length: 24 }, (_, j) => ({ timestampMs: j * 1000 / 23,
+        values: Array<number>(SIGN_FEATURE_WIDTH * 2).fill(0.1), mask: Array<number>(SIGN_FEATURE_WIDTH * 2).fill(1) })) },
+      baseline: ['FOREST', 'PILLOW', 'CLOUD'], displayed: ['FOREST', 'PILLOW', 'CLOUD'],
+      diagnostics: { frames: 11, fps: 10, maxGapMs: 100, handCoverage: 1, faceCoverage: 1, inferenceMs: 20 },
+    }));
+    mockSavedExamples = JSON.stringify({ version: 1, examples: [
+      ...version('MY NEW WORD', 'first'), ...version('MY NEW WORD', 'second'), ...version('HELLO', 'hello'),
+      ...version('MY UNFINISHED WORD', 'unfinished', 1),
+      ...version('MY TEST WORD', 'test').map((e) => ({ ...e, split: 'test' })),
+      ...version('MY OTHER SIGNER', 'other').map((e) => ({ ...e, signer: 'someone-else' })),
+    ] });
+    // Reopening uses the real saved-example loader, including words taught before this UI update.
+    await act(async () => root.render(React.createElement(HomeScreen, { key: 'reopened' })));
+    const mounts = mockCameraMounts;
+    act(() => button('Dictionary').click());
+    expect(container.textContent).toContain('501 words');
+    const search = container.querySelector<HTMLTextAreaElement>('textarea[aria-label="Search Dictionary"]')!;
+    const searchFor = (value: string) => act(() => {
+      search.value = value; search.dispatchEvent(new dom.window.Event('input', { bubbles: true }));
+    });
+    for (const word of ['MY UNFINISHED WORD', 'MY TEST WORD', 'MY OTHER SIGNER']) {
+      searchFor(word); expect(container.textContent).toContain('No matching words.');
+    }
+    searchFor('hello');
+    expect(container.textContent).toContain('1 word');
+    expect(container.querySelectorAll('button[aria-label="Select HELLO"]')).toHaveLength(1);
+    searchFor('my new');
+    expect(container.textContent).toContain('1 word');
+    expect(container.querySelectorAll('button[aria-label="Select MY NEW WORD"]')).toHaveLength(1);
+    await act(async () => button('Select MY NEW WORD').click());
+    expect(button('Close Dictionary')).toBeNull();
+    expect(container.textContent).toContain('Your gesture versions all produce “MY NEW WORD”');
+    expect(container.textContent).toContain('2 saved versions of MY NEW WORD');
+    act(() => button('Close Personal signs').click());
+    act(() => button('Dictionary').click());
+    expect(container.textContent).toContain('501 words');
+    act(() => button('Close Dictionary').click());
+    expect(mockCameraMounts).toBe(mounts);
+    expect(mockCamera.pause).not.toHaveBeenCalled(); expect(mockCamera.stop).not.toHaveBeenCalled();
+  });
+
+  it('opens the optional learning tools and arms an example without remounting the camera', async () => {
+    mockStoredTutorial = false;
+    expect(button('Recognition Lab')).toBeNull();
+    act(() => button('Options').click());
+    await act(async () => button('Recognition Lab').click());
+    const label = container.querySelector<HTMLTextAreaElement>('textarea[aria-label="Expected sign"]')!;
+    act(() => { label.value = 'HELLO'; label.dispatchEvent(new dom.window.Event('input', { bubbles: true })); });
+    expect(button('Record example').disabled).toBe(false);
+    act(() => button('Record example').click());
+    expect(container.textContent).toContain('Example: HELLO');
+    expect(mockCameraMounts).toBe(1);
+    act(() => button('Cancel recording').click());
+    act(() => button('Close Recognition Lab').click());
+    expect(mockCameraMounts).toBe(1);
+    expect(mockCamera.stop).not.toHaveBeenCalled();
+    expect(mockCamera.pause).not.toHaveBeenCalled();
+  });
+
+  it('replaces the old teaching flow with an explicit new-word choice without remounting the camera', async () => {
+    act(() => button('Options').click());
+    expect(button('Teach a sign')).toBeNull();
+    await act(async () => button('Personal signs').click());
+    expect(button('Record version example')).toBeNull();
+    act(() => button('Add new word').click());
+    const label = container.querySelector<HTMLTextAreaElement>('textarea[aria-label="New personal word"]')!;
+    expect(label).not.toBeNull();
+    act(() => { label.value = 'MY NAME'; label.dispatchEvent(new dom.window.Event('input', { bubbles: true })); });
+    act(() => button('Use this word').click());
+    act(() => button('Teach my version').click());
+    expect(button('Record version example').disabled).toBe(false);
+    act(() => button('Record version example').click());
+    expect(container.textContent).toContain('Example: MY NAME');
+    expect(mockCameraMounts).toBe(1);
+    act(() => button('Close Personal signs').click());
+    expect(button('Record version example')).toBeNull();
+    expect(container.textContent).not.toContain('Example: MY NAME');
+    act(() => button('Dictionary').click()); expect(container.textContent).toContain('500 words');
+    expect(mockCameraMounts).toBe(1); expect(mockCamera.stop).not.toHaveBeenCalled(); expect(mockCamera.pause).not.toHaveBeenCalled();
+  });
+
+  it('selects HELLO from Dictionary and records a version under its existing word', async () => {
+    act(() => button('Dictionary').click());
+    const search = container.querySelector<HTMLTextAreaElement>('textarea[aria-label="Search Dictionary"]')!;
+    act(() => { search.value = 'hello'; search.dispatchEvent(new dom.window.Event('input', { bubbles: true })); });
+    await act(async () => button('Select HELLO').click());
+    expect(button('Close Dictionary')).toBeNull();
+    expect(container.textContent).toContain('Your gesture versions all produce “HELLO”');
+    act(() => button('Teach my version').click());
+    act(() => button('Record version example').click());
+    expect(container.textContent).toContain('Example: HELLO');
+    expect(mockCameraMounts).toBe(1);
+    act(() => button('Cancel version recording').click());
+    act(() => button('Close Personal signs').click());
+    expect(input().value).toBe('');
+  });
+
+  it('offers adding a missing word from Dictionary and reuses canonical existing names', async () => {
+    act(() => button('Dictionary').click());
+    await act(async () => button('Word not in Dictionary').click());
+    const input = container.querySelector<HTMLTextAreaElement>('textarea[aria-label="New personal word"]')!;
+    act(() => { input.value = 'hello'; input.dispatchEvent(new dom.window.Event('input', { bubbles: true })); });
+    expect(button('Use this word').textContent).toContain('Use existing HELLO');
+    act(() => button('Use this word').click());
+    expect(container.textContent).toContain('Your gesture versions all produce “HELLO”');
+    expect(mockCameraMounts).toBe(1);
   });
 
   it('keeps secondary tools closed by default and adapts the panels to screen width and text scaling', () => {
@@ -328,7 +451,9 @@ describe('Sign to Text review flow', () => {
     act(() => button('Options').click());
     expect(container.textContent!.indexOf('Recognition options')).toBeLessThan(container.textContent!.indexOf('Recognized Text'));
     expect(button('Words')).not.toBeNull();
-    expect(button('Use legacy 1,000-sign model')).not.toBeNull();
+    expect(button('Use legacy 1,000-sign model')).toBeNull();
+    expect(button('Use original 250-sign model')).toBeNull();
+    expect(container.textContent).not.toMatch(/2,917|3,000|250-sign/);
     expect(mockCameraMounts).toBe(1);
     act(() => button('Hide options').click());
     expect(container.textContent).not.toContain('Recognition options');

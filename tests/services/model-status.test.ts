@@ -6,7 +6,7 @@ describe('model status', () => {
     expect(status.ready).toBe(true);
     expect(status.trackingBundled).toBe(true);
     expect(status.supportsGrammar).toBe(true);
-    expect(status.supportedSigns).toHaveLength(2917);
+    expect(status.supportedSigns).toHaveLength(500);
     expect(status.supportedSigns).toContain('HELP');
     expect(status.message).toMatch(/pretrained.*model/i);
     expect(status.sentenceTranslation).toBe('experimental-offline');

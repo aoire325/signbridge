@@ -1,10 +1,84 @@
-import { CITIZEN_LABELS, WLASL_LABELS, SUPPORTED_WORD_LABELS, citizenWord, wordKey, decodeExpandedWord, expandedWordSuggestions } from '../../src/recognition/expanded-vocabulary';
+import { CITIZEN_LABELS, WLASL_LABELS, SUPPORTED_WORD_LABELS, RECOGNITION_WORD_LABELS, citizenWord, wordKey, decodeExpandedWord, expandedWordSuggestions, limitedWordSuggestions } from '../../src/recognition/expanded-vocabulary';
 
 const scores = (labels: readonly string[], word?: string) => {
   const values = new Float32Array(labels.length).fill(word ? -20 : 0);
   if (word) values[labels.indexOf(word)] = 20;
   return values;
 };
+
+describe('single 500-entry word vocabulary', () => {
+  const allowed = new Set(RECOGNITION_WORD_LABELS.map(wordKey));
+  it('exposes exactly 500 distinct trained words from the strict frequency ranking', () => {
+    expect(RECOGNITION_WORD_LABELS).toHaveLength(500);
+    expect(allowed.size).toBe(500);
+    const trained = new Set(SUPPORTED_WORD_LABELS.map(wordKey));
+    expect([...allowed].every((word) => trained.has(word))).toBe(true);
+    for (const word of ['NAME', 'BATHROOM', 'MILK', 'LIKE', 'SIGN', 'MORE', 'GO', 'CAT', 'AGAIN', 'HELP', 'WANT', 'NOW', 'HELLO', 'CANDY', 'DISSOLVE', 'ENGLISH']) {
+      expect(RECOGNITION_WORD_LABELS).toContain(word);
+    }
+    for (const word of ['MOON', 'CRAZY', 'SLOW']) expect(RECOGNITION_WORD_LABELS).not.toContain(word);
+  });
+
+  it('returns three distinct permitted choices even for an excluded leader or flat scores', () => {
+    const excluded = CITIZEN_LABELS.find((word) => !allowed.has(citizenWord(word)))!;
+    const a = scores(CITIZEN_LABELS, excluded);
+    for (const result of [limitedWordSuggestions(a, scores(WLASL_LABELS), a),
+      limitedWordSuggestions(scores(CITIZEN_LABELS), scores(WLASL_LABELS), scores(CITIZEN_LABELS))]) {
+      expect(result).toHaveLength(3);
+      expect(new Set(result).size).toBe(3);
+      expect(result.every((word) => allowed.has(wordKey(word)))).toBe(true);
+      expect(result).not.toContain(excluded);
+    }
+    const invalid = scores(CITIZEN_LABELS); invalid[0] = NaN;
+    expect(() => limitedWordSuggestions(a, scores(WLASL_LABELS), invalid)).toThrow(/invalid/i);
+  });
+
+  it('keeps a low-score supported WLASL-exclusive possibility available without a cutoff', () => {
+    const citizenKeys = new Set(CITIZEN_LABELS.map(citizenWord));
+    const exclusive = WLASL_LABELS.find((word) => allowed.has(wordKey(word)) && !citizenKeys.has(wordKey(word)))!;
+    const b = scores(WLASL_LABELS);
+    b[WLASL_LABELS.indexOf(exclusive)] = 0.01;
+    const a = scores(CITIZEN_LABELS);
+    const result = limitedWordSuggestions(a, b, a);
+    expect(result).toHaveLength(3);
+    expect(new Set(result).size).toBe(3);
+    expect(result).toContain(exclusive.toUpperCase());
+  });
+
+  it('rescues a strong shared HELLO prediction from the secondary model', () => {
+    const a = scores(CITIZEN_LABELS);
+    for (const [word, value] of [['FOREST', 12], ['PILLOW1', 11], ['CLOUD1', 10]] as const) a[CITIZEN_LABELS.indexOf(word)] = value;
+    expect(limitedWordSuggestions(a, scores(WLASL_LABELS, 'hello'), a)).toEqual(['FOREST', 'PILLOW', 'HELLO']);
+    const weak = scores(WLASL_LABELS); weak[WLASL_LABELS.indexOf('hello')] = 0.01;
+    expect(limitedWordSuggestions(a, weak, a)).toEqual(['FOREST', 'PILLOW', 'CLOUD']);
+    const excluded = WLASL_LABELS.find((word) => !allowed.has(wordKey(word)))!;
+    const maskedLeader = scores(WLASL_LABELS, excluded); maskedLeader[WLASL_LABELS.indexOf('hello')] = 0;
+    expect(limitedWordSuggestions(a, maskedLeader, a)).not.toContain('HELLO');
+  });
+
+  it('keeps all 500 entries reachable without exposing other trained classes', () => {
+    for (const label of RECOGNITION_WORD_LABELS) {
+      const trained = CITIZEN_LABELS.find((word) => citizenWord(word) === wordKey(label));
+      const a = scores(CITIZEN_LABELS, trained);
+      const b = scores(WLASL_LABELS, label.toLowerCase());
+      const result = limitedWordSuggestions(a, b, a);
+      expect(result).toContain(label);
+      expect(result).toHaveLength(3);
+      expect(new Set(result).size).toBe(3);
+      expect(result.every((word) => allowed.has(wordKey(word)))).toBe(true);
+    }
+  });
+
+  it('filters alternatives without renormalizing excluded probability into fake certainty', () => {
+    const a = scores(CITIZEN_LABELS);
+    const excluded = CITIZEN_LABELS.find((word) => !allowed.has(citizenWord(word)))!;
+    a[CITIZEN_LABELS.indexOf('HELLO')] = 8;
+    a[CITIZEN_LABELS.indexOf(excluded)] = 7;
+    a[CITIZEN_LABELS.indexOf('WATER')] = 6;
+    a[CITIZEN_LABELS.indexOf('FRIEND')] = 5;
+    expect(limitedWordSuggestions(a, scores(WLASL_LABELS), a)).toEqual(['HELLO', 'WATER', 'FRIEND']);
+  });
+});
 
 describe('trained expanded vocabulary and conservative model agreement', () => {
   it('has 2,917 distinct entries, not padded aliases or duplicate variants', () => {
