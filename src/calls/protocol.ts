@@ -23,9 +23,26 @@ export function parseCallMessage(raw: unknown): CallMessage | null {
   return null;
 }
 
-export function signalingUrl(value: string | undefined, development: boolean): string {
-  const url = value?.trim();
-  if (!url) throw new Error('Calling is not connected yet. The app needs its call service configured.');
+export function signalingUrl(value: string | undefined, development: boolean, developmentHost?: string | null): string {
+  let url = value?.trim();
+  // A dev client can load a bundle without the machine's ignored .env.local.
+  // Use the same computer that served that client, never the phone's localhost
+  // unless Metro itself was opened through localhost (e.g. adb reverse).
+  if (!url && development && developmentHost) {
+    try {
+      const host = new URL(`http://${developmentHost}`);
+      const hostname = host.hostname;
+      const local = hostname === 'localhost' || hostname === '[::1]' || hostname.endsWith('.local')
+        || /^(127\.|10\.|192\.168\.|172\.(1[6-9]|2\d|3[01])\.)/.test(hostname);
+      if (local && !host.username && !host.password && !host.search && !host.hash && host.pathname === '/') {
+        // The bundled development service listens on IPv4, including loopback.
+        url = `ws://${hostname === '[::1]' || hostname === 'localhost' ? '127.0.0.1' : hostname}:8787/calls`;
+      }
+    } catch { /* Fall through to the actionable configuration error. */ }
+  }
+  if (!url) throw new Error(development
+    ? 'Open the latest SignBridge project from the same computer on both phones, then reload. The computer must also run the call service.'
+    : 'This app build is missing its call service address. Install an updated build with calling configured.');
   const parsed = new URL(url);
   if (parsed.username || parsed.password || parsed.hash || parsed.search
     || (parsed.protocol !== 'wss:' && !(development && parsed.protocol === 'ws:'))) {

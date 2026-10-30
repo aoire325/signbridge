@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { AppState } from 'react-native';
 import { useIsFocused } from 'expo-router';
 import { requireOptionalNativeModule } from 'expo';
+import Constants from 'expo-constants';
 import { CallSession, initialCallState } from './call-session';
 import { getWebRTC } from './native-webrtc';
 import { signalingUrl, type CaptionKind } from './protocol';
@@ -25,7 +26,7 @@ export function useVideoCall() {
   useEffect(() => { if (!isFocused) session.current?.end(); }, [isFocused]);
   const start = useCallback((options: Parameters<CallSession['start']>[1]) => {
     try {
-      const url = signalingUrl(process.env.EXPO_PUBLIC_CALL_SIGNAL_URL, __DEV__);
+      const url = signalingUrl(process.env.EXPO_PUBLIC_CALL_SIGNAL_URL, __DEV__, Constants.expoConfig?.hostUri);
       const rtc = getWebRTC();
       audioModule()?.startCallAudio?.();
       session.current ??= new CallSession(rtc, (address) => new WebSocket(address), (next) => {

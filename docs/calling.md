@@ -53,13 +53,22 @@ retains its existing research limitations. See `model-limitations.md`.
 ## Connect two phones during development
 
 Install dependencies with `npm install`, then run `npm run calls:server` in a terminal.
-Create `.env.local` containing:
+For local development, both phones automatically use the call service on port
+8787 of the computer serving their Expo project when no explicit service is set.
+Open the same Mac's LAN development server on both phones and reload both apps
+after updating the code. `npm start` exposes Metro to your Wi-Fi network; a
+localhost-only server cannot serve the second phone over Wi-Fi.
+
+To explicitly choose a shared service, create `.env.local` containing:
 
 ```dotenv
 EXPO_PUBLIC_CALL_SIGNAL_URL=ws://YOUR_COMPUTER_LAN_IP:8787/calls
 ```
 
 Both phones must be able to reach that computer. Use its LAN IP, not localhost.
+An explicit service address takes priority over automatic development discovery.
+Discovery is limited to local development hosts; Expo tunnels do not expose port
+8787. Production builds still require a configured WSS endpoint.
 Restart Metro after editing the environment file. Build and install the updated
 native app on each phone with `npm run ios -- --device` or `npm run android`.
 Adding WebRTC and native frame processors requires a rebuild; an older installed
