@@ -71,9 +71,19 @@ export class CallSession {
       this.patch({ localStream: stream, microphone: options.microphone, message: 'Connecting to the call service…' });
       const socket = this.createSocket(url);
       this.socket = socket;
+      let socketOpened = false;
+      let socketFailed = false;
+      const connectionError = (reason?: string) => {
+        const help = url.startsWith('ws:')
+          ? 'Check that the phone and computer are on the same Wi-Fi and the call server is running. On iPhone, check Settings > Privacy & Security > Local Network > SignBridge.'
+          : 'Check your internet connection and try again.';
+        const detail = reason?.replace(/[\x00-\x1f\x7f]/g, ' ').trim().slice(0, 240);
+        return `Could not reach the call service. ${help}${detail ? ` Details: ${detail}` : ''}`;
+      };
       this.timeout(20000, 'The call service did not respond. Check your connection and try again.');
       socket.onopen = () => {
         if (!current()) return;
+        socketOpened = true;
         try { this.sendSignal({ type: options.action, name, ...(options.action === 'join' ? { code: normalizeInvite(options.code!) } : {}) }); }
         catch { this.end('The call service disconnected. Start a new call.', true); }
       };
@@ -150,8 +160,19 @@ export class CallSession {
           }
         }).catch((error: unknown) => { if (current()) this.end(error instanceof Error ? error.message : 'The call could not connect.', true); });
       };
-      socket.onerror = () => { if (current()) this.end('Could not reach the call service. Check your connection and try again.', true); };
-      socket.onclose = () => { if (current()) this.end('The call service disconnected. Start a new call.', true); };
+      // React Native emits an empty error event, then a close event containing
+      // the native failure reason. Ending in onerror erased that second event,
+      // hiding iOS permission, routing, and connection-refused diagnostics.
+      socket.onerror = () => {
+        if (!current()) return;
+        socketFailed = true;
+        this.timeout(250, connectionError());
+      };
+      socket.onclose = (event) => {
+        if (!current()) return;
+        this.end(!socketOpened || socketFailed ? connectionError(event.reason)
+          : 'The call service disconnected. Start a new call.', true);
+      };
     } catch (error) {
       if (current()) this.end(error instanceof Error ? error.message : 'Camera or microphone access was unavailable.', true);
     }

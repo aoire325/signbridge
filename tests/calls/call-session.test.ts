@@ -33,7 +33,7 @@ class Peer extends Events {
   connect() { this.connectionState = 'connected'; this.emit('connectionstatechange'); }
 }
 class Socket {
-  readyState = 0; onopen: (() => void) | null = null; onclose: (() => void) | null = null;
+  readyState = 0; onopen: (() => void) | null = null; onclose: ((event: { reason: string }) => void) | null = null;
   onerror: (() => void) | null = null; onmessage: ((event: { data: string }) => void) | null = null;
   send = jest.fn(); close = jest.fn();
   open() { this.readyState = 1; this.onopen?.(); }
@@ -103,6 +103,22 @@ describe('call ownership and signaling', () => {
     jest.useFakeTimers(); const t = setup(); await t.start();
     jest.advanceTimersByTime(21000);
     expect(t.session.state.phase).toBe('error'); expect(t.stream.release).toHaveBeenCalled();
+  });
+  it('preserves the iOS native connection error delivered after the empty error event', async () => {
+    const t = setup();
+    await t.session.start('ws://192.168.1.10:8787/calls', { action: 'create', name: 'Alice', microphone: false, captions: false });
+    t.socket.onerror?.();
+    t.socket.onclose?.({ reason: 'The operation couldn’t be completed. Connection refused' });
+    expect(t.session.state.phase).toBe('error');
+    expect(t.session.state.message).toContain('Connection refused');
+    expect(t.session.state.message).toContain('Local Network > SignBridge');
+    expect(t.stream.release).toHaveBeenCalled();
+  });
+  it('still releases media if a socket reports an error without a close event', async () => {
+    jest.useFakeTimers(); const t = setup(); await t.start();
+    t.socket.onerror?.(); jest.advanceTimersByTime(250);
+    expect(t.session.state.phase).toBe('error'); expect(t.stream.release).toHaveBeenCalled();
+    expect(t.session.state.message).not.toContain('Local Network');
   });
   it('releases the camera even if signaling and channel teardown throw', async () => {
     const t = setup(); await t.start(); const peer = await t.ready();
