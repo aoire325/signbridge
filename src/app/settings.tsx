@@ -72,11 +72,11 @@ export default function SettingsScreen() {
         <View style={styles.card}>
           <Text style={styles.cardTitle}>Privacy</Text>
           <Text style={styles.bodyText}>
-            Live camera buffers are analyzed on-device. Hand, body and face landmarks are held briefly in memory. Recognition Lab saves landmark features locally only when you tap Save example; delete or export them from the Lab. No photos or video files are created, and nothing is automatically uploaded. Sentence translation also runs on-device. This app does not request microphone access. Transcript text is not kept as history.
+            Translator camera buffers and sign recognition are processed on-device. Recognition Lab saves landmark features locally only when you tap Save example. In video calls, your live camera and any enabled microphone audio are shared with your guest. Shared captions travel over the call’s encrypted data channel; landmark data stays on your phone. Microphone access is optional and requested when you enable it. SignBridge does not record calls or keep transcript history.
           </Text>
           <View style={styles.privacyPill}>
             <View style={styles.privacyDot} />
-            <Text style={styles.privacyPillText}>ON-DEVICE PREVIEW · NO UPLOADS</Text>
+            <Text style={styles.privacyPillText}>LOCAL SIGN RECOGNITION · PRIVATE CALLS</Text>
           </View>
         </View>
 

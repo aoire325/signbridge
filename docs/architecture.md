@@ -1,25 +1,42 @@
 # Architecture
 
+## Video calls
+
+The home screen links to the translator workspace and the `/call` route. Calls
+use react-native-webrtc and a standalone WebSocket signaling service to connect
+two participants with a random private invitation. Each caller has video,
+optional microphone audio, and a reliable data channel for caption/media state.
+`CallSession` owns tracks and transport teardown, queues ICE until a remote
+description exists, and invalidates asynchronous work when a session ends.
+
+The native SignBridgeTracker module can observe a WebRTC video track through its
+video-effects interface. It returns video unchanged and passes a bounded sample
+of hand/body/face landmarks into the existing recognizers. Only one camera is
+opened. Call captions can be reviewed word suggestions, explicitly enabled live
+AI guesses, reviewed sentence drafts, or typed text. They appear below the
+sender's video on both phones. See [calling.md](calling.md) for deployment,
+privacy, and device verification requirements.
+
 ## Live camera and word transcription
 
 ```text
 Start camera → OS permission → native preview (independent of model setup)
-  → MediaPipe hand / pose / face landmarks at up to 12.5 samples/second
-  → WordSegmenter buffers one isolated sign
-  → hands out for 550 ms, or Finish sign
-  → pack selected input: 50 × 55 × 2 (TGCN) or 32 × 543 × 3 (ISLR)
-  → bundled pretrained ISLR TensorFlow Lite model, async on CPU
-  → softmax confidence + margin filter
-  → append accepted word directly to editable transcript (with undo)
+  → MediaPipe hand / pose / face landmarks
+  → ContextWordSegmenter buffers one isolated sign and brief surrounding context
+  → lowered/absent hands settle for 550 ms, or Finish sign
+  → original and mirrored Citizen input + WLASL input
+  → bundled TensorFlow Lite models, async on CPU
+  → rank within the fixed 500-word vocabulary; optionally refine with personal templates
+  → show three alternatives; user selection appends a word to the transcript
 ```
 
-`useCameraSession` owns permissions, facing and camera lifecycle. Android uses CameraX; iOS uses AVFoundation. Native buffers stay on-device and only landmarks cross into JavaScript. Native model instances share a serialized worker, and remain cached for 30 seconds after the final camera view releases them. Native preview startup does not wait for model initialization. Pose and face inference are skipped on idle frames with no hands.
+`useCameraSession` owns translator permissions, facing and camera lifecycle. Android uses CameraX; iOS uses AVFoundation. Only landmarks cross into JavaScript. Native model instances share a serialized worker, and remain cached for 30 seconds after the final camera consumer releases them. Native preview startup does not wait for model initialization. Hand, pose and face detection observe the same processed frame, including hands-out pauses. Video calls use the separate shared-capture path described above.
 
-`asl-word-recognition.ts` packs the original model landmark order and segments bounded clips without requiring body anchors. The original model requires face landmarks; the expanded model requires visible shoulders and signing hands. Switching models invalidates queued results and clears the current clip. `useAslWordRecognizer` loads the pretrained word model separately from the preview and serializes async inference. A lifecycle generation invalidates results after pause, stop, switch, unmount or text editing. `useTranscript` owns automatic word insertion, manual editing, clipboard operations and undo. A confirmed word is a single undo step. Intentional repeated words are allowed across separate sign boundaries.
+`useAslWordRecognizer` loads the two pretrained word models separately from the preview and serializes inference. Current capture requires visible shoulders and signing hands. The original 250-sign preprocessing remains in `asl-word-recognition.ts` for research and shared types. A lifecycle generation invalidates results after pause, stop, switch, unmount or text editing. `useTranscript` owns confirmed word insertion, manual editing and undo; the screen handles clipboard operations. A confirmed word is a single undo step. Intentional repeated words are allowed across separate sign boundaries. Translator model loading is disabled while its screen is inactive so calls do not retain a second set of word model instances.
 
 ## Models
 
-`assets/models/asl_words_1000.tflite` is the experimental 25.5 MB, 1,000-class TGCN model. It uses a MediaPipe-to-OpenPose joint adapter, joint-major 50-frame sampling, and missing-coordinate sentinels. The original 250-sign model remains selectable.
+The active word engine uses `asl_words_citizen.tflite` (2,731 classes) in original/mirrored passes and `asl_words_2000.tflite` (2,000 classes) for secondary proposals. Output is restricted to `asl_common_500_labels.json`; model weights and class order are unchanged. Enabled personal templates may add user-defined labels. The legacy 1,000-class and 250-sign models are retained but are not selectable modes.
 
 `assets/models/asl_words_250.tflite` is an 11.2 MB pretrained isolated-sign model with 250 output logits. Its default input dimension is set to 32 frames without changing weights. The app interpolates time to 32 frames and leaves spatial normalization to the model. No backend is involved. See `assets/models/ATTRIBUTION.md` for pinned sources, binary hashes and license.
 

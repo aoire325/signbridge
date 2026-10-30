@@ -1,6 +1,17 @@
 # SignBridge
 
-SignBridge is an iOS and Android isolated ASL word recognition prototype built with Expo SDK 58, React Native, and TypeScript.
+SignBridge is an iOS and Android communication app built with Expo SDK 58, React Native, and TypeScript. It combines its experimental local ASL translator with private one-to-one video calls and captions below each caller's video.
+
+## Video calls with sign captions
+
+The home screen now offers **Start or join a call** and **Open translator**. Calls use private invitation codes, optional microphone audio, local AI sign recognition, reviewed or explicitly enabled automatic word captions, short sentence drafts, and typed captions. Each participant controls their own caption sharing. The call and recognizer share one camera stream through native WebRTC frame processors.
+
+Calling requires a new native build and a running signaling service. The repository includes the service, Docker deployment, temporary TURN credentials, integration tests, and setup instructions in [docs/calling.md](docs/calling.md). Set `EXPO_PUBLIC_CALL_SIGNAL_URL` before building. A public service and relay have not been provisioned. The existing ASL models retain their experimental accuracy limitations.
+
+```bash
+npm run calls:server
+npm run test:calls-server
+```
 
 ## Current milestone
 
@@ -47,6 +58,20 @@ npm run android
 To restart Metro after a development build is installed, run `npm start`, then open the installed SignBridge development client and select the current server shown by Metro.
 
 After installing `expo-dev-client` or another native module, rebuild the development app with `npm run android`. For a physical Android phone, keep the phone and computer on the same Wi-Fi network and open the server URL shown by Metro's QR code. That URL points to the computer's LAN address instead of the phone's own `localhost:8081`.
+
+If the phone reports **There was a problem loading the project** with a
+`java.net.ConnectException`, it could not reach Metro. With the installed
+development build and Metro running, connect an unlocked Android phone by a USB
+data cable, accept USB debugging if prompted, and run:
+
+```bash
+npm run android:connect
+```
+
+This restores USB port forwarding and opens SignBridge using the computer's
+Metro server through USB. Keep the cable connected and rerun the command after
+reconnecting it. No rebuild is required for this connection repair. Use
+`SIGNBRIDGE_METRO_PORT=8082 npm run android:connect` if your Metro uses another port.
 
 The project is configured for iOS and Android only. Camera hardware is unavailable in simulators without a configured virtual camera; use a physical device to verify preview and lifecycle behavior.
 

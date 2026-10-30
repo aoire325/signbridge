@@ -59,7 +59,7 @@ export default function HomeScreen() {
   const lab = useRecognitionExamples(inStudio, wordActive, camera.sessionToken);
   const dictionaryWords = useMemo(() => [...new Set([...RECOGNITION_WORD_LABELS, ...lab.savedVariants.map((variant) => variant.label)])]
     .sort((a, b) => a.localeCompare(b)), [lab.savedVariants]);
-  const recognizer = useAslWordRecognizer(wordActive, camera.sessionToken, transcript.appendWord, lab.learning);
+  const recognizer = useAslWordRecognizer(wordActive, camera.sessionToken, transcript.appendWord, lab.learning, isFocused && inStudio);
   const currentFrame = sentenceMode ? sentence.frame : recognizer.frame;
   const { highContrast, largeText, tutorialSeen, markTutorialSeen } = useAccessibilitySettings();
   const [previewSessionToken, setPreviewSessionToken] = useState(-1);
@@ -165,7 +165,7 @@ export default function HomeScreen() {
   };
 
   if (!inStudio) {
-    return <WelcomeScreen onGetStarted={() => { setTutorialStep(tutorialSeen ? null : 0); router.setParams({ view: 'camera' }); }} />;
+    return <WelcomeScreen onOpenCalls={() => router.push('/call')} onGetStarted={() => { setTutorialStep(tutorialSeen ? null : 0); router.setParams({ view: 'camera' }); }} />;
   }
 
   return (
@@ -188,6 +188,8 @@ export default function HomeScreen() {
             </TutorialSpotlight>
             {showOptions ? <View style={[styles.teachingCard, styles.optionsExtension]}>
               <Text accessibilityRole="header" style={styles.sectionTitle}>Recognition options</Text>
+              <ActionButton label="Open video calls" text="Video calls" icon="↗" compact disabled={sentence.recording || sentence.busy}
+                onPress={() => { camera.pause(); router.push('/call'); }} />
               <Pressable
                 accessibilityRole="button"
                 accessibilityLabel="Open model and accessibility settings"

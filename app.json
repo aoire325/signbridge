@@ -43,7 +43,14 @@
         }
       ],
       "expo-asset",
-      "./plugins/with-ios-tflite-isolation"
+      "./plugins/with-ios-tflite-isolation",
+      [
+        "@config-plugins/react-native-webrtc",
+        {
+          "cameraPermission": "SignBridge uses your camera for signing and video calls.",
+          "microphonePermission": "SignBridge uses your microphone only when you enable audio in a call."
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true,
@@ -51,4 +58,3 @@
     }
   }
 }
-

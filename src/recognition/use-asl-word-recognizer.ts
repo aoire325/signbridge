@@ -19,10 +19,10 @@ export type RecognitionLearning = {
 
 const INITIAL_MESSAGE = 'Start with your hands lowered. Keep your shoulders visible, sign one word, then lower your hands and wait for the result.';
 
-export function useAslWordRecognizer(active: boolean, sessionToken: number, onWord: (word: string) => void, learning?: RecognitionLearning) {
+export function useAslWordRecognizer(active: boolean, sessionToken: number, onWord: (word: string) => void, learning?: RecognitionLearning, loadModels = true) {
   const activation = useMemo(() => ({ active, sessionToken }), [active, sessionToken]);
-  const modelState = useBundledModel(citizenModelAsset);
-  const secondaryState = useBundledModel(expandedModelAsset);
+  const modelState = useBundledModel(citizenModelAsset, loadModels);
+  const secondaryState = useBundledModel(expandedModelAsset, loadModels);
   const segmenter = useRef(new ContextWordSegmenter(packExpandedWordLandmarks, hasExpandedContext));
   const lifecycle = useRef({ active: false, generation: 0 });
   const busy = useRef(false);

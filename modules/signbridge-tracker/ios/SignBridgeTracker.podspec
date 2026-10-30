@@ -11,7 +11,8 @@ Pod::Spec.new do |s|
   s.static_framework = true
   s.dependency 'ExpoModulesCore'
   s.dependency 'MediaPipeTasksVision', '0.10.35'
-  s.source_files = '**/*.swift'
+  s.dependency 'react-native-webrtc'
+  s.source_files = '**/*.{swift,h,m}'
   s.resource_bundles = { 'SignBridgeModels' => ['models/*.task'] }
   s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES' }
 end
